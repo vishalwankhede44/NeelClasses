@@ -41,9 +41,10 @@ app.use('/signup',signUpRouter)
 app.use('/addcourse',courseRouter);
 app.use('/adduser',addUserRouter);
 app.use('/uploadnotes',docRouter);
-app.use('/viewnotes',notesRouter);
-app.use('/playvideo',playVideo);
+app.use('/notes',notesRouter);
+app.use('/video',playVideo);
 // app.use('/getCourse',getCourse);
+
 
 app.listen(5000,() =>{
     console.log("Server Started");

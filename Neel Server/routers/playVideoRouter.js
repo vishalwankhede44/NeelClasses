@@ -53,7 +53,7 @@ playVideo.get('/:courseId/:videoId',function(request,response){
 
   const urlCourseId = request.params.courseId;
   const urlVideoId = request.params.videoId;
-console.log("Requst Piyush");
+
   var db = firebase.firestore();
 
   db.collection("Courses")
