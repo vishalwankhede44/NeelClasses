@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { browserHistory} from 'react-router';
 import  {withRouter} from 'react-router-dom';
 // import '../../App.css';
@@ -45,15 +48,29 @@ class HomeSearchPanel extends Component {
             <div>
                 <div className="home-box">
                         <div className="home-content">
+                        <div className="home-content">
                             <h3 className="home-headline">The Premium System <br/>Education</h3>
                             <h6 className="home-subline">Future of Education Technology</h6>
-                            <label className="search-label">
-                                <input className="search-input" type="text" placeholder="Search for anything"  onFocus={this.inputFocus} onBlur={this.inputUnFocus} onKeyUp={this.getSearchInput}/>
-                            </label>
-                            <div className="home-button">
-                                <button className="loginButton" >Log In</button>
-                                <button className="signupButton">Sign Up</button>
+                            <div class="wrap">
+                                <div class="search">
+                                    <input type="text" class="searchTerm" placeholder="Search for anything" onFocus={this.inputFocus} onBlur={this.inputUnFocus} onKeyUp={this.getSearchInput}></input>
+                                    <button type="submit" class="searchButton">
+                                        <FontAwesomeIcon icon={faSearch}/>
+                                    </button>
+                                </div>
+                                    
+                                
+                                {/* <label className="search-label">
+                                    <input className="search-input" type="text" placeholder="Search for anything"  onFocus={this.inputFocus} onBlur={this.inputUnFocus} onKeyUp={this.getSearchInput}/>
+                                </label> */}
                             </div>
+                            
+                            <div className="home-button-new">
+                                <button class="btn-in">Log In</button>
+                                <button class="btn-up">Sign Up</button>
+                                {/* <button className="signupButton">Sign Up</button> */}
+                            </div>
+                        </div>
                         </div>
                 </div>
             </div>

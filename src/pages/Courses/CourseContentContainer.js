@@ -53,7 +53,7 @@ this.setState({
             return (
                     <div onClick={this.titleClickHandle}>
                         <div className="content-box" >
-                            {this.state.dropdown ? <h3>{this.props.index}. </h3> :<h3>{this.props.index}. </h3>}
+                        {this.state.dropdown ? <FontAwesomeIcon icon={faMinus} className="plus-minus" /> : <FontAwesomeIcon className="plus-minus" icon={faPlus} />}
                             <div className="content-title">{this.props.content.videoTitle}</div>
                         </div>
                         <div className={this.showOrHidden()}>

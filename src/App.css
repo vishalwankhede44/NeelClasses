@@ -262,6 +262,246 @@ label>.fa-search {
   .search-label {
     height: 25px;
   }
+
+   
+/* New Search Bar */
+.home-box .home-content .wrap .search {
+  width: 80%;
+  margin: auto;
+  position: relative;
+  display: flex;
+}
+
+.home-box .home-content .wrap .search .searchTerm {
+  width: 100%;
+  border: 3px solid #fbd46d;
+  border-right: none;
+  padding-left: 12px;
+  padding-top: 9px;
+  padding-bottom: 10px;
+  padding-right: 85px;
+  height: 30px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+  border-radius: 6px 0px 0px 6px;
+  font-size: 11px;
+  color: #222831;
+  font-weight: 500;
+}
+
+.home-box .home-content .wrap .search .searchTerm:focus{
+  color: #222831;
+}
+
+.home-box .home-content .wrap .search .searchButton {
+  width: 50px;
+  height: 30px;
+  padding-right: 10px;
+  padding-left: 10px;
+  border: 1px solid #fbd46d;
+  background: #fbd46d;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.home-box .home-content .wrap{
+  flex: 1;
+  display: flex;
+  height: 50px;
+  width: 100%;
+  color: #222831;
+}
+
+/* New Button Design */
+.home-box .home-content .home-button-new {
+  display: flex;
+}
+
+.home-box .home-content .home-button-new .btn-in {
+  box-sizing: border-box;
+  appearance: none;
+  background-color: #fbd46d;
+  border: 2px solid #fbd46d;
+  color: #222831;
+  cursor: pointer;
+  display: flex;
+  align-self: center;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+  margin: 20px;
+  padding: 0.6em 1.8em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  
+}
+
+.home-box .home-content .home-button-new .btn-in:hover, .btn-in:checked  {
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+  box-shadow: 0 0 40px 40px #222831 inset;
+  color: #fff;
+  outline: 0;
+}
+
+
+.home-box .home-content .home-button-new .btn-up {
+  box-sizing: border-box;
+  appearance: none;
+  background-color: #fbd46d;
+  border: 2px solid #fbd46d;
+  color: #222831;
+  cursor: pointer;
+  display: flex;
+  align-self: center;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+  margin: 20px;
+  padding: 0.6em 1.8em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  
+}
+
+.home-box .home-content .home-button-new .btn-up:hover, .btn-in:checked {
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+  box-shadow: 0 0 40px 40px #222831 inset;
+  color: #fbd46d;
+  outline: 0;
+}
+}
+
+
+@media all and (min-width: 480px) {
+  
+  /* New Search Bar */
+  .home-box .home-content .wrap .search {
+    width: 100%;
+    position: relative;
+    display: flex;
+    
+  }
+
+  .home-box .home-content .wrap .search .searchTerm {
+    width: 100%;
+    border: 3px solid #fbd46d;
+    border-right: none;
+    padding-left: 12px;
+    padding-top: 9px;
+    padding-bottom: 10px;
+    padding-right: 85px;
+    height: 50px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #9DBFAF;
+    border-radius: 6px 0px 0px 6px;
+    font-size: 20px;
+    color: #222831;
+    font-weight: 500;
+  }
+
+  .home-box .home-content .wrap .search .searchTerm:focus{
+    color: #222831;
+  }
+
+  .home-box .home-content .wrap .search .searchButton {
+    width: 50px;
+    height: 50px;
+    padding-right: 10px;
+    padding-left: 10px;
+    border: 1px solid #fbd46d;
+    background: #fbd46d;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+  }
+
+  /*Resize the wrap to see the search bar change!*/
+  .home-box .home-content .wrap{
+    flex: 1;
+    display: flex;
+    height: 50px;
+    width: 100%;
+    color: #222831;
+  }
+
+  /* New Button Design */
+  .home-box .home-content .home-button-new {
+    display: flex;
+  }
+
+  .home-box .home-content .home-button-new .btn-in {
+    box-sizing: border-box;
+    appearance: none;
+    background-color: #fbd46d;
+    border: 2px solid #fbd46d;
+    color: #222831;
+    cursor: pointer;
+    display: flex;
+    align-self: center;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+    margin: 20px;
+    padding: 0.6em 1.8em;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    
+  }
+
+  .home-box .home-content .home-button-new .btn-in:hover, .btn-in:checked  {
+    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    box-shadow: 0 0 40px 40px #222831 inset;
+    color: #fff;
+    outline: 0;
+  }
+
+
+  .home-box .home-content .home-button-new .btn-up {
+    box-sizing: border-box;
+    appearance: none;
+    background-color: white;
+    border: 2px solid #fbd46d;
+    /* border-radius: 0.6em; */
+    color: #222831;
+    cursor: pointer;
+    display: flex;
+    align-self: center;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+    margin: 20px;
+    padding: 0.6em 1.8em;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    
+  }
+
+  .home-box .home-content .home-button-new .btn-up:hover, .btn-in:checked {
+    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    box-shadow: 0 0 40px 40px #222831 inset;
+    color: #fbd46d;
+    outline: 0;
+  }
 }
 
 
