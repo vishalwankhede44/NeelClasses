@@ -19,11 +19,8 @@ import Home from './pages/Home/Home';
 // import UploadNotes from './components/UploadNotes';
 // import NotesViewer from '.components/NotesViewer';
 import Search from "./pages/Search/Search";
-<<<<<<< HEAD
 import Course from "./pages/Courses/Course";
-=======
 // import Course from "./pages/Courses/Course";
->>>>>>> master
 import Navbar from "./components/Navbar";
 function App() {
   return (
@@ -33,11 +30,8 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/courses/search/:searchString" component={Search} />
-<<<<<<< HEAD
         <Route path="/courses/:courseId" component={Course} />
-=======
-        {/* <Route path="/courses/:ourseId" component={Course} /> */}
->>>>>>> master
+        {/* <Route path="/courses/:courseId" component={Course} /> */}
         {/* <Route path="/viewcourses" component={ViewCourse} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />

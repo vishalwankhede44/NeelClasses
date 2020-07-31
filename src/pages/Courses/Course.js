@@ -37,7 +37,7 @@ class Course extends React.Component {
             }
         })
         .then(res => { 
-            console.log(res.data);
+            console.log(res.data.CourseInfo);
             this.setState({
                 courseInfo :res.data.CourseInfo
             });
