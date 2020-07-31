@@ -9,6 +9,7 @@ const addUserRouter = require('./routers/adduser');
 const docRouter = require('./routers/docRouter');
 const notesRouter = require('./routers/viewNotesRouter');
 const playVideo = require('./routers/playVideoRouter');
+const searchRouter = require('./routers/searchRouter');
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
@@ -43,6 +44,7 @@ app.use('/adduser',addUserRouter);
 app.use('/uploadnotes',docRouter);
 app.use('/notes',notesRouter);
 app.use('/video',playVideo);
+app.use('/courses/search',searchRouter);
 // app.use('/getCourse',getCourse);
 
 
