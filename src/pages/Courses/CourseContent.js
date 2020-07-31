@@ -5,10 +5,11 @@ class CourseContent extends React.Component {
     constructor(props) {
         super(props)
     }
-    render(){
+
+     render(){
         if (this.props.course.courseVideos) {
             const contentsDisplay = this.props.course.courseVideos.map((video, index) => (
-                <CourseContentContainer content={video} key={index} index={index+1} course={this.props.course}/>
+                <CourseContentContainer content={video} key={index} showVideo={this.props.showVideoMethod} course={this.props.course} videoInfo={this.props.video} />
             ))
             return(
                 <div>

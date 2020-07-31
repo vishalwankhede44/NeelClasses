@@ -14,13 +14,27 @@ class Course extends React.Component {
         this.state= {
             loading:0,
             courseInfo : {},
-            showVideo :false
+            showVideo :false,
+            videoInfo :null
         }
+        this.showVideoContainer = this.showVideoContainer.bind(this)
+        this.hideVideoContainer = this.hideVideoContainer.bind(this)
     }
     componentDidMount() {
         this.getDataFromFirebase();
     }
 
+    showVideoContainer(video) {
+        this.setState({
+            showVideo:true,
+            videoInfo:video,
+        })
+    }
+    hideVideoContainer(){
+        this.setState({
+            showVideo:false,
+        })
+    }
     getDataFromFirebase = async () => {
         try {
         await axios.get(`http://localhost:5000/courses/${this.props.match.params.courseId}`,{
@@ -47,7 +61,10 @@ class Course extends React.Component {
             return(
                 <div>
                     <CourseHeading course={this.state.courseInfo}/> 
-                    <CourseContent course={this.state.courseInfo}/>
+                    <CourseContent course={this.state.courseInfo} showVideoMethod={this.showVideoContainer}/>
+                    {
+                        this.state.showVideo ? <VideoContainer video={this.state.videoInfo} closeVideo={this.hideVideoContainer}  /> : null
+                    }
                 </div>
             )
         }

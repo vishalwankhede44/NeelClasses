@@ -1,26 +1,35 @@
 import React from "react"
 import axios from 'axios';
+import ReactPlayer from 'react-player';
 
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class VideoContainer extends React.Component {
+
+    closeVideoContainer(){
+        this.props.closeVideo();
+    }
     render(){
-        console.log(this.props);
-        if (this.props.video !== "temp") {
+        if (this.props.video) {
                 return(
                     <div className="modal-back-video">
                         <div id="video-container">
                             <div className="video-title">
                                 <div>{this.props.video.videoTitle}</div>
-                                {/* <div onClick={ }></div> */}
                             </div>
-                            <video width="100%" height="100%" className="video-player"controls>
-                                {/* <source src={this.props.video[videoId].url} /> */}
-                                
-                                <source src={this.props.video.videoUrl} />
-                                Your browser does not support the video tag.
-                            </video>
+                            <ReactPlayer 
+                            /*playIcon={<button>Play</button>} 
+                            light="http://placekitten.com/200/300"*/ 
+                            onContextMenu={e => e.preventDefault()} 
+                            config={{ file: { attributes: { controlsList: 'nodownload',disablepictureinpicture: 'true' } } } } 
+                            controls={true} 
+                            url={this.props.video.videoUrl}
+                            className="video-player"
+                            />
+                            <div className="video-close">
+                                <button className="close-button" onClick={() => this.closeVideoContainer()}>close</button>
+                            </div>
                         </div>
                     </div>
                 )

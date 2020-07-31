@@ -31,7 +31,6 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/courses/search/:searchString" component={Search} />
-        <Route path="/courses/:courseId/:videoTitle" component={VideoContainer} />
         <Route path="/courses/:courseId" component={Course} />
         {/* <Route path="/courses/:courseId" component={Course} /> */}
         {/* <Route path="/viewcourses" component={ViewCourse} />
