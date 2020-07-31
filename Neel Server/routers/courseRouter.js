@@ -12,20 +12,20 @@ require("firebase/firestore");
 
 courseRouter.use(cors());
 let CourseInfo;
-let VideoInfoList = [];
-let NotesInfoList = [];
+
   // Get Request
-courseRouter.get('/:courseId',async function(request,response){
+ courseRouter.get('/:courseId',async function(request,response){
 
     const courseId = request.params.courseId;
-
+    let VideoInfoList = [];
+    let NotesInfoList = [];
     var db = firebase.firestore();
-   db.collection("Courses").get().then(function(querySnapshot) {
+   await db.collection("Courses").get().then(async function(querySnapshot) {
        
-        querySnapshot.forEach(function(doc) {
+        querySnapshot.forEach(async function(doc) {
         if(doc.data().courseName === courseId){
 
-          doc.ref.collection("Videos").get().then(function(querySnapshot) {
+          await doc.ref.collection("Videos").get().then(function(querySnapshot) {
             let VideoList = [];
            querySnapshot.forEach(function(doc){
               const VideoInfo = {
@@ -33,11 +33,11 @@ courseRouter.get('/:courseId',async function(request,response){
                 videoUrl :doc.data().videoUrl
               }
               VideoList.push(VideoInfo);
-           })
+           })   
             VideoInfoList = VideoList;
           });
-          console.log(VideoInfoList);
-          doc.ref.collection("Notes").get().then(function(querySnapshot) {
+          
+          await doc.ref.collection("Notes").get().then(function(querySnapshot) {
             let NotesList = [];
             querySnapshot.forEach(function(doc){
               const NotesInfo = {
@@ -48,6 +48,7 @@ courseRouter.get('/:courseId',async function(request,response){
               NotesList.push(NotesInfo)
             })
             NotesInfoList = NotesList;
+            
            });
 
             CourseInfo = {
@@ -62,11 +63,14 @@ courseRouter.get('/:courseId',async function(request,response){
                 courseVideos : VideoInfoList,
                 courseNotes : NotesInfoList,
             };
+            console.log(CourseInfo);  
         }
         });
-        response.status(200).json( {CourseInfo : CourseInfo});
+        
+        
       });
-      
+      console.log("COURSE");
+      response.status(200).json( {CourseInfo : CourseInfo});
 });
       
   module.exports = courseRouter;

@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
-import { browserHistory} from 'react-router'
-
-=======
 import  {withRouter} from 'react-router-dom'
->>>>>>> master
 // import '../../App.css';
 class HomeSearchPanel extends Component {
     constructor(props){
@@ -21,7 +16,7 @@ class HomeSearchPanel extends Component {
             this.setState({
                 searchString: e.target.value
             });
-            browserHistory.push(`/courses/search/${this.state.searchString}`);
+            this.searchClickHandle();
         } else {
             this.setState({
                 searchString: e.target.value
@@ -29,13 +24,10 @@ class HomeSearchPanel extends Component {
         }
     }
 
-<<<<<<< HEAD
-=======
     searchClickHandle() {
         this.props.history.push(`/courses/search/${this.state.searchString}`);
     }
 
->>>>>>> master
     inputFocus() {
         this.setState({
             iconClassName: "search-icon-open"
