@@ -4,22 +4,17 @@ import axios from 'axios';
 import "firebase/firestore";
 import { loadProgressBar } from 'axios-progress-bar';
 import 'axios-progress-bar/dist/nprogress.css'
-// import { connect } from 'react-redux';
-
-// import CourseHeadingContainer from "./course_heading_container"
-// import CourseContentIndexContainer from "./course_content_index_container" 
-// import ReviewsIndexContainer from './reviews/reviews_index_container'
-// import VideoContainer from './video_container'
-// import CourseLikeContainer from "./course_likes_container"
 import CourseHeading from "./CourseHeading";
 import VideoContainer from "./VideoContainer.js";
+import CourseContent from "./CourseContent";
 
 class Course extends React.Component {
     constructor(props){
         super(props);
         this.state= {
             loading:0,
-            courseInfo : {}
+            courseInfo : {},
+            showVideo :false
         }
     }
     componentDidMount() {
@@ -52,7 +47,7 @@ class Course extends React.Component {
             return(
                 <div>
                     <CourseHeading course={this.state.courseInfo}/> 
-                    {/* <VideoContainer />  */}
+                    <CourseContent course={this.state.courseInfo}/>
                 </div>
             )
         }

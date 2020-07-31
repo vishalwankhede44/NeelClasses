@@ -20,7 +20,7 @@ let CourseInfo;
     const courseId = request.params.courseId;
     let VideoInfoList = [];
     let NotesInfoList = [];
-
+    
     var db = firebase.firestore();
    await db.collection("Courses").get().then(async function(querySnapshot) {
        

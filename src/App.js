@@ -22,6 +22,7 @@ import Search from "./pages/Search/Search";
 import Course from "./pages/Courses/Course";
 // import Course from "./pages/Courses/Course";
 import Navbar from "./components/Navbar";
+import VideoContainer from "./pages/Courses/VideoContainer";
 function App() {
   return (
     <BrowserRouter>
@@ -30,6 +31,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/courses/search/:searchString" component={Search} />
+        <Route path="/courses/:courseId/:videoTitle" component={VideoContainer} />
         <Route path="/courses/:courseId" component={Course} />
         {/* <Route path="/courses/:courseId" component={Course} /> */}
         {/* <Route path="/viewcourses" component={ViewCourse} />
