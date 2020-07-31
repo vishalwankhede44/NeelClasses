@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { browserHistory} from 'react-router'
+
 // import '../../App.css';
 class HomeSearchPanel extends Component {
     constructor(props){
@@ -10,20 +11,18 @@ class HomeSearchPanel extends Component {
         this.inputFocus = this.inputFocus.bind(this)
         this.inputUnFocus = this.inputUnFocus.bind(this)
         this.getSearchInput = this.getSearchInput.bind(this)
-        this.searchClickHandle = this.searchClickHandle.bind(this)
     }
     getSearchInput(e) {
         if (e.key === 'Enter') {
-            this.searchClickHandle();
+            this.setState({
+                searchString: e.target.value
+            });
+            browserHistory.push(`/courses/search/${this.state.searchString}`);
         } else {
             this.setState({
                 searchString: e.target.value
             })
         }
-    }
-
-    searchClickHandle() {
-        browserHistory.push(`/courses/search/${this.state.searchString}`)
     }
 
     inputFocus() {
@@ -54,26 +53,6 @@ class HomeSearchPanel extends Component {
                             </div>
                         </div>
                 </div>
-                {/* <div  className="home-search-footer">
-                    <div className="home-footer-section">
-                        <b className="home-footer-section-header">100,000 online courses</b>
-                        <div className="home-footer-section-text">
-                            Explore a variety of fresh topics
-                         </div>
-                    </div>
-                    <div className="home-footer-section">
-                        <b className="home-footer-section-header">Expert instruction</b>
-                        <div className="home-footer-section-text">
-                            Find the right instructor for you
-                        </div>
-                    </div>  
-                    <div className="home-footer-section">
-                        <b className="home-footer-section-header">Lifetime access</b>
-                        <div className="home-footer-section-text">
-                            Learn on your schedule
-                        </div>
-                    </div>
-                </div> */}
             </div>
         )
     }

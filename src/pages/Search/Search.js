@@ -2,7 +2,8 @@ import React from "react"
 import firebase from '../../firebase';
 import axios from 'axios';
 import "firebase/firestore";
-
+import { loadProgressBar } from 'axios-progress-bar';
+import 'axios-progress-bar/dist/nprogress.css'
 
 import SearchCourse from "./SearchCourse"
 // import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -17,6 +18,7 @@ class SearchIndex extends React.Component {
             order: "Lowest Ratting",
             currentPage: 1,
             coursePerPage: 5,
+            loading : 0,
             courseList:[],
         }
         this.selectHandle = this.selectHandle.bind(this)
@@ -32,9 +34,15 @@ class SearchIndex extends React.Component {
     }
     getDataFromFirebase = async () => {
             try {
-            await axios.get(`http://localhost:5000/courses/search/${this.props.match.params.searchString}`)
+            await axios.get(`http://localhost:5000/courses/search/${this.props.match.params.searchString}`,{
+                onDownloadProgress: (progressEvent) => {
+                    var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+                    this.setState({
+                        loading:percentCompleted
+                    });
+                }
+            })
             .then(res => { 
-                console.log(res.data.CourseList);
                 this.setState({
                     courseList :res.data.CourseList
                 });
@@ -122,7 +130,7 @@ class SearchIndex extends React.Component {
     }
 
     render() {
-        if (this.state.courseList.length !== 0) {
+        if (this.state.courseList.length !== 0 && this.state.loading === 100) {
             return (
                 <div className="search-container">
                     <div className="search-header" >
@@ -145,11 +153,18 @@ class SearchIndex extends React.Component {
                     </div>
                 </div>
             )
-        } else {
+        } else if ( this.state.courseList.length === 0  && this.state.loading ===100) {
             return (
                 <div className="search-error">
                     <div className="search-error-text">Sorry, we couldn't find any results for {this.props.match.params.searchString}</div>
                     {/* <FontAwesomeIcon icon={faSearch} className="search-error-icon" /> */}
+                </div>
+            )
+        }
+        else {
+            return (
+                <div>
+                    {loadProgressBar()}
                 </div>
             )
         }
