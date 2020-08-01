@@ -11,6 +11,7 @@ require("firebase/firestore");
 
 
 courseRouter.use(cors());
+
 let CourseInfo;
 
   // Get Request

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import  {withRouter} from 'react-router-dom'
+import  {withRouter} from 'react-router-dom';
 // import '../../App.css';
 class HomeSearchPanel extends Component {
     constructor(props){
@@ -23,7 +23,6 @@ class HomeSearchPanel extends Component {
             })
         }
     }
-
     searchClickHandle() {
         this.props.history.push(`/courses/search/${this.state.searchString}`);
     }
