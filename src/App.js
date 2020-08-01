@@ -29,6 +29,7 @@ function App() {
     <BrowserRouter>
     {/* <Header /> */}
     <Navbar/>
+<<<<<<< HEAD
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/courses/search/:searchString" component={Search} />
@@ -51,6 +52,32 @@ function App() {
         <Route path="/notes/:courseId/:documentId" component={NotesViewer} />
         <Route path="/notes/:courseId" component={NotesViewer} /> */}
       </Switch>
+=======
+      <div className="demo">
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/courses/search/:searchString" component={Search} />
+          <Route path="/courses/:courseId" component={Course} />
+          {/* <Route path="/courses/:courseId" component={Course} /> */}
+          {/* <Route path="/viewcourses" component={ViewCourse} />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={SignUp} />
+          <Route path="/aboutus" component={AboutUs} />
+          <Route path="/forgot" component={Forgot} />
+          <Route path="/reset" component={Reset} />
+          <Route path="/adminlogin" component={AdminLogin} />
+          <Route path="/contactus" component={ContactUs} />
+          <Route path="/uploadvideo" component={UploadVideo} />
+          <Route path="/addcourse" component={Course} />
+          <Route path="/uploadnotes" component={UploadNotes} />
+          <Route path="/video/:courseId/:videoId" component={PlayVideo} />
+          <Route path="/video/:courseId" component={PlayVideo} />
+          <Route path="/notes/:courseId/:documentId" component={NotesViewer} />
+          <Route path="/notes/:courseId" component={NotesViewer} /> */}
+        </Switch>
+      </div>
+      
+>>>>>>> e74a4ad... search course
     {/* <Footer /> */}
 </BrowserRouter>
   );

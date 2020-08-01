@@ -151,22 +151,41 @@ class SearchCourse extends React.Component {
         return(
 
             <div className="search-container2">
-                <div className='course-item-wrapper'>
-                    <Link to={`/course/${this.props.course.courseName}`} className="search-feed" >
-                            <div style={{ flex: 1 }}>
-                                <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/201811/online-3412473_1920_1.jpeg?tz.RfsTe_UTLHiDqxmpG7PY_nTIBjwF7&size=770:433" alt="course" className="search-img" />
-                            </div>
-                            <div style={{ paddingLeft: "12px", paddingRight: "30px", flex: "2" }} >
+
+
+
+                
+                <Link to={`/courses/`} className="search-feed" >
+                    {/* <div style={{ flex: 1 }}>
+                        <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/201811/online-3412473_1920_1.jpeg?tz.RfsTe_UTLHiDqxmpG7PY_nTIBjwF7&size=770:433" alt="course" className="search-img" />
+                    </div>
+                    <div style={{ paddingLeft: "12px", paddingRight: "30px", flex: "2" }} >
+                        <div className="search-box-title">{this.props.course.courseName}</div>
+                        <div className="search-box-audience">{this.props.course.audience}</div>
+                    </div>
+                    <div>
+                        <div className="search-rating-span" >${this.renderPrice()}</div>
+                        <div style={{ paddingTop: "10px" }}><span className="search-rating-count">{this.renderRating()}</span></div>
+                        <div className="search-rating-count">({this.props.course.courseRating} ratings)</div>
+                    </div> */}
+                    <div className="card">
+                        <div className="img">
+                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/201811/online-3412473_1920_1.jpeg?tz.RfsTe_UTLHiDqxmpG7PY_nTIBjwF7&size=770:433" alt="course" className="search-img" />
+                        </div>
+                        <div className="courseDescription">
+                            <div className="courseName">
+
                                 <div className="search-box-title">{this.props.course.courseName}</div>
                                 <div className="search-box-audience">{this.props.course.audience}</div>
                             </div>
-                            <div>
+                            <div className="rating">
                                 <div className="search-rating-span" >${this.renderPrice()}</div>
-                                <div style={{ paddingTop: "10px" }}><span className="search-rating-count">{this.renderRating()}</span></div>
+                                <div ><span className="search-rating-count">{this.renderRating()}</span></div>
                                 <div className="search-rating-count">({this.props.course.courseRating} ratings)</div>
                             </div>
-                    </Link>
-                </div>
+                        </div>
+                    </div>
+                </Link>
            </div>
         )
     }
