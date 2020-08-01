@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { browserHistory} from 'react-router';
 import  {withRouter} from 'react-router-dom';
-// import '../../App.css';
+
 class HomeSearchPanel extends Component {
     constructor(props){
         super(props)
@@ -49,7 +48,8 @@ class HomeSearchPanel extends Component {
                 <div className="home-box">
                         <div className="home-content">
                         <div className="home-content">
-                            <h3 className="home-headline">The Premium System <br/>Education</h3>
+                            <p className="home-headline">The Premium System <br/>Education</p>
+                            <p className="home-headline">The Premium System <br/>Education</p>
                             <h6 className="home-subline">Future of Education Technology</h6>
                             <div class="wrap">
                                 <div class="search">

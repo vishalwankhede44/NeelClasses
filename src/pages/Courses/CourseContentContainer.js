@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom"
 
 import { faPlus, faMinus, faPlayCircle  } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import VideoContainer from "./VideoContainer";
+
 
 class CourseContentContainer extends React.Component {
     constructor(props) {

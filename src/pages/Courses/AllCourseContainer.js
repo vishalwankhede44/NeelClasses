@@ -5,7 +5,7 @@ import { faStar, faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
-class SearchCourse extends React.Component {
+class AllCoursesContainer extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -172,4 +172,4 @@ class SearchCourse extends React.Component {
     }
 }
 
-export default SearchCourse;
+export default AllCoursesContainer;

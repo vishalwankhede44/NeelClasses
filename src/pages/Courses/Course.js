@@ -1,5 +1,4 @@
 import React from "react"
-import firebase from '../../firebase';
 import axios from 'axios';
 import "firebase/firestore";
 import { loadProgressBar } from 'axios-progress-bar';
@@ -37,7 +36,7 @@ class Course extends React.Component {
     }
     getDataFromFirebase = async () => {
         try {
-        await axios.get(`http://localhost:5000/courses/${this.props.match.params.courseId}`,{
+        await axios.get(`http://localhost:5000/course/${this.props.match.params.courseId}`,{
             onDownloadProgress: (progressEvent) => {
                 var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
                 this.setState({
