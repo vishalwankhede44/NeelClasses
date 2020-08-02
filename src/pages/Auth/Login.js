@@ -116,38 +116,30 @@ import { useCookies } from 'react-cookie';
       
         }
     return (
-        <main>
-        <div className="container logincontainer">
-            <label></label>
-            <div className="row d-flex">
-                <div className="col-10 offset-1 col-md-4 offset-md-1 order-md-1 order-2 ">
-                    <figure>
-                        <img src={loginImage} class="img-fluid mt-5 mt-md-0" height="150"></img>
-                    </figure>
-                </div>
-                <div className="col-10 offset-1 col-md-4 order-md-2 offset-md-1 order-1">
-                    <h1 className="text-left mb-2">Log In</h1>
-                    <Form >
-                        <FormGroup>
-                            <Input type="number" name="mobile" id="exampleMobile" placeholder="Mobile Number"
+        <div className="logincontainer">
+                <div className="login-card">
+                    <div className="login-title"><p className="login-title-text">Log In</p></div>
+                    <Form className="form-body">
+                        <FormGroup className="form-body-component">
+                            <Input className="mobile-field" type="number" name="mobile" id="exampleMobile" placeholder="Mobile Number"
                             value={number}
                             onChange={event => setNumber(event.target.value)} />
                         </FormGroup>
-                        <FormGroup>
-                            <Input type="number" maxLength="6" name="otp" id="exampleOtp" placeholder="Enter OTP"
+                        <FormGroup className="form-body-component">
+                            <Input className="otp-field" type="number" maxLength="6" name="otp" id="exampleOtp" placeholder="Enter OTP"
                              hidden={otpVisibilty} onChange={event => setOtp(event.target.value)} value={otp} />
                         </FormGroup>
                         <FormGroup>
-                        <div id="recaptcha" class="mb-2" hidden={!otpVisibilty}></div>
+                        <div  id="recaptcha" className="recaptcha" hidden={!otpVisibilty}></div>
                         </FormGroup>
-                        <Button className= "logbtn" type="button" onClick={VerifyOtp} hidden={otpVisibilty}>Verify OTP</Button>
-                        <Button className="logbtn" type="submit" onClick={onSubmit} hidden={!otpVisibilty}>Log In</Button>
-                        <Button className="logbtn" type="button" onClick={logOut} hidden={!loggedIn}>Log Out</Button>
+                        <div className="buttons">
+                            <Button className= "logbtn" type="button" onClick={VerifyOtp} hidden={otpVisibilty}>Verify OTP</Button>
+                            <Button className="logbtn" type="submit" onClick={onSubmit} hidden={!otpVisibilty}>Log In</Button>
+                            <Button className="logbtn" type="button" onClick={logOut} hidden={!loggedIn}>Log Out</Button>
+                        </div>
                     </Form>
                 </div>
-            </div>
         </div>
-        </main>
     );
 }
 

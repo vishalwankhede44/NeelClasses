@@ -95,40 +95,39 @@ const SignUp = () => {
     }
     return(
         <main>
-            <div class="container logincontainer">
+            <div className="logincontainer">
                 <div className="row ">
-                    <label className="col-10 offset-1 alert alert-success text-center " hidden={verify}><strong>Success ! &nbsp;</strong></label>
-            </div>
+                    <label className="success-msg" hidden={verify}><strong>Success ! &nbsp;</strong></label>
+                </div>
                 <div className="row d-flex">
-                <div class="col-10 offset-1 col-md-4 offset-md-1 order-md-1 order-2 ">
-                    <figure>
-                        <img src={signUpImage} class="img-fluid mt-5" height="150"></img>
-                    </figure>
+                    <div className="img-signup">
+                        <figure>
+                            <img src={signUpImage} className="real-img" height="150"></img>
+                        </figure>
+                    </div>
+                    <div className="signup-details">
+                        <h1 className="sign">Sign Up</h1>
+                        <Form>
+                            <FormGroup>
+                                <Input type="text" name="funame" id="exampleName" placeholder="Full Name" 
+                                value={name}
+                            onChange={event => setName(event.target.value)}  />
+                            </FormGroup>
+                            <FormGroup>
+                                   <Input type="number" name="mobile" id="exampleMobile" placeholder="Mobile Number"
+                                value={number}
+                                onChange={event => setNumber(event.target.value)} />
+                            </FormGroup>
+                            <FormGroup>
+                                <Input type="number" maxLength="6" name="otp" id="exampleOtp" placeholder="Enter OTP"
+                                hidden={otpVisibilty} onChange={event => setOtp(event.target.value)} value={otp} />
+                            </FormGroup>
+                            <div id="recaptcha" class="mb-2" hidden={!otpVisibilty}></div>
+                            <Button className="logbtn" onClick={VerifyOtp} hidden={otpVisibilty}>Verify OTP</Button>
+                            <Button className="logbtn"  onClick={onSubmit} hidden={!otpVisibilty}>Sign Up</Button>   
+                        </Form>
+                    </div>
                 </div>
-                <div class="col-10 offset-1 col-md-4 order-md-2 offset-md-1 order-1">
-                    <h1 class="text-left mb-2">Sign Up</h1>
-                    <Form>
-                        <FormGroup>
-                            <Input type="text" name="funame" id="exampleName" placeholder="Full Name" 
-                            value={name}
-                           onChange={event => setName(event.target.value)}  />
-                        </FormGroup>
-                        <FormGroup>
-                            <Input type="number" name="mobile" id="exampleMobile" placeholder="Mobile Number"
-                            value={number}
-                            onChange={event => setNumber(event.target.value)} />
-                        </FormGroup>
-                        <FormGroup>
-                            <Input type="number" maxLength="6" name="otp" id="exampleOtp" placeholder="Enter OTP"
-                             hidden={otpVisibilty} onChange={event => setOtp(event.target.value)} value={otp} />
-                        </FormGroup>
-                        <div id="recaptcha" class="mb-2" hidden={!otpVisibilty}></div>
-                        <Button className="logbtn" onClick={VerifyOtp} hidden={otpVisibilty}>Verify OTP</Button>
-                        <Button className="logbtn"  onClick={onSubmit} hidden={!otpVisibilty}>Sign Up</Button>
-                      
-                    </Form>
-                </div>
-             </div>
             </div>
         </main>
     );
