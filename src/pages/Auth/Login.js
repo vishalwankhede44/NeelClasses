@@ -16,7 +16,7 @@ import { useCookies } from 'react-cookie';
     const [mobileNum,setMobile] = useState('');
     const [firebaseEvent,setEvent] = useState();
     const [loggedIn,setLogin] = useState(false);
-    const [cookie, setCookie,removeCookie] = useCookies(['name','mobile']);
+    const [cookie, setCookie,removeCookie] = useCookies(['uid','name','mobile']);
     
     useEffect(() => {
         checkLogin();
@@ -38,6 +38,7 @@ import { useCookies } from 'react-cookie';
         firebase.auth().signOut().then(function() {
             removeCookie('name');
             removeCookie('mobile');
+            removeCookie('uid');
             console.log("Signout successfully");
 
             setLogin(false);
@@ -66,9 +67,8 @@ import { useCookies } from 'react-cookie';
                 // console.log(res.data[0].mobile);
                 setCookie('name', res.data[0].name, { path: '/' });
                 setCookie('mobile', res.data[0].mobile, { path: '/' });
-                console.log({cookie}.cookie.name);
-                console.log({cookie}.cookie.mobile);
-               
+                setCookie('uid', res.data[0].id, { path: '/' });
+                console.log({cookie});
             })
             .catch(err => {
             console.error(err);

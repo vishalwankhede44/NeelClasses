@@ -12,17 +12,18 @@ require("firebase/firestore");
 
 allCoursesRouter.use(cors());
 
-let CourseInfoList=[];
-let CourseInfo;
+
+
 
   // Get Request
 allCoursesRouter.get('/',async function(request,response){
 
     let VideoInfoList = [];
     let NotesInfoList = [];
-    
+    let CourseInfoList=[];
+    let CourseInfo;
     var db = firebase.firestore();
-   await db.collection("Courses").get().then(async function(querySnapshot) {
+    await db.collection("Courses").get().then(async function(querySnapshot) {
        
         querySnapshot.forEach(async function(doc) {
 
@@ -65,11 +66,14 @@ allCoursesRouter.get('/',async function(request,response){
                 courseNotes : NotesInfoList,
             };
             CourseInfoList.push(CourseInfo);
+            console.log(CourseInfoList.length);
         });
+        console.log(CourseInfoList.length);
         
         
       });
-      response.status(200).json( {CourseInfoList : CourseInfoList});
+      setTimeout(() => 
+      response.status(200).json( {CourseInfoList : CourseInfoList}), 1000);  
 });
       
   module.exports = allCoursesRouter;

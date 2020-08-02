@@ -27,7 +27,8 @@ getUserRouter.post('/',async (req,res) => {
 
             const userInfo = {
                 name: doc.data().name,
-                mobile:doc.data().mobile
+                mobile:doc.data().mobile,
+                id:doc.id
             }
             userdata.push(userInfo);
           });
