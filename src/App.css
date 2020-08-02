@@ -914,3 +914,102 @@ select option{
 }
 
 /* MODAL ENDS */
+
+/* LOG IN */
+
+.logincontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background: rgb(99,99,99);
+  background: linear-gradient(90deg, rgba(99,99,99,1) 0%, rgba(157,157,157,1) 50%, rgba(139,139,139,1) 100%);
+}
+
+.logincontainer .login-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  width: 40%;
+  height: 40%;
+  border: 1px solid black;
+  border-radius: 10px ;
+  padding: 50px 0;
+  background-color: #eeeeee;
+}
+
+.logincontainer .login-card .login-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.logincontainer .login-card .login-title .login-title-text {
+  font-size: 2.3rem;
+  line-height: 1.33;
+  text-align: center;
+  color: #222831;
+  text-shadow: 0 2px 4px rgba(41, 48, 59, .55);
+}
+
+.logincontainer .login-card .form-body .form-body-component .mobile-field , .otp-field{
+  height: 62px;
+  width: 100%;
+  padding: 0 35px 0 35px;
+  background: #fff;
+  border-radius: 31px;
+  font-size: 18px;
+  color: #8f8fa1;
+  line-height: 1.2;
+  background-color: #fff;
+  margin-top: 10px;
+}
+
+.logincontainer .login-card .form-body .recaptcha {
+  padding-top: 10px;
+}
+
+.logincontainer .login-card .form-body .buttons {
+  padding-top: 10px;
+  text-align: center;
+}
+
+.logincontainer .login-card .form-body .buttons .logbtn {
+  padding: 0 10px;
+  min-width: 100px;
+  height: 50px;
+  background-color: white;
+  border-radius: 25px;
+  font-size: 15px;
+  color: black;
+  line-height: 1.2;
+  text-transform: uppercase;
+
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+  position: relative;
+  z-index: 1;
+}
+
+input {
+	outline: none;
+	border: none;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+/* LOG IN END */
