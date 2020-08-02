@@ -58,8 +58,9 @@ class Course extends React.Component {
         if(this.state.courseInfo !== null && this.state.loading === 100)
         {
             return(
-                <div>
+                <div className="course-detail">
                     <CourseHeading course={this.state.courseInfo}/> 
+                    <div className="title-course">Course Contents</div>
                     <CourseContent course={this.state.courseInfo} showVideoMethod={this.showVideoContainer}/>
                     {
                         this.state.showVideo ? <VideoContainer video={this.state.videoInfo} closeVideo={this.hideVideoContainer}  /> : null

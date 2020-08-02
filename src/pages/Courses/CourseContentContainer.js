@@ -2,7 +2,7 @@ import React from "react"
 
 import { withRouter } from "react-router-dom"
 
-import { faPlus, faMinus, faPlayCircle  } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faMinus, faPlayCircle , faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
@@ -53,15 +53,15 @@ this.setState({
             return (
                     <div onClick={this.titleClickHandle}>
                         <div className="content-box" >
-                        {this.state.dropdown ? <FontAwesomeIcon icon={faMinus} className="plus-minus" /> : <FontAwesomeIcon className="plus-minus" icon={faPlus} />}
+                            <span className="Plus">{this.state.dropdown ? <FontAwesomeIcon icon={faMinus} className="plus-minus" /> : <FontAwesomeIcon className="plus-minus" icon={faPlus} />}</span>
+                        
                             <div className="content-title">{this.props.content.videoTitle}</div>
                         </div>
                         <div className={this.showOrHidden()}>
-        
                             <div className="content-video-list" onClick={()=> this.showVideoContainer()}>
                                 <div>
-                                    <FontAwesomeIcon icon={faPlayCircle} />
-                                    <span style={{marginLeft:"11px"}}>{this.props.content.videoTitle}</span>
+                                    <span className="Play"><FontAwesomeIcon icon={faPlayCircle} /></span>
+                                    <span className="content-video-title" style={{marginLeft:"11px"}}>{this.props.content.videoTitle}</span>
                                 </div>
                             </div>
                         </div>

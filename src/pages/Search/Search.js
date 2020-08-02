@@ -144,8 +144,13 @@ class SearchIndex extends React.Component {
                         </div>
                     </div>
                     <div className="search-footer">
-                    {this.showComponent()}
-                    <div className="page-switch">{this.renderPageNumbers()}</div>
+                        <div>
+                        {this.showComponent()}
+                        </div>
+
+                        <div className="page-switch">
+                        {this.renderPageNumbers()}
+                        </div>
                     </div>
                 </div>
             )
