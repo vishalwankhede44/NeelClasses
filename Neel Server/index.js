@@ -11,6 +11,8 @@ const notesRouter = require('./routers/viewNotesRouter');
 const playVideo = require('./routers/playVideoRouter');
 const searchRouter = require('./routers/searchRouter');
 const courseRouter = require('./routers/courseRouter');
+const allCoursesRouter = require('./routers/allCoursesRouter');
+const getUserRouter = require('./routers/getUser');
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
@@ -46,7 +48,9 @@ app.use('/uploadnotes',docRouter);
 app.use('/notes',notesRouter);
 app.use('/video',playVideo);
 app.use('/courses/search',searchRouter);
-app.use('/courses',courseRouter);
+app.use('/course',courseRouter);
+app.use('/courses',allCoursesRouter);
+app.use('/getUser',getUserRouter);
 // app.use('/getCourse',getCourse);
 
 

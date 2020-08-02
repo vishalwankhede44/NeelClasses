@@ -1,6 +1,6 @@
 
 const express = require('express');
-const courseRouter = express.Router();
+const allCoursesRouter = express.Router();
 const { Storage }  = require('@google-cloud/storage');
 const Multer = require('multer')
 var cors = require('cors');
@@ -10,14 +10,14 @@ require("firebase/firestore");
 
 
 
-courseRouter.use(cors());
+allCoursesRouter.use(cors());
 
+let CourseInfoList=[];
 let CourseInfo;
 
   // Get Request
- courseRouter.get('/:courseId',async function(request,response){
+allCoursesRouter.get('/',async function(request,response){
 
-    const courseId = request.params.courseId;
     let VideoInfoList = [];
     let NotesInfoList = [];
     
@@ -25,7 +25,6 @@ let CourseInfo;
    await db.collection("Courses").get().then(async function(querySnapshot) {
        
         querySnapshot.forEach(async function(doc) {
-        if(doc.data().courseName === courseId){
 
           await doc.ref.collection("Videos").get().then(function(querySnapshot) {
             let VideoList = [];
@@ -65,13 +64,12 @@ let CourseInfo;
                 courseVideos : VideoInfoList,
                 courseNotes : NotesInfoList,
             };
-        }
+            CourseInfoList.push(CourseInfo);
         });
         
         
       });
-      console.log("COURSE");
-      response.status(200).json( {CourseInfo : CourseInfo});
+      response.status(200).json( {CourseInfoList : CourseInfoList});
 });
       
-  module.exports = courseRouter;
+  module.exports = allCoursesRouter;
