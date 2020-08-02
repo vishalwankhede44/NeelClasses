@@ -44,18 +44,11 @@ class HomeSearchPanel extends Component {
 
     render() {
         return (
-           
+            <div>
                 <div className="home-box">
                         <div className="home-content">
-
-                        <div className="home-content">
-                            <p className="home-headline">The Premium System <br/>Education</p>
-                            <p className="home-headline">The Premium System <br/>Education</p>
-                            <h6 className="home-subline">Future of Education Technology</h6>
-
                             <p className="home-headline">The Premium System <br/>Education</p>
                             <p className="home-subline">Future of Education Technology</p>
-
                             <div class="wrap">
                                 <div class="search">
                                     <input type="text" class="searchTerm" placeholder="Search for anything" onFocus={this.inputFocus} onBlur={this.inputUnFocus} onKeyUp={this.getSearchInput}></input>
@@ -76,8 +69,9 @@ class HomeSearchPanel extends Component {
                                 {/* <button className="signupButton">Sign Up</button> */}
                             </div>
                         </div>
+                        </div>
                 </div>
-            </div>
+            
         )
     }
 }

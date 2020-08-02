@@ -16,124 +16,117 @@ class CourseHeading extends React.Component {
     }
 
     renderRating() {
-        if (this.props.course.rating < 1) {
+        if (this.props.course.courseRating < 1) {
             return (
                 <div>
-                    <FontAwesomeIcon style={{ padding:"3px",color: "#f4c150" }} icon={faStarHalfAlt} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "dedfe0" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "dedfe0" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "dedfe0" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "dedfe0" }} icon={faStar} />
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStarHalfAlt} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
                 </div>
             )
         }
-        if (this.props.course.rating === 1) {
+        if (this.props.course.courseRating == 1) {
             return (
                 <div>
-                    <FontAwesomeIcon style={{ padding:"3px",color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "dedfe0" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "dedfe0" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "dedfe0" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "dedfe0" }} icon={faStar} />
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
+     
+               </div>
+            )
+        }
+        if (this.props.course.courseRating > 1 && this.props.course.courseRating < 2) {
+            return (
+                <div>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStarHalfAlt} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
                 </div>
             )
         }
-
-        if (this.props.course.rating > 1 && this.props.course.rating < 2) {
+        if (this.props.course.courseRating == 2) {
             return (
                 <div>
-                    <FontAwesomeIcon style={{ padding:"3px",color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "#f4c150" }} icon={faStarHalfAlt} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "dedfe0" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "dedfe0" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "dedfe0" }} icon={faStar} />
+                    <span className="rating2"><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span className="rating2"><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
                 </div>
             )
         }
-
-        if (this.props.course.rating === 2) {
+        if (this.props.course.courseRating > 2 && this.props.course.courseRating < 3) {
             return (
                 <div>
-                    <FontAwesomeIcon style={{ padding:"3px",color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "dedfe0" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "dedfe0" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "dedfe0" }} icon={faStar} />
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStarHalfAlt} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
                 </div>
             )
         }
-
-        if (this.props.course.rating > 2 && this.props.course.rating < 3) {
+        if (this.props.course.courseRating == 3) {
             return (
                 <div>
-                    <FontAwesomeIcon style={{ padding:"3px",color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "#f4c150" }} icon={faStarHalfAlt} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "dedfe0" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "dedfe0" }} icon={faStar} />
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
                 </div>
             )
         }
-        if (this.props.course.rating === 3) {
+        if (this.props.course.courseRating > 3 && this.props.course.courseRating < 4) {
             return (
                 <div>
-                    <FontAwesomeIcon style={{ padding:"3px",color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "dedfe0" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "dedfe0" }} icon={faStar} />
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStarHalfAlt} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
                 </div>
             )
         }
-
-        if (this.props.course.rating > 3 && this.props.course.rating < 4) {
+        if (this.props.course.courseRating == 4) {
             return (
                 <div>
-                    <FontAwesomeIcon style={{ padding:"3px",color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "#f4c150" }} icon={faStarHalfAlt} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "dedfe0" }} icon={faStar} />
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
                 </div>
             )
         }
-
-        if (this.props.course.rating === 4) {
+        if (this.props.course.courseRating > 4 && this.props.course.courseRating < 5) {
             return (
                 <div>
-                    <FontAwesomeIcon style={{ padding:"3px",color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "dedfe0" }} icon={faStar} />
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStarHalfAlt} /></span>
                 </div>
             )
         }
-
-        if (this.props.course.rating > 4 && this.props.course.rating < 5) {
+        if (this.props.course.courseRating == 5) {
             return (
                 <div>
-                    <FontAwesomeIcon style={{ padding:"3px",color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "#f4c150" }} icon={faStarHalfAlt} />
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
                 </div>
             )
         }
-
-        if (this.props.course.rating === 5) {
-            return (
-                <div>
-                    <FontAwesomeIcon style={{ padding:"3px",color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ padding:"3px",color: "#f4c150" }} icon={faStar} />
-                </div>
-            )
-        }
-
     }
 
 
@@ -155,23 +148,29 @@ class CourseHeading extends React.Component {
             <div>
                 {this.props.course && 
                     <div>
-                        <div className="heading_box">
-                            <div>
-                                <div style={{ fontSize: "36px", lineHeight: "41px", fontFamily: "inherit", paddingBottom:"15px" }}>{this.props.course.courseName}</div>
-                                <div style={{ fontSize: "21px", lineHeight: "27px", fontFamily: "inherit", paddingBottom: "10px"}}>{this.props.course.subtitle}</div>
-                            <div ><span style={{paddingRight:"32px", fontSize:"15px"}}>Create by {this.props.course.teacher}</span><FontAwesomeIcon style={{ color: "#fff" }} icon={faComment} />{this.props.course.languages}</div>
-                            </div>
-                            <div className="course-feed-img-box">
-                                <div className="img-play-box" onClick={this.videoOpenHandle}> 
-                                <img style={{ maxWidth:"335px"}}src={this.props.course.picture} alt="course" />
-                                    <div className="play-circle" > <FontAwesomeIcon icon={faPlayCircle} className="play-circle-icon"/></div>
+                        <div className="course-header" >
+                        <div className="course-header-inner">
+                            <div className="course-info">
+                                <div>
+                                    <div className="course-header-title">{this.props.course.courseName}</div>
+                                    <div className="course-header-description">qwer wer erty tyu yui ghj fghjkl sdfghj.</div>
                                 </div>
-                                {/* <div style={{ textAlign: "center" }}>${this.renderPrice()}</div> */}
-                            <button className="back-home-button" onClick={() => browserHistory.push("/")}>Back To Home</button>  
+                                <div>
+                                    <div className="course-header-instructor">Isaal Wankide</div>
+                                    <div><span className="course-header-rating">{this.renderRating()}</span></div>
+                                </div>
+                                
+                                
+                            </div>
+                            
+                            <div className="course-description">
+                                <div>
+                                    <button type="submit" className="btn-enroll">Enroll for<br></br>$2499/-</button>
+                                </div>
                             </div>
                         </div>
-                        {/* <CourseInfo course={this.props.course}/> */}
                     </div>
+                    </div>  
                 }
             </div>
         )

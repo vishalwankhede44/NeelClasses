@@ -33,110 +33,116 @@ class SearchCourse extends React.Component {
         if (this.props.course.courseRating < 1) {
             return (
                 <div>
-                    <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStarHalfAlt} />
-                    <FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} />
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStarHalfAlt} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
+                    
+                    
+                    
+                    
+                    
                 </div>
             )
         }
-        if (this.props.course.courseRating === 1) {
+        if (this.props.course.courseRating == 1) {
             return (
                 <div>
-                    <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} />
-                </div>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
+     
+               </div>
             )
         }
         if (this.props.course.courseRating > 1 && this.props.course.courseRating < 2) {
             return (
                 <div>
-                    <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStarHalfAlt} />
-                    <FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} />
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStarHalfAlt} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
                 </div>
             )
         }
-        if (this.props.course.courseRating === 2) {
+        if (this.props.course.courseRating == 2) {
             return (
                 <div>
-                    <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} />
+                    <span className="rating2"><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span className="rating2"><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
                 </div>
             )
         }
         if (this.props.course.courseRating > 2 && this.props.course.courseRating < 3) {
             return (
                 <div>
-                    <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStarHalfAlt} />
-                    <FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} />
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStarHalfAlt} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
                 </div>
             )
         }
-        if (this.props.course.courseRating === 3) {
+        if (this.props.course.courseRating == 3) {
             return (
                 <div>
-                    <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} />
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
                 </div>
             )
         }
         if (this.props.course.courseRating > 3 && this.props.course.courseRating < 4) {
             return (
                 <div>
-                    <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStarHalfAlt} />
-                    <FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} />
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStarHalfAlt} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
                 </div>
             )
         }
-        if (this.props.course.courseRating === 4) {
+        if (this.props.course.courseRating == 4) {
             return (
                 <div>
-                    <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} />
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
                 </div>
             )
         }
         if (this.props.course.courseRating > 4 && this.props.course.courseRating < 5) {
             return (
                 <div>
-                    <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStarHalfAlt} />
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStarHalfAlt} /></span>
                 </div>
             )
         }
-        if (this.props.course.courseRating === 5) {
+        if (this.props.course.courseRating == 5) {
             return (
                 <div>
-                    <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} />
-                    <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} />
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
+                    <span><FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} /></span>
                 </div>
             )
         }
@@ -151,41 +157,36 @@ class SearchCourse extends React.Component {
         return(
 
             <div className="search-container2">
-
-
-
-                
-                <Link to={`/courses/`} className="search-feed" >
-                    {/* <div style={{ flex: 1 }}>
-                        <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/201811/online-3412473_1920_1.jpeg?tz.RfsTe_UTLHiDqxmpG7PY_nTIBjwF7&size=770:433" alt="course" className="search-img" />
-                    </div>
-                    <div style={{ paddingLeft: "12px", paddingRight: "30px", flex: "2" }} >
-                        <div className="search-box-title">{this.props.course.courseName}</div>
-                        <div className="search-box-audience">{this.props.course.audience}</div>
-                    </div>
-                    <div>
-                        <div className="search-rating-span" >${this.renderPrice()}</div>
-                        <div style={{ paddingTop: "10px" }}><span className="search-rating-count">{this.renderRating()}</span></div>
-                        <div className="search-rating-count">({this.props.course.courseRating} ratings)</div>
-                    </div> */}
+                <Link to={`/course/${this.props.course.courseName}`} className="search-feed">
                     <div className="card">
                         <div className="img">
-                            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/201811/online-3412473_1920_1.jpeg?tz.RfsTe_UTLHiDqxmpG7PY_nTIBjwF7&size=770:433" alt="course" className="search-img" />
+                        <img
+                            src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/201811/online-3412473_1920_1.jpeg?tz.RfsTe_UTLHiDqxmpG7PY_nTIBjwF7&size=770:433"
+                            alt="course"
+                            className="search-img"
+                        />
                         </div>
                         <div className="courseDescription">
-                            <div className="courseName">
-
-                                <div className="search-box-title">{this.props.course.courseName}</div>
-                                <div className="search-box-audience">{this.props.course.audience}</div>
+                        <div className="courseName">
+                            <div className="search-box-title">
+                                {this.props.course.courseName}
                             </div>
-                            <div className="rating">
-                                <div className="search-rating-span" >${this.renderPrice()}</div>
-                                <div ><span className="search-rating-count">{this.renderRating()}</span></div>
-                                <div className="search-rating-count">({this.props.course.courseRating} ratings)</div>
+                            <div className="course-description">
+                                <p className="course-description-text">qwert qwert qwer qwer wer wert qwert qwert wer wert wert.</p>
                             </div>
+                        </div>
+                        <div className="rating">
+                            <div>
+                            <span className="search-rating-count">
+                                {this.renderRating()}
+                            </span>
+                            </div>
+                            <div className="search-rating-span">${this.renderPrice()}</div>
+                        </div>
                         </div>
                     </div>
                 </Link>
+        
            </div>
         )
     }

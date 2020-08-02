@@ -41,7 +41,7 @@ class AllCoursesContainer extends React.Component {
                 </div>
             )
         }
-        if (this.props.course.courseRating === 1) {
+        if (this.props.course.courseRating == 1) {
             return (
                 <div>
                     <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} />
@@ -63,7 +63,7 @@ class AllCoursesContainer extends React.Component {
                 </div>
             )
         }
-        if (this.props.course.courseRating === 2) {
+        if (this.props.course.courseRating == 2) {
             return (
                 <div>
                     <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} />
@@ -85,7 +85,7 @@ class AllCoursesContainer extends React.Component {
                 </div>
             )
         }
-        if (this.props.course.courseRating === 3) {
+        if (this.props.course.courseRating == 3) {
             return (
                 <div>
                     <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} />
@@ -107,7 +107,7 @@ class AllCoursesContainer extends React.Component {
                 </div>
             )
         }
-        if (this.props.course.courseRating === 4) {
+        if (this.props.course.courseRating == 4) {
             return (
                 <div>
                     <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} />
@@ -129,7 +129,7 @@ class AllCoursesContainer extends React.Component {
                 </div>
             )
         }
-        if (this.props.course.courseRating === 5) {
+        if (this.props.course.courseRating == 5) {
             return (
                 <div>
                     <FontAwesomeIcon style={{ color: "#f4c150" }} icon={faStar} />
@@ -150,23 +150,37 @@ class AllCoursesContainer extends React.Component {
     render() {
         return(
 
-            <div className="search-container2">
-                <div className='course-item-wrapper'>
-                    <Link to={`/course/${this.props.course.courseName}`} className="search-feed" >
-                            <div style={{ flex: 1 }}>
-                                <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/201811/online-3412473_1920_1.jpeg?tz.RfsTe_UTLHiDqxmpG7PY_nTIBjwF7&size=770:433" alt="course" className="search-img" />
+            <div className="search-container3">
+                <Link to={`/course/${this.props.course.courseName}`} className="search-feed">
+                    <div className="card">
+                        <div className="img">
+                        <img
+                            src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/201811/online-3412473_1920_1.jpeg?tz.RfsTe_UTLHiDqxmpG7PY_nTIBjwF7&size=770:433"
+                            alt="course"
+                            className="search-img"
+                        />
+                        </div>
+                        <div className="courseDescription">
+                        <div className="courseName">
+                            <div className="search-box-title">
+                                {this.props.course.courseName}
                             </div>
-                            <div style={{ paddingLeft: "12px", paddingRight: "30px", flex: "2" }} >
-                                <div className="search-box-title">{this.props.course.courseName}</div>
-                                <div className="search-box-audience">{this.props.course.audience}</div>
+                            <div className="course-description">
+                                <p className="course-description-text">qwert qwert qwer qwer wer wert qwert qwert wer wert wert.</p>
                             </div>
+                        </div>
+                        <div className="rating">
                             <div>
-                                <div className="search-rating-span" >${this.renderPrice()}</div>
-                                <div style={{ paddingTop: "10px" }}><span className="search-rating-count">{this.renderRating()}</span></div>
-                                <div className="search-rating-count">({this.props.course.courseRating} ratings)</div>
+                            <span className="search-rating-count">
+                                {this.renderRating()}
+                            </span>
                             </div>
-                    </Link>
-                </div>
+                            <div className="search-rating-span">${this.renderPrice()}</div>
+                        </div>
+                        </div>
+                    </div>
+                </Link>
+        
            </div>
         )
     }

@@ -117,7 +117,7 @@ class AllCourses extends React.Component {
         let indexOfFirstCourse = indexOfLastCourse - this.state.coursePerPage;
         let currentCourse = this.state.filterCourses.slice(indexOfFirstCourse, indexOfLastCourse)
         return (
-           <div className="search-box" >
+           <div className="search-box2" >
                 {
                     currentCourse.map((course, i) => (
                          <AllCoursesContainer course={course} key={i} />
@@ -133,7 +133,7 @@ class AllCourses extends React.Component {
                 <div className="search-container">
                     <div className="search-header" >
                         <div className="search-header-inner">
-                            <div className="search-header-title">All Courses</div>
+                            <div className="search-header-title">{this.state.filterCourses.length} Courses Available </div>
                             <div className="custom-select">
                                 <select className="custom-select-select" onChange={this.selectHandle} >
                                     <option value="0">Sort By</option>
@@ -146,8 +146,13 @@ class AllCourses extends React.Component {
                         </div>
                     </div>
                     <div className="search-footer">
-                    {this.showComponent()}
-                    <div className="page-switch">{this.renderPageNumbers()}</div>
+                        <div>
+                        {this.showComponent()}
+                        </div>
+
+                        <div className="page-switch">
+                        {this.renderPageNumbers()}
+                        </div>
                     </div>
                 </div>
             )

@@ -3,10 +3,10 @@ import axios from 'axios';
 import "firebase/firestore";
 import { loadProgressBar } from 'axios-progress-bar';
 import 'axios-progress-bar/dist/nprogress.css'
-import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import SearchCourse from "./SearchCourse"
+// import { faSearch } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 class SearchIndex extends React.Component {
@@ -131,40 +131,26 @@ class SearchIndex extends React.Component {
                 <div className="search-container">
                     <div className="search-header" >
                         <div className="search-header-inner">
-
                             <div className="search-header-title">{this.state.filterCourses.length} results for <b>{this.props.match.params.searchString}</b></div>
-
-                            <div className="search-header-title">{this.state.courseList.length} results for <b>{this.props.match.params.searchString}</b></div>
-                            {/* <div className="custom-select">
-                                <ul className="main-navigation" onChange={this.selectHandle} >
-                                    <li>
-                                        <a href="#" value="0">Sort By <span> <FontAwesomeIcon icon={faArrowDown} /></span> </a>
-                                        <ul>
-                                            <li><a href="#" value="Lowest Price">Lowest Price</a></li>
-                                            <li><a href="#" value="Highest Price">Highest Price</a></li>
-                                            <li><a href="#" value="Lowest Ratting">Lowest Rating</a></li>
-                                            <li><a href="#" value="Highest Ratting">Highest Rating</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div> */}
                             <div className="custom-select">
                                 <select className="custom-select-select" onChange={this.selectHandle} >
-                                    <option className="options" value="0">Sort By</option>
-                                    <option className="options" value="Lowest Price">Lowest Price</option>
-                                    <option className="options" value="Highest Price">Highest Price</option>
-                                    <option className="options" value="Lowest Ratting">Lowest Ratting</option>
-                                    <option className="options" value="Highest Ratting">Highest Ratting</option>
+                                    <option value="0">Sort By</option>
+                                    <option value="Lowest Price">Lowest Price</option>
+                                    <option value="Highest Price">Highest Price</option>
+                                    <option value="Lowest Ratting">Lowest Ratting</option>
+                                    <option value="Highest Ratting">Highest Ratting</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                     <div className="search-footer">
                         <div>
-                            {this.showComponent()}
+                        {this.showComponent()}
                         </div>
-                    
-                    <div className="page-switch">{this.renderPageNumbers()}</div>
+
+                        <div className="page-switch">
+                        {this.renderPageNumbers()}
+                        </div>
                     </div>
                 </div>
             )
