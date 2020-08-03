@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TableComponent = () => {
+const TableComponent = (props) => {
         
     return(
         <div className="table-component">
@@ -15,10 +15,9 @@ const TableComponent = () => {
                 </thead>
                 <tbody>
                     <tr>
-                        {/* {courses.map((courses) => {
-                            <td>{courses.courseName}</td>
-                        })} */}
+                        {this.props.courses.map((courses) => <td>{courses.courseName}</td>)}
                     </tr>
+
                 </tbody>
                 <tr>
                     {/* {dataColumns.map(function(column) {

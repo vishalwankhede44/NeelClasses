@@ -16,14 +16,14 @@ const AdminPanel = () => {
 
     const getDataFromFirebase = async () => {
         try {
-        await axios.get(`http://localhost:5000/course/${this.props.match.params.courseId}`,{
+        await axios.get(`http://localhost:5000/admin/courses`,{
             onDownloadProgress: (progressEvent) => {
                 var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
                 setLoading(percentCompleted);
             }
         })
         .then(res => { 
-            console.log(res.data.CourseInfo);
+            console.log(res.data.CourseInfoList);
             setCourseInfo(res.data.CourseInfo);
         })
         } catch (error) {
