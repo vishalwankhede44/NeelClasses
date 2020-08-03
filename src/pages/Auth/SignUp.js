@@ -94,42 +94,37 @@ const SignUp = () => {
 
     }
     return(
-        <main>
             <div className="logincontainer">
                 <div className="row ">
                     <label className="success-msg" hidden={verify}><strong>Success ! &nbsp;</strong></label>
                 </div>
-                <div className="row d-flex">
-                    <div className="img-signup">
-                        <figure>
-                            <img src={signUpImage} className="real-img" height="150"></img>
-                        </figure>
-                    </div>
-                    <div className="signup-details">
-                        <h1 className="sign">Sign Up</h1>
-                        <Form>
-                            <FormGroup>
-                                <Input type="text" name="funame" id="exampleName" placeholder="Full Name" 
+                <div className="login-card">
+                    <div className="login-title"><p className="login-title-text">Sign Up</p></div>
+                        <Form className="form-body"> 
+                            <FormGroup className="form-body-component">
+                                <Input className="mobile-field" type="text" name="funame" id="exampleName" placeholder="Full Name" 
                                 value={name}
                             onChange={event => setName(event.target.value)}  />
                             </FormGroup>
-                            <FormGroup>
-                                   <Input type="number" name="mobile" id="exampleMobile" placeholder="Mobile Number"
+                            <FormGroup className="form-body-component">
+                                   <Input className="mobile-field" type="number" name="mobile" id="exampleMobile" placeholder="Mobile Number"
                                 value={number}
                                 onChange={event => setNumber(event.target.value)} />
                             </FormGroup>
-                            <FormGroup>
-                                <Input type="number" maxLength="6" name="otp" id="exampleOtp" placeholder="Enter OTP"
+                            <FormGroup className="form-body-component">
+                                <Input className="otp-field" type="number" maxLength="6" name="otp" id="exampleOtp" placeholder="Enter OTP"
                                 hidden={otpVisibilty} onChange={event => setOtp(event.target.value)} value={otp} />
                             </FormGroup>
-                            <div id="recaptcha" class="mb-2" hidden={!otpVisibilty}></div>
-                            <Button className="logbtn" onClick={VerifyOtp} hidden={otpVisibilty}>Verify OTP</Button>
-                            <Button className="logbtn"  onClick={onSubmit} hidden={!otpVisibilty}>Sign Up</Button>   
+                            <div id="recaptcha" className="recaptcha" hidden={!otpVisibilty}></div>
+
+                            <div className="buttons">
+                                <Button className="logbtn" onClick={VerifyOtp} hidden={otpVisibilty}>Verify OTP</Button>
+                                <Button className="logbtn"  onClick={onSubmit} hidden={!otpVisibilty}>Sign Up</Button>   
+                            </div>
+                            
                         </Form>
                     </div>
                 </div>
-            </div>
-        </main>
     );
 }
 

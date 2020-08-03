@@ -8,7 +8,8 @@ class HomeSearchPanel extends Component {
     constructor(props){
         super(props)
         this.state = {
-            searchString: ""
+            searchString: "",
+            iconClassName: "search-icon",
         }
         this.inputFocus = this.inputFocus.bind(this)
         this.inputUnFocus = this.inputUnFocus.bind(this)
@@ -16,9 +17,6 @@ class HomeSearchPanel extends Component {
     }
     getSearchInput(e) {
         if (e.key === 'Enter') {
-            this.setState({
-                searchString: e.target.value
-            });
             this.searchClickHandle();
         } else {
             this.setState({
@@ -47,26 +45,21 @@ class HomeSearchPanel extends Component {
             <div>
                 <div className="home-box">
                         <div className="home-content">
-                            <p className="home-headline">The Premium System <br/>Education</p>
+                            <p className="home-headline">The Premium System Education</p>
                             <p className="home-subline">Future of Education Technology</p>
                             <div class="wrap">
                                 <div class="search">
                                     <input type="text" class="searchTerm" placeholder="Search for anything" onFocus={this.inputFocus} onBlur={this.inputUnFocus} onKeyUp={this.getSearchInput}></input>
                                     <button type="submit" class="searchButton">
-                                        <FontAwesomeIcon icon={faSearch}/>
+                                        <FontAwesomeIcon icon={faSearch} className={this.state.iconClassName} />
                                     </button>
                                 </div>
-                                    
-                                
-                                {/* <label className="search-label">
-                                    <input className="search-input" type="text" placeholder="Search for anything"  onFocus={this.inputFocus} onBlur={this.inputUnFocus} onKeyUp={this.getSearchInput}/>
-                                </label> */}
                             </div>
                             
                             <div className="home-button-new">
                                 <button class="btn-in">Log In</button>
                                 <button class="btn-up">Sign Up</button>
-                                {/* <button className="signupButton">Sign Up</button> */}
+                                
                             </div>
                         </div>
                         </div>

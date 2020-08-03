@@ -6,12 +6,11 @@ import { faPlus, faMinus, faPlayCircle , faHome } from "@fortawesome/free-solid-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
-class CourseContentContainer extends React.Component {
+class CourseContentNotesContainer extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             dropdown: false,
-            showVideo:"temp"
         }
         this.showOrHidden = this.showOrHidden.bind(this)
         this.titleClickHandle = this.titleClickHandle.bind(this)
@@ -34,19 +33,14 @@ class CourseContentContainer extends React.Component {
             return "content-hidden"
         }
     }
-    closeButton (){
-this.setState({
-    showVideo: "temp"
-});
-    }
 
     titleClickHandle() {
         this.setState({
             dropdown: !this.state.dropdown
         })
     }
-    showVideoContainer(){
-    this.props.showVideo(this.props.content);
+    showNotesContainer(){
+    this.props.showNotes(this.props.content);
     }
     render() {
         if (this.props.content) {
@@ -54,14 +48,13 @@ this.setState({
                     <div onClick={this.titleClickHandle}>
                         <div className="content-box" >
                             <span className="Plus">{this.state.dropdown ? <FontAwesomeIcon icon={faMinus} className="plus-minus" /> : <FontAwesomeIcon className="plus-minus" icon={faPlus} />}</span>
-                        
-                            <div className="content-title">{this.props.content.videoTitle}</div>
+                            <div className="content-title">{this.props.content.docIndex}    {this.props.content.docTitle}</div>
                         </div>
                         <div className={this.showOrHidden()}>
-                            <div className="content-video-list" onClick={()=> this.showVideoContainer()}>
+                            <div className="content-video-list" onClick={()=> this.showNotesContainer()}>
                                 <div>
                                     <span className="Play"><FontAwesomeIcon icon={faPlayCircle} /></span>
-                                    <span className="content-video-title" style={{marginLeft:"11px"}}>{this.props.content.videoTitle}</span>
+                                    <span className="content-video-title" style={{marginLeft:"11px"}}>{this.props.content.docTitle}</span>
                                 </div>
                             </div>
                         </div>
@@ -75,4 +68,4 @@ this.setState({
     }
 }
 
-export default withRouter(CourseContentContainer);
+export default withRouter(CourseContentNotesContainer);
