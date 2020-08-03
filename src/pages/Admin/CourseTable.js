@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import {withRouter} from 'react-router-dom';
 
 const TableComponent = (props) => {
+
+    useEffect(() => {
+        // if(props.courses.length == 0){
+        //     props.history.push('/admin');
+        // }
+        // else{
+        //     console.log(props.courses);
+        // }   
         
+    })
+
     return(
         <div className="table-component">
             <table className="table-body">
@@ -9,20 +20,32 @@ const TableComponent = (props) => {
                 <thead>
                     <tr>
                         <th scope="col">Course Name</th>
-                        <th scope="col">Course Title</th>
-                        <th scope="col">Course Price</th> 
+                        <th scope="col">Stream</th>
+                        <th scope="col">Branch</th>
+                        <th scope="col">Year</th>
+                        <th scope="col">Rating</th>
+                        <th scope="col">Videos</th>
+                        <th scope="col">Notes</th>
+                        <th scope="col">Price</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        {this.props.courses.map((courses) => <td>{courses.courseName}</td>)}
-                    </tr>
+                {props.courses.map((course) => {
+                    return (
+                        <tr>
+                            <td>{course.courseName}</td>
+                            <td>{course.courseStream}</td>
+                            <td>{course.branch}</td>
+                            <td>{course.courseYear}</td>
+                            <td>{course.courseRating}</td>
+                            <td>{course.courseVideos.length}</td>
+                            <td>{course.courseNotes.length}</td>
+                            <td>{course.coursePrice}</td>
+                        </tr>
+                    );
+                })}
 
                 </tbody>
-                <tr>
-                    {/* {dataColumns.map(function(column) {
-                    return <td>{row[column]}</td>; })} */}
-                </tr>
             </table>
         </div>
     );
@@ -30,7 +53,7 @@ const TableComponent = (props) => {
 
 
 
-export default TableComponent;
+export default withRouter(TableComponent);
   
   // Example Data
  

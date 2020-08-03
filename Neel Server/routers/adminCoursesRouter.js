@@ -33,9 +33,10 @@ adminCoursesRouter.get("/", async function (request, response) {
               VideoList.push(VideoInfo);
             });
             VideoInfoList = VideoList;
+            console.log(VideoInfoList.length);
           });
 
-        await doc.ref
+          await doc.ref
           .collection("Notes")
           .get()
           .then(function (querySnapshot) {
@@ -49,7 +50,9 @@ adminCoursesRouter.get("/", async function (request, response) {
               NotesList.push(NotesInfo);
             });
             NotesInfoList = NotesList;
+
           });
+          
 
         CourseInfo = {
           courseName: doc.data().courseName,
@@ -64,14 +67,15 @@ adminCoursesRouter.get("/", async function (request, response) {
           courseNotes: NotesInfoList,
         };
         CourseInfoList.push(CourseInfo);
-        console.log(CourseInfoList.length);
+        console.log(VideoInfoList);  
+      
       });
-
       setTimeout(
         () => response.status(200).json({ CourseInfoList: CourseInfoList }),
         2000
       );
     });
+   
 });
 
 module.exports = adminCoursesRouter;

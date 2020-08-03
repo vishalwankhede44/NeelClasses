@@ -4,15 +4,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import TableComponent from './CourseTable';
 import 'axios-progress-bar/dist/nprogress.css';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
+import { loadProgressBar } from 'axios-progress-bar';
 
-const AdminPanel = () => {
+const AdminPanel = (props) => {
 
     const [loading, setLoading] = useState(0);
     const [courseInfo, setCourseInfo] = useState([]);
+    const [showCourses, setShowCourses] = useState(false);
 
-    useEffect(() =>{
+
+    const onCourseClick = () => {
+        props.history.push('/admin/courses');
         getDataFromFirebase();
-    });
+        setShowCourses(true);
+    }
 
     const getDataFromFirebase = async () => {
         try {
@@ -24,7 +30,7 @@ const AdminPanel = () => {
         })
         .then(res => { 
             console.log(res.data.CourseInfoList);
-            setCourseInfo(res.data.CourseInfo);
+            setCourseInfo(res.data.CourseInfoList);
         })
         } catch (error) {
             console.log(`Get Error ${error}`)
@@ -32,7 +38,7 @@ const AdminPanel = () => {
     } 
 
     return(
-
+        
         <div>
             <div className="admin-panel-container">
                 <div className="admin-header">
@@ -41,7 +47,7 @@ const AdminPanel = () => {
                 <div className="admin-body">
                     <div className="admin-left-sidebar">
                         <div className="admin-left-sidebar-buttons">
-                            <button className="course"><span className="admin-icons"><FontAwesomeIcon icon={faBook}  /></span>Course</button>
+                            <button className="course" onClick={() => onCourseClick()}><span className="admin-icons"><FontAwesomeIcon icon={faBook}  /></span>Course</button>
                             <button className="course"><span className="admin-icons"><FontAwesomeIcon icon={faFolderPlus} /></span>Add / Edit Course</button>
                             <button className="course"><span className="admin-icons"><FontAwesomeIcon icon={faVideo} /></span>Upload Video / Notes</button>
                             {/* <button className="course"><span className="admin-icons"><FontAwesomeIcon icon={faFilePdf} /></span>Notes</button> */}
@@ -55,9 +61,10 @@ const AdminPanel = () => {
                         </div>
                     </div>
                     <div className="admin-right-sidebar">
-                        <div className="admin-right-sidebar-course">
+                        {showCourses &&  loading===100
+                         ?<div className="admin-right-sidebar-course">
                             <TableComponent courses={courseInfo}/>
-                        </div>
+                        </div> :loadProgressBar()}
                     </div>
                 </div>
                 <div className="admin-footer">
@@ -70,4 +77,4 @@ const AdminPanel = () => {
     );
 }
 
-export default AdminPanel;
+export default withRouter(AdminPanel);
