@@ -13,6 +13,7 @@ const searchRouter = require('./routers/searchRouter');
 const courseRouter = require('./routers/courseRouter');
 const allCoursesRouter = require('./routers/allCoursesRouter');
 const getUserRouter = require('./routers/getUser');
+const adminCoursesRouter = require('./routers/adminCoursesRouter');
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
@@ -51,6 +52,7 @@ app.use('/courses/search',searchRouter);
 app.use('/course',courseRouter);
 app.use('/courses',allCoursesRouter);
 app.use('/getUser',getUserRouter);
+app.use('/admin/courses',adminCoursesRouter);
 // app.use('/getCourse',getCourse);
 
 
