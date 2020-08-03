@@ -14,17 +14,16 @@ require("firebase/firestore");
 searchRouter.use(cors());
 
 
-searchRouter.get('/:searchString',function(request,response) {
+searchRouter.get('/:searchString',async function(request,response) {
 
   const searchCourseString = request.params.searchString;
-   var database = firebase.firestore();
 
     var db = firebase.firestore();
-    db.collection("Courses").get().then(function(querySnapshot) {
+   await db.collection("Courses").get().then(async function(querySnapshot) {
       let CourseList = [];
       querySnapshot.forEach(function(doc) {
-
-          if(doc.data().courseName == searchCourseString){
+        var compareString = doc.data().courseName;
+          if(compareString.toUpperCase() === searchCourseString.toUpperCase()){
             const CourseInfo = {
                 courseName :doc.data().courseName,
                 courseStream:doc.data().courseStream,
@@ -39,19 +38,8 @@ searchRouter.get('/:searchString',function(request,response) {
           }
 
         });
-
-       CourseList.sort(GetSortOrder("docIndex"));
-        function GetSortOrder(prop) {    
-          return function(a, b) {    
-              if (a[prop] > b[prop]) {    
-                  return 1;    
-              } else if (a[prop] < b[prop]) {    
-                  return -1;    
-              }    
-              return 0;    
-          }    
-        }    
-        response.status(200).json( {CourseList : CourseList});
+        setTimeout(()=>
+        response.status(200).json( {CourseList : CourseList}),1000);
       });
 });
 module.exports = searchRouter;

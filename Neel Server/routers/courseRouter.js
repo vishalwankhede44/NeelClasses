@@ -12,12 +12,13 @@ require("firebase/firestore");
 
 courseRouter.use(cors());
 
-let CourseInfo;
+
 
   // Get Request
  courseRouter.get('/:courseId',async function(request,response){
 
     const courseId = request.params.courseId;
+    let CourseInfo;
     let VideoInfoList = [];
     let NotesInfoList = [];
     
@@ -25,8 +26,8 @@ let CourseInfo;
    await db.collection("Courses").get().then(async function(querySnapshot) {
        
         querySnapshot.forEach(async function(doc) {
-        if(doc.data().courseName === courseId){
-
+          var compareString = doc.data().courseName;
+          if(compareString.toUpperCase() === courseId.toUpperCase()){
           await doc.ref.collection("Videos").get().then(function(querySnapshot) {
             let VideoList = [];
            querySnapshot.forEach(function(doc){
@@ -70,8 +71,9 @@ let CourseInfo;
         
         
       });
-      console.log("COURSE");
-      response.status(200).json( {CourseInfo : CourseInfo});
+      console.log("COURSE",CourseInfo);
+      setTimeout(() => 
+      response.status(200).json( {CourseInfo : CourseInfo}),1000);
 });
       
   module.exports = courseRouter;

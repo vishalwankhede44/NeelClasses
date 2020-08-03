@@ -29,6 +29,7 @@ class SearchIndex extends React.Component {
 
     componentDidMount() {
         this.getDataFromFirebase();
+        this.filterArr();
     }
     getDataFromFirebase = async () => {
             try {
@@ -85,7 +86,10 @@ class SearchIndex extends React.Component {
 
 
     filterArr() {
-        let newArr = this.state.filterCourses;
+        let searchString = this.props.match.params.searchString
+        let newArr = this.state.filterCourses.filter((course) => {
+            return course.courseName.toUpperCase().includes(searchString.toUpperCase())
+        })
         if (this.state.order === "Lowest Price") {
            newArr = newArr.sort((a,b) => a.coursePrice -  b.coursePrice )
        } else if (this.state.order === "Highest Price") {

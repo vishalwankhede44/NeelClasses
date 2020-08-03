@@ -24,6 +24,7 @@ import Navbar from "./components/Navbar";
 import AllCourses from "./pages/Courses/AllCourses";
 import Login from './pages/Auth/Login';
 import SignUp from './pages/Auth/SignUp';
+import Upload from './pages/Upload/Upload';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route path="/courses/" component={AllCourses} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
+        <Route path="/upload" component={Upload}/>
         {/* <Route path="/courses/:courseId" component={Course} /> */}
         {/* <Route path="/viewcourses" component={ViewCourse} />
         <Route path="/aboutus" component={AboutUs} />

@@ -6,6 +6,7 @@ import 'axios-progress-bar/dist/nprogress.css'
 import CourseHeading from "./CourseHeading";
 import VideoContainer from "./VideoContainer.js";
 import CourseContent from "./CourseContent";
+import NotesContainer from "./NotesContainer";
 
 class Course extends React.Component {
     constructor(props){
@@ -14,10 +15,14 @@ class Course extends React.Component {
             loading:0,
             courseInfo : {},
             showVideo :false,
-            videoInfo :null
+            videoInfo :null,
+            showNotes:false,
+            notesInfo:null
         }
         this.showVideoContainer = this.showVideoContainer.bind(this)
         this.hideVideoContainer = this.hideVideoContainer.bind(this)
+        this.showNotesContainer = this.showNotesContainer.bind(this)
+        this.hideNotesContainer = this.hideNotesContainer.bind(this)
     }
     componentDidMount() {
         this.getDataFromFirebase();
@@ -32,6 +37,17 @@ class Course extends React.Component {
     hideVideoContainer(){
         this.setState({
             showVideo:false,
+        })
+    }
+    showNotesContainer(notes) {
+        this.setState({
+            showNotes:true,
+            notesInfo:notes,
+        })
+    }
+    hideNotesContainer(){
+        this.setState({
+            showNotes:false,
         })
     }
     getDataFromFirebase = async () => {
@@ -61,9 +77,12 @@ class Course extends React.Component {
                 <div className="course-detail">
                     <CourseHeading course={this.state.courseInfo}/> 
                     <div className="title-course">Course Contents</div>
-                    <CourseContent course={this.state.courseInfo} showVideoMethod={this.showVideoContainer}/>
+                    <CourseContent course={this.state.courseInfo} showVideoMethod={this.showVideoContainer} showNotesMethod={this.showNotesContainer}/>
                     {
                         this.state.showVideo ? <VideoContainer video={this.state.videoInfo} closeVideo={this.hideVideoContainer}  /> : null
+                    }
+                    {
+                        this.state.showNotes ? <NotesContainer notes={this.state.notesInfo} closeNotes={this.hideNotesContainer}  /> : null
                     }
                 </div>
             )
