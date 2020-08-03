@@ -136,13 +136,13 @@ body {
 }
 
 .home-box .home-content .wrap .search .searchTerm {
-  width: 50%;
+  width: 70%;
   border: 3px solid #4f8a8b;
   border-right: none;
   padding-left: 12px;
   padding-top: 9px;
   padding-bottom: 10px;
-  padding-right: 85px;
+  padding-right: 12px;
   height: 50px;
   outline: none;
   color: #eeeeee;
@@ -167,6 +167,17 @@ body {
   border-radius: 0 5px 5px 0;
   cursor: pointer;
   font-size: 20px;
+}
+
+.search-icon {
+  color: #eeeeee;
+  border-bottom-right-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
+.search-icon-open  {
+  border-left: none ;
+  color: #eeeeee;
 }
 
 .home-box .home-content .wrap {
@@ -923,8 +934,8 @@ select option{
   align-items: center;
   height: 100vh;
   width: 100%;
-  background: rgb(99,99,99);
-  background: linear-gradient(90deg, rgba(99,99,99,1) 0%, rgba(157,157,157,1) 50%, rgba(139,139,139,1) 100%);
+  
+  background-image: linear-gradient(-20deg, #6e45e2 0%, #88d3ce 100%);
 }
 
 .logincontainer .login-card {
@@ -932,10 +943,9 @@ select option{
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  width: 40%;
-  height: 40%;
-  border: 1px solid black;
-  border-radius: 10px ;
+  width: 30%;
+  height: 42%;
+  border-radius: 30px ;
   padding: 50px 0;
   background-color: #eeeeee;
 }
@@ -986,6 +996,7 @@ select option{
   color: black;
   line-height: 1.2;
   text-transform: uppercase;
+  margin: 0 10px;
 
 
   -webkit-transition: all 0.4s;

@@ -8,7 +8,8 @@ class HomeSearchPanel extends Component {
     constructor(props){
         super(props)
         this.state = {
-            searchString: ""
+            searchString: "",
+            iconClassName: "search-icon",
         }
         this.inputFocus = this.inputFocus.bind(this)
         this.inputUnFocus = this.inputUnFocus.bind(this)
@@ -16,9 +17,6 @@ class HomeSearchPanel extends Component {
     }
     getSearchInput(e) {
         if (e.key === 'Enter') {
-            this.setState({
-                searchString: e.target.value
-            });
             this.searchClickHandle();
         } else {
             this.setState({
@@ -53,7 +51,7 @@ class HomeSearchPanel extends Component {
                                 <div class="search">
                                     <input type="text" class="searchTerm" placeholder="Search for anything" onFocus={this.inputFocus} onBlur={this.inputUnFocus} onKeyUp={this.getSearchInput}></input>
                                     <button type="submit" class="searchButton">
-                                        <FontAwesomeIcon icon={faSearch}/>
+                                        <FontAwesomeIcon icon={faSearch} className={this.state.iconClassName} />
                                     </button>
                                 </div>
                                     
