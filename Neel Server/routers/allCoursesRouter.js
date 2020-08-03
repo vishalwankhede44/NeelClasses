@@ -68,12 +68,12 @@ allCoursesRouter.get('/',async function(request,response){
             CourseInfoList.push(CourseInfo);
             console.log(CourseInfoList.length);
         });
-        console.log(CourseInfoList.length);
+   
         
         
       });
       setTimeout(() => 
-      response.status(200).json( {CourseInfoList : CourseInfoList}), 1000);  
+      response.status(200).json( {CourseInfoList : CourseInfoList}), 2000);  
 });
       
   module.exports = allCoursesRouter;

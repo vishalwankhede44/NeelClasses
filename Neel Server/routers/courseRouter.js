@@ -65,13 +65,15 @@ let CourseInfo;
                 courseVideos : VideoInfoList,
                 courseNotes : NotesInfoList,
             };
+            console.log(CourseInfo);
+            setTimeout(() => response.status(200).json( {CourseInfo : CourseInfo}),2000);
         }
         });
-        
+
+      
         
       });
-      console.log("COURSE");
-      response.status(200).json( {CourseInfo : CourseInfo});
+     
 });
       
   module.exports = courseRouter;
