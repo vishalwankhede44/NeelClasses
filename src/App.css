@@ -934,7 +934,6 @@ select option{
   align-items: center;
   height: 100vh;
   width: 100%;
-  
   background-image: linear-gradient(-20deg, #6e45e2 0%, #88d3ce 100%);
 }
 
@@ -994,7 +993,7 @@ select option{
   border-radius: 25px;
   font-size: 15px;
   color: black;
-  line-height: 1.2;
+  /* line-height: 1.2; */
   text-transform: uppercase;
   margin: 0 10px;
 
@@ -1050,4 +1049,172 @@ input[type="number"]::-webkit-inner-spin-button {
   width:50%;
   background:red;
 }
+
+
+/* ADMIN PANEL */
+
+.admin-panel-container {
+  width: 100%;
+  height: 100vh;
+}
+
+.admin-body {
+  width: 100%;
+  height: 84vh;
+
+}
+
+.admin-panel-container .admin-left-sidebar .separator {
+  width: 80%;
+  height: 5px;
+  margin: 0 auto;
+  background-color: #eeeeee;
+}
+
+.admin-panel-container .admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 8vh;
+  background: rgb(238, 238, 238);
+  width: 100%;
+  color: #222831;
+  padding: 30px 3%;
+}
+
+.admin-panel-container .admin-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 8vh;
+  background: rgb(238, 238, 238);
+  width: 100%;
+  color: #222831;
+  padding: 30px 3%;
+}
+
+.admin-panel-container .admin-left-sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 15%;
+  height: 100%;
+  float: left;
+}
+
+.admin-panel-container .admin-right-sidebar {
+  width: 85%;
+  height: 100%;
+  float: right;
+  background-color: #003845;
+}
+
+.admin-panel-container .admin-right-sidebar .admin-right-sidebar-course {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
+.admin-panel-container .admin-left-sidebar .admin-left-sidebar-buttons {
+  height: 100%;
+  width: 100%;
+  background-color: white ;
+  padding: 10px;
+}
+
+.admin-panel-container .admin-left-sidebar .admin-left-sidebar-utility {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.admin-panel-container .admin-left-sidebar .admin-left-sidebar-utility .admin-left-sidebar-utility-buttons {
+  background-color: rgb(255, 255, 255) ;
+  padding: 0 10px 10px 10px;
+}
+.admin-panel-container .admin-left-sidebar .admin-left-sidebar-utility .admin-left-sidebar-utility-buttons .logout {
+  height: 40px;
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.74);
+  transition: 0.3s;
+  text-align: justify;
+  margin-top: 10px;
+  border: 2px solid #eeeeee;
+}
+
+.admin-panel-container .admin-left-sidebar .admin-left-sidebar-utility .admin-left-sidebar-utility-buttons .logout:hover {
+  background-color: #00b7ff34;
+  cursor: pointer;
+}
+
+.admin-panel-container .admin-left-sidebar .admin-left-sidebar-buttons .course {
+  height: 40px;
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.74);
+  transition: 0.3s;
+  text-align: justify;
+  margin-top: 10px;
+  border: 2px solid #eeeeee;
+}
+.admin-panel-container .admin-left-sidebar .admin-left-sidebar-buttons .course:hover {
+  background-color: #00b7ff34;
+  cursor: pointer;
+}
+
+.admin-icons {
+  padding: 0 20px 0 10px;
+}
+
+.table-component {
+  padding: 50px;
+}
+
+.table-component .table-body {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+}
+
+.table-body caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+.table-body tr {
+  background-color: #eeeeee;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+.table-body thead {
+  background-color: #4f8a8b7c;
+}
+
+.table-body th,
+.table-body td {
+  padding: .625em;
+  text-align: center;
+}
+
+.table-body th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+
+/* ADMIN PANEL END */
 
