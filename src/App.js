@@ -25,12 +25,13 @@ import AllCourses from "./pages/Courses/AllCourses";
 import Login from './pages/Auth/Login';
 import SignUp from './pages/Auth/SignUp';
 import Upload from './pages/Upload/Upload';
+import AdminPanel from './pages/Admin/AdminPanel'
 
 function App() {
   return (
     <BrowserRouter>
     {/* <Header /> */}
-    <Navbar/>
+    {/* <Navbar/> */}
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/courses/search/:searchString" component={Search} />
@@ -39,6 +40,7 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
         <Route path="/upload" component={Upload}/>
+        <Route path="/admin" component={AdminPanel}/>
         {/* <Route path="/courses/:courseId" component={Course} /> */}
         {/* <Route path="/viewcourses" component={ViewCourse} />
         <Route path="/aboutus" component={AboutUs} />
