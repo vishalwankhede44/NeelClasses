@@ -9,6 +9,7 @@ require("firebase/firestore");
 
 adminCoursesRouter.use(cors());
 // Get Request
+
 adminCoursesRouter.get("/", async function (request, response) {
   let VideoInfoList = [];
   let NotesInfoList = [];
@@ -20,39 +21,41 @@ adminCoursesRouter.get("/", async function (request, response) {
     .get()
     .then(async function (querySnapshot) {
       querySnapshot.forEach(async function (doc) {
-        await doc.ref
-          .collection("Videos")
-          .get()
-          .then(function (querySnapshot) {
-            let VideoList = [];
-            querySnapshot.forEach(function (doc) {
-              const VideoInfo = {
-                videoTitle: doc.data().videoTitle,
-                videoUrl: doc.data().videoUrl,
-              };
-              VideoList.push(VideoInfo);
-            });
-            VideoInfoList = VideoList;
-            console.log(VideoInfoList.length);
-          });
-
-          await doc.ref
-          .collection("Notes")
-          .get()
-          .then(function (querySnapshot) {
-            let NotesList = [];
-            querySnapshot.forEach(function (doc) {
-              const NotesInfo = {
-                docIndex: doc.data().docIndex,
-                docTitle: doc.data().docTitle,
-                docUrl: doc.data().docUrl,
-              };
-              NotesList.push(NotesInfo);
-            });
-            NotesInfoList = NotesList;
-
-          });
-          
+        await Promise.all([
+          doc.ref
+            .collection("Notes")
+            .get()
+            .then(function (querySnapshot) {
+              let NotesList = [];
+              querySnapshot.forEach(function (doc) {
+                const NotesInfo = {
+                  docIndex: doc.data().docIndex,
+                  docTitle: doc.data().docTitle,
+                  docUrl: doc.data().docUrl,
+                };
+                NotesList.push(NotesInfo);
+              });
+              NotesInfoList = NotesList;
+              console.log(NotesList);
+            }),
+        ]);
+        await Promise.all([
+          doc.ref
+            .collection("Videos")
+            .get()
+            .then(function (querySnapshot) {
+              let VideoList = [];
+              querySnapshot.forEach(function (doc) {
+                const VideoInfo = {
+                  videoTitle: doc.data().videoTitle,
+                  videoUrl: doc.data().videoUrl,
+                };
+                VideoList.push(VideoInfo);
+              });
+              VideoInfoList = VideoList;
+              console.log(VideoList);
+            }),
+        ]);
 
         CourseInfo = {
           courseName: doc.data().courseName,
@@ -66,16 +69,14 @@ adminCoursesRouter.get("/", async function (request, response) {
           courseVideos: VideoInfoList,
           courseNotes: NotesInfoList,
         };
+        console.log(CourseInfo);
         CourseInfoList.push(CourseInfo);
-        console.log(VideoInfoList);  
-      
       });
-      setTimeout(
-        () => response.status(200).json({ CourseInfoList: CourseInfoList }),
-        2000
-      );
     });
-   
+  setTimeout(
+    () => response.status(200).json({ CourseInfoList: CourseInfoList }),
+    2000
+  );
 });
 
 module.exports = adminCoursesRouter;
