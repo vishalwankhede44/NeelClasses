@@ -16,6 +16,10 @@ const getUserRouter = require("./routers/getUser");
 const enrollCourseRouter = require("./routers/enrollCourse");
 const checkAccess = require("./routers/checkAccess");
 const adminCoursesRouter = require("./routers/adminCoursesRouter");
+const adminUploadRouter = require("./routers/adminUploadRouter");
+const adminUploadNotesRouter = require("./routers/adminUploadNotesRouter");
+const adminUploadVideoRouter = require("./routers/adminUploadVideoRouter");
+
 app.set("views", path.join(__dirname, "views"));
 app.engine("html", require("ejs").renderFile);
 app.set("view engine", "html");
@@ -41,10 +45,6 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 app.use("/enrollCourse", enrollCourseRouter);
 app.use("/checkAccess", checkAccess);
 app.use("/login", loginRouter);
@@ -60,6 +60,9 @@ app.use("/course", courseRouter);
 app.use("/courses", allCoursesRouter);
 app.use("/getUser", getUserRouter);
 app.use("/admin/courses", adminCoursesRouter);
+app.use("/admin/upload", adminUploadRouter);
+app.use("/admin/upload/notes", adminUploadNotesRouter);
+app.use("/admin/upload/video", adminUploadVideoRouter);
 // app.use('/getCourse',getCourse);
 
 app.listen(5000, () => {

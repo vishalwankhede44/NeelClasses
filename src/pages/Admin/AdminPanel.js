@@ -6,26 +6,37 @@ import 'axios-progress-bar/dist/nprogress.css';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import { loadProgressBar } from 'axios-progress-bar';
+import UploadForm from './UploadForm';
+import { Alert } from 'reactstrap';
+
 
 const AdminPanel = (props) => {
 
-    const [loading, setLoading] = useState(0);
+    const [loadingForCourses, setLoadingForCourses] = useState(0);
+    const [loadingForUpload, setLoadingForUpload] = useState(0);
     const [courseInfo, setCourseInfo] = useState([]);
     const [showCourses, setShowCourses] = useState(false);
+    const [uploadVideosNotes, setUploadVideosNotes] = useState(false);
 
 
     const onCourseClick = () => {
         props.history.push('/admin/courses');
-        getDataFromFirebase();
+        getDataForCourses();
         setShowCourses(true);
+        setUploadVideosNotes(false);
+    }
+    const onUploadVideosNotesClick =()=> {
+        props.history.push('/admin/upload')
+        setUploadVideosNotes(true);
+        setShowCourses(false);
     }
 
-    const getDataFromFirebase = async () => {
+    const getDataForCourses = async () => {
         try {
         await axios.get(`http://localhost:5000/admin/courses`,{
             onDownloadProgress: (progressEvent) => {
                 var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-                setLoading(percentCompleted);
+                setLoadingForCourses(percentCompleted);
             }
         })
         .then(res => { 
@@ -36,7 +47,7 @@ const AdminPanel = (props) => {
             console.log(`Get Error ${error}`)
         }
     } 
-
+ 
     return(
         
         <div>
@@ -49,7 +60,7 @@ const AdminPanel = (props) => {
                         <div className="admin-left-sidebar-buttons">
                             <button className="course" onClick={() => onCourseClick()}><span className="admin-icons"><FontAwesomeIcon icon={faBook}  /></span>Course</button>
                             <button className="course"><span className="admin-icons"><FontAwesomeIcon icon={faFolderPlus} /></span>Add / Edit Course</button>
-                            <button className="course"><span className="admin-icons"><FontAwesomeIcon icon={faVideo} /></span>Upload Video / Notes</button>
+                            <button className="course" onClick={()=> onUploadVideosNotesClick()}><span className="admin-icons"><FontAwesomeIcon icon={faVideo} /></span>Upload Video / Notes</button>
                             {/* <button className="course"><span className="admin-icons"><FontAwesomeIcon icon={faFilePdf} /></span>Notes</button> */}
                             
                         </div>
@@ -61,10 +72,14 @@ const AdminPanel = (props) => {
                         </div>
                     </div>
                     <div className="admin-right-sidebar">
-                        {showCourses &&  loading===100
+                        {showCourses &&  loadingForCourses===100
                          ?<div className="admin-right-sidebar-course">
                             <TableComponent courses={courseInfo}/>
-                        </div> :loadProgressBar()}
+                        </div> : loadProgressBar()}
+                        {uploadVideosNotes
+                         ?<div className="admin-right-sidebar-upload">
+                        <UploadForm/>
+                        </div> : null}
                     </div>
                 </div>
                 <div className="admin-footer">

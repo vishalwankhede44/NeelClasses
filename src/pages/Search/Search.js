@@ -42,6 +42,7 @@ class SearchIndex extends React.Component {
                 }
             })
             .then(res => { 
+                console.log(res.data.CourseList)
                 this.setState({
                     filterCourses :res.data.CourseList
                 });

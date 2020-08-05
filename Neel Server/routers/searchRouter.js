@@ -38,6 +38,7 @@ searchRouter.get('/:searchString',async function(request,response) {
           }
 
         });
+        console.log(CourseList);
         setTimeout(()=>
         response.status(200).json( {CourseList : CourseList}),1000);
       });
