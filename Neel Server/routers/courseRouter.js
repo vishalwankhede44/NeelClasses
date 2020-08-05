@@ -68,12 +68,12 @@ courseRouter.get("/:courseId", async function (request, response) {
             courseNotes: NotesInfoList,
           };
           console.log(CourseInfo);
-          setTimeout(
-            () => response.status(200).json({ CourseInfo: CourseInfo }),
-            2000
-          );
         }
       });
+      setTimeout(
+        () => response.status(200).json({ CourseInfo: CourseInfo }),
+        2000
+      );
     });
 });
 

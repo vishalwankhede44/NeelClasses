@@ -41,6 +41,10 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 app.use("/enrollCourse", enrollCourseRouter);
 app.use("/checkAccess", checkAccess);
 app.use("/login", loginRouter);
