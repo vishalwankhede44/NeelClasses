@@ -11,13 +11,13 @@ adminCoursesRouter.use(cors());
 
 // Get Request
 adminCoursesRouter.get("/", async function (request, response) {
-
   let CourseInfoList = [];
   var db = firebase.firestore();
-  await db.collection("Courses")
+  await db
+    .collection("Courses")
     .get()
     .then(function (querySnapshot) {
-      querySnapshot.forEach(function(doc){
+      querySnapshot.forEach(function (doc) {
         const CourseInfo = {
           courseName: doc.data().courseName,
           courseStream: doc.data().courseStream,
@@ -28,14 +28,14 @@ adminCoursesRouter.get("/", async function (request, response) {
           coursePrice: doc.data().coursePrice,
           courseRating: doc.data().courseRating,
         };
-          console.log(CourseInfo);
-          CourseInfoList.push(CourseInfo);
-      })
-        setTimeout(
-          () => response.status(200).json({ CourseInfoList: CourseInfoList }),
-          2000
-        );
+        console.log(CourseInfo);
+        CourseInfoList.push(CourseInfo);
       });
+      setTimeout(
+        () => response.status(200).json({ CourseInfoList: CourseInfoList }),
+        2000
+      );
+    });
 });
 
 module.exports = adminCoursesRouter;

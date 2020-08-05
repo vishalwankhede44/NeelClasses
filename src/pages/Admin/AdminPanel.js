@@ -40,7 +40,7 @@ const AdminPanel = (props) => {
             }
         })
         .then(res => { 
-            console.log(res.data.CourseInfoList);
+            console.log(res.data.CourseInfoList);   
             setCourseInfo(res.data.CourseInfoList);
         })
         } catch (error) {
@@ -53,7 +53,7 @@ const AdminPanel = (props) => {
         <div>
             <div className="admin-panel-container">
                 <div className="admin-header">
-                
+                    <div className="admin-header-title">Admin Panel</div>
                 </div>
                 <div className="admin-body">
                     <div className="admin-left-sidebar">

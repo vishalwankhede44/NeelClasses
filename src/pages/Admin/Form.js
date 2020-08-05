@@ -3,7 +3,7 @@ import axios from "axios";
 import firebase from "../../firebase";
 import "firebase/storage";
 import { withRouter, Link } from "react-router-dom";
-import { Alert } from "reactstrap";
+import { Alert, Button, Form as UploadForm, FormGroup, Label, Input, FormText  } from "reactstrap";
 
 const storage = firebase.storage();
 
@@ -131,14 +131,13 @@ const Form = (props) => {
 
   if (status === "NotDone")
     return (
-      <div>
         <div className="container">
-          <form>
-            <div style={{ width: "30%" }} className="form-group">
+          <UploadForm className="form-body">
+            <FormGroup className="form-body-component">
               <select
-                className="form-control"
                 onChange={onVideosNotesSelect}
                 defaultValue="Default"
+                className="selector"
               >
                 <option className="placeholder" disabled value="Default">
                   Select Videos / Notes
@@ -146,24 +145,24 @@ const Form = (props) => {
                 <option value="Notes">Notes</option>
                 <option value="Videos">Videos</option>
               </select>
-            </div>
+            </FormGroup>
             {videosNotes !== "Notes" ? (
               <div>
-                <div style={{ width: "30%" }} className="form-group">
-                  <input
+                <FormGroup  className="form-body-component">
+                  <Input
                     type="text"
-                    className="form-control"
+                    className="video-title-field"
                     name="videoTitle"
                     placeholder="Video Title"
                     value={videoTitle}
                     onChange={(event) => setTitle(event.target.value)}
                   />
-                </div>
-                <div style={{ width: "30%" }} className="form-group">
+                </FormGroup>
+                <FormGroup className="form-body-component">
                   <select
-                    className="form-control"
                     onChange={onCourseSelect}
                     defaultValue="Default"
+                    className="selector"
                   >
                     <option className="placeholder" disabled value="Default">
                       Select Course
@@ -174,36 +173,36 @@ const Form = (props) => {
                       </option>
                     ))}
                   </select>
-                </div>
-                <div style={{ width: "30%" }} className="form-group">
-                  <input type="file" name="selectedFile" onChange={onChange} />
-                </div>
+                </FormGroup>
+                <FormGroup className="form-body-component">
+                  <Input className="selected-file-video" type="file" name="selectedFile" onChange={onChange} />
+                </FormGroup>
               </div>
             ) : (
               <div>
-                <div style={{ width: "30%" }} className="form-group">
-                  <input
+                <FormGroup className="form-body-component">
+                  <Input
                     type="text"
-                    className="form-control"
+                    className="doc-title"
                     name="docTitle"
                     placeholder="Document Title"
                     value={docTitle}
                     onChange={(event) => setDocTitle(event.target.value)}
                   />
-                </div>
-                <div style={{ width: "30%" }} className="form-group">
-                  <input
+                </FormGroup>
+                <FormGroup  className="form-body-component">
+                  <Input
                     type="text"
-                    className="form-control"
+                    className="doc-title"
                     name="docIndex"
                     placeholder="Document Index"
                     value={docIndex}
                     onChange={(event) => setDocIndex(event.target.value)}
                   />
-                </div>
-                <div style={{ width: "30%" }} className="form-group">
+                </FormGroup>
+                <FormGroup  className="form-body-component">
                   <select
-                    className="form-control"
+                    className="selector"
                     onChange={onCourseSelect}
                     defaultValue="Default"
                   >
@@ -216,24 +215,23 @@ const Form = (props) => {
                       </option>
                     ))}
                   </select>
-                </div>
-                <div style={{ width: "30%" }} className="form-group">
-                  <input type="file" name="selectedFile" onChange={onChange} />
-                </div>
+                </FormGroup>
+                <FormGroup className="form-body-component">
+                  <Input className="selected-file-notes" type="file" name="selectedFile" onChange={onChange} />
+                </FormGroup>
               </div>
             )}
-            <div style={{ width: "30%" }}>
-              <button
-                className="btn btn-success"
+            <FormGroup className="form-body-component">
+              <Button
+                className="submit-btn"
                 type="submit"
                 onClick={onSubmit}
               >
                 Submit
-              </button>
-            </div>
-          </form>
+              </Button>
+            </FormGroup>
+          </UploadForm>
         </div>
-      </div>
     );
   else {
     return (

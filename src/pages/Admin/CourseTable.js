@@ -10,6 +10,7 @@ const TableComponent = (props) => {
     return(
         <div className="table-component">
             <table className="table-body">
+
                 <caption>All Courses</caption>
                 <thead>
                     <tr>
