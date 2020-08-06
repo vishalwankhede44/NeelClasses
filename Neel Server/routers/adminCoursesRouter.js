@@ -11,8 +11,8 @@ adminCoursesRouter.use(cors());
 // Get Request
 
 adminCoursesRouter.get("/", async function (request, response) {
-  let VideoInfoList = [];
-  let NotesInfoList = [];
+  let VideoInfoList = 0;
+  let NotesInfoList = 0;
   let CourseInfoList = [];
   let CourseInfo;
   var db = firebase.firestore();
@@ -35,8 +35,8 @@ adminCoursesRouter.get("/", async function (request, response) {
                 };
                 NotesList.push(NotesInfo);
               });
+              console.log(NotesList.length);
               NotesInfoList = NotesList;
-              console.log(NotesList);
             }),
         ]);
         await Promise.all([
@@ -52,25 +52,25 @@ adminCoursesRouter.get("/", async function (request, response) {
                 };
                 VideoList.push(VideoInfo);
               });
+              console.log(VideoList.length);
               VideoInfoList = VideoList;
-              console.log(VideoList);
             }),
-        ]);
-
-        CourseInfo = {
-          courseName: doc.data().courseName,
-          courseStream: doc.data().courseStream,
-          branch: doc.data().branch,
-          courseYear: doc.data().courseYear,
-          courseFees: doc.data().courseFees,
-          courseId: doc.id,
-          coursePrice: doc.data().coursePrice,
-          courseRating: doc.data().courseRating,
-          courseVideos: VideoInfoList,
-          courseNotes: NotesInfoList,
-        };
-        console.log(CourseInfo);
-        CourseInfoList.push(CourseInfo);
+        ]).then(() => {
+          CourseInfo = {
+            courseName: doc.data().courseName,
+            courseStream: doc.data().courseStream,
+            branch: doc.data().branch,
+            courseYear: doc.data().courseYear,
+            courseFees: doc.data().courseFees,
+            courseId: doc.id,
+            coursePrice: doc.data().coursePrice,
+            courseRating: doc.data().courseRating,
+            courseVideos: VideoInfoList,
+            courseNotes: NotesInfoList,
+          };
+          console.log(CourseInfo);
+          CourseInfoList.push(CourseInfo);
+        });
       });
     });
   setTimeout(
