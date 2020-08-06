@@ -7,7 +7,7 @@ import { Alert, Button, Form as UploadForm, FormGroup, Label, Input, FormText  }
 
 const storage = firebase.storage();
 
-const Form = (props) => {
+const FormUpload = (props) => {
   const [videoTitle, setTitle] = useState("");
   const [uploadPercentage, setUploadPercentage] = useState(0);
   const [file, setFile] = useState("");
@@ -247,4 +247,4 @@ const Form = (props) => {
   }
 };
 
-export default withRouter(Form);
+export default withRouter(FormUpload);

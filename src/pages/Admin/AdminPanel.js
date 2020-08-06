@@ -7,7 +7,7 @@ import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import { loadProgressBar } from 'axios-progress-bar';
 import UploadForm from './UploadForm';
-import { Alert } from 'reactstrap';
+import AddEditForm from "./AddEditForm";
 
 
 const AdminPanel = (props) => {
@@ -17,6 +17,7 @@ const AdminPanel = (props) => {
     const [courseInfo, setCourseInfo] = useState([]);
     const [showCourses, setShowCourses] = useState(false);
     const [uploadVideosNotes, setUploadVideosNotes] = useState(false);
+    const [addEditCourse, setAddEditCourse] = useState(false);
 
 
     const onCourseClick = () => {
@@ -24,11 +25,19 @@ const AdminPanel = (props) => {
         getDataForCourses();
         setShowCourses(true);
         setUploadVideosNotes(false);
+        setAddEditCourse(false)
     }
     const onUploadVideosNotesClick =()=> {
         props.history.push('/admin/upload')
         setUploadVideosNotes(true);
         setShowCourses(false);
+        setAddEditCourse(false);
+    }
+     const onAddEditClick =()=> {
+        props.history.push('/admin/course')
+        setUploadVideosNotes(false);
+        setShowCourses(false);
+        setAddEditCourse(true);
     }
 
     const getDataForCourses = async () => {
@@ -59,7 +68,7 @@ const AdminPanel = (props) => {
                     <div className="admin-left-sidebar">
                         <div className="admin-left-sidebar-buttons">
                             <button className="course" onClick={() => onCourseClick()}><span className="admin-icons"><FontAwesomeIcon icon={faBook}  /></span>Course</button>
-                            <button className="course"><span className="admin-icons"><FontAwesomeIcon icon={faFolderPlus} /></span>Add / Edit Course</button>
+                            <button className="course" onClick={()=> onAddEditClick()}><span className="admin-icons"><FontAwesomeIcon icon={faFolderPlus} /></span>Add / Edit Course</button>
                             <button className="course" onClick={()=> onUploadVideosNotesClick()}><span className="admin-icons"><FontAwesomeIcon icon={faVideo} /></span>Upload Video / Notes</button>
                             {/* <button className="course"><span className="admin-icons"><FontAwesomeIcon icon={faFilePdf} /></span>Notes</button> */}
                             
@@ -80,6 +89,12 @@ const AdminPanel = (props) => {
                          ?<div className="admin-right-sidebar-upload">
                         <UploadForm/>
                         </div> : null}
+                        {addEditCourse ?
+                        <div className="admin-right-sidebar-add-edit">
+                            <AddEditForm />
+                        </div>
+                        :null
+                        }
                     </div>
                 </div>
                 <div className="admin-footer">
