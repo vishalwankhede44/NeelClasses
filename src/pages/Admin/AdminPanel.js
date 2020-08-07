@@ -68,7 +68,7 @@ const AdminPanel = (props) => {
                     <div className="admin-left-sidebar">
                         <div className="admin-left-sidebar-buttons">
                             <button className="course" onClick={() => onCourseClick()}><span className="admin-icons"><FontAwesomeIcon icon={faBook}  /></span>Course</button>
-                            <button className="course" onClick={()=> onAddEditClick()}><span className="admin-icons"><FontAwesomeIcon icon={faFolderPlus} /></span>Add / Edit Course</button>
+                            <button className="course" onClick={()=> onAddEditClick()}><span className="admin-icons"><FontAwesomeIcon icon={faFolderPlus} /></span>Add Course</button>
                             <button className="course" onClick={()=> onUploadVideosNotesClick()}><span className="admin-icons"><FontAwesomeIcon icon={faVideo} /></span>Upload Video / Notes</button>
                             {/* <button className="course"><span className="admin-icons"><FontAwesomeIcon icon={faFilePdf} /></span>Notes</button> */}
                             

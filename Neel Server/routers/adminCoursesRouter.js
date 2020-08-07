@@ -21,7 +21,7 @@ adminCoursesRouter.get("/", async function (request, response) {
         const CourseInfo = {
           courseName: doc.data().courseName,
           courseStream: doc.data().courseStream,
-          branch: doc.data().branch,
+          courseBranch: doc.data().courseBranch,
           courseYear: doc.data().courseYear,
           courseFees: doc.data().courseFees,
           courseId: doc.id,

@@ -30,7 +30,7 @@ const TableComponent = (props) => {
                         <tr>
                             <td>{course.courseName}</td>
                             <td>{course.courseStream}</td>
-                            <td>{course.branch}</td>
+                            <td>{course.courseBranch}</td>
                             <td>{course.courseYear}</td>
                             <td>{course.courseRating}</td>
                             <td><Link to={`/course/${course.courseName}`}>View Course Videos</Link></td>
