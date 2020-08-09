@@ -1,22 +1,17 @@
 import React, { useEffect } from 'react';
-import {withRouter} from 'react-router-dom';
+import {withRouter,Link} from 'react-router-dom';
 
 const TableComponent = (props) => {
 
     useEffect(() => {
-        // if(props.courses.length == 0){
-        //     props.history.push('/admin');
-        // }
-        // else{
-        //     console.log(props.courses);
-        // }   
-        
+    
     })
 
     return(
         <div className="table-component">
             <table className="table-body">
-                <caption>Statement Summary</caption>
+
+                <caption>All Courses</caption>
                 <thead>
                     <tr>
                         <th scope="col">Course Name</th>
@@ -38,8 +33,8 @@ const TableComponent = (props) => {
                             <td>{course.branch}</td>
                             <td>{course.courseYear}</td>
                             <td>{course.courseRating}</td>
-                            <td>{course.courseVideos.length}</td>
-                            <td>{course.courseNotes.length}</td>
+                            <td><Link to={`/course/${course.courseName}`}>View Course Videos</Link></td>
+                            <td><Link to={`/course/${course.courseName}`}>View Course Notes</Link></td>
                             <td>{course.coursePrice}</td>
                         </tr>
                     );

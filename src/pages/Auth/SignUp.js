@@ -121,7 +121,6 @@ const SignUp = () => {
                                 <Button className="logbtn" onClick={VerifyOtp} hidden={otpVisibilty}>Verify OTP</Button>
                                 <Button className="logbtn"  onClick={onSubmit} hidden={!otpVisibilty}>Sign Up</Button>   
                             </div>
-                            
                         </Form>
                     </div>
                 </div>

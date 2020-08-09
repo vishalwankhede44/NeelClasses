@@ -38,11 +38,6 @@ class SearchCourse extends React.Component {
                     <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
                     <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
                     <span><FontAwesomeIcon style={{ color: "dedfe0" }} icon={faStar} /></span>
-                    
-                    
-                    
-                    
-                    
                 </div>
             )
         }
