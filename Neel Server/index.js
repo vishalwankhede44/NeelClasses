@@ -64,7 +64,9 @@ app.use("/admin/courses", adminCoursesRouter);
 app.use("/admin/upload", adminUploadRouter);
 app.use("/admin/upload/notes", adminUploadNotesRouter);
 app.use("/admin/upload/video", adminUploadVideoRouter);
-app.use("/admin/course", adminCourseAddEditRouter);
+app.use("/admin/course",adminCourseAddEditRouter);
+app.use("/admin/addcourse", adminCourseAddEditRouter);
+app.use("/admin/editcourse", adminCourseAddEditRouter);
 // app.use('/getCourse',getCourse);
 
 app.listen(5000, () => {

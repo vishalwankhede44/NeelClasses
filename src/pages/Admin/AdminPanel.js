@@ -18,7 +18,8 @@ const AdminPanel = (props) => {
     const [showCourses, setShowCourses] = useState(false);
     const [uploadVideosNotes, setUploadVideosNotes] = useState(false);
     const [addEditCourse, setAddEditCourse] = useState(false);
-
+    const[course,setCourse] = useState({});
+    const[mode,setMode] = useState();
 
     const onCourseClick = () => {
         props.history.push('/admin/courses');
@@ -34,7 +35,8 @@ const AdminPanel = (props) => {
         setAddEditCourse(false);
     }
      const onAddEditClick =()=> {
-        props.history.push('/admin/course')
+        setCourse("");
+        props.history.push('/admin/add')
         setUploadVideosNotes(false);
         setShowCourses(false);
         setAddEditCourse(true);
@@ -56,6 +58,11 @@ const AdminPanel = (props) => {
             console.log(`Get Error ${error}`)
         }
     } 
+
+    const fromEditForm = (courseInfo) => {
+        console.log(courseInfo);
+        setCourse(courseInfo);
+    }
  
     return(
         
@@ -83,18 +90,19 @@ const AdminPanel = (props) => {
                     <div className="admin-right-sidebar">
                         {showCourses &&  loadingForCourses===100
                          ?<div className="admin-right-sidebar-course">
-                            <TableComponent courses={courseInfo}/>
-                        </div> : loadProgressBar()}
-                        {uploadVideosNotes
-                         ?<div className="admin-right-sidebar-upload">
-                        <UploadForm/>
-                        </div> : null}
+                            <TableComponent courses={courseInfo} setAddEditMethod={setAddEditCourse} setShowCoursesMethod={setShowCourses} setUploadVideosNotesMethod={setUploadVideosNotes} setCourseMethod={fromEditForm}/>
+                        </div> : loadProgressBar()
+                        }
                         {addEditCourse ?
                         <div className="admin-right-sidebar-add-edit">
-                            <AddEditForm />
+                            <AddEditForm course={course} />
                         </div>
                         :null
                         }
+                         {uploadVideosNotes
+                         ?<div className="admin-right-sidebar-upload">
+                        <UploadForm/>
+                        </div> : null}
                     </div>
                 </div>
                 <div className="admin-footer">

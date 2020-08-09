@@ -18,18 +18,19 @@ adminCoursesRouter.get("/", async function (request, response) {
     .get()
     .then(function (querySnapshot) {
       querySnapshot.forEach(function (doc) {
+        if(doc.data().courseStatus == "SHOW" || doc.data().courseStatus == undefined){
         const CourseInfo = {
           courseName: doc.data().courseName,
           courseStream: doc.data().courseStream,
           courseBranch: doc.data().courseBranch,
           courseYear: doc.data().courseYear,
-          courseFees: doc.data().courseFees,
           courseId: doc.id,
           coursePrice: doc.data().coursePrice,
           courseRating: doc.data().courseRating,
         };
         console.log(CourseInfo);
         CourseInfoList.push(CourseInfo);
+      }
       });
       setTimeout(
         () => response.status(200).json({ CourseInfoList: CourseInfoList }),

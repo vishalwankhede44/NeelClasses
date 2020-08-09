@@ -102,4 +102,32 @@ adminCourseAddEditRouter.post("/",function(req,res){
     });
 
 });
+adminCourseAddEditRouter.put("/",function(req,res){
+  var db = firebase.firestore();
+  var status="SHOW";
+  if(req.body.courseStatus != undefined)
+    status = req.body.courseStatus;
+  console.log(req.body);
+  db.collection("Courses")
+    .doc(req.body.courseId)
+    .set({
+      courseName :req.body.courseName,
+      courseStream :req.body.courseStream,
+      courseBranch :req.body.courseBranch,
+      courseYear : req.body.courseYear,
+      courseRating :req.body.courseRating,
+      coursePrice :req.body.coursePrice,
+      courseStatus:status
+    })
+    .then(function (docRef) {
+      console.log("Course Document successfully written!");
+      setTimeout(()=>
+      res.send("Done"),1000
+    );
+    })
+    .catch(function (error) {
+      console.error("Error adding Course: ", error);
+    });
+
+});
 module.exports = adminCourseAddEditRouter;
