@@ -1066,15 +1066,17 @@ input[type="number"]::-webkit-inner-spin-button {
   align-items: center;
   justify-content: center;
   height: 8vh;
-  background: rgb(238, 238, 238);
+  background: #222831cb;
   width: 100%;
-  color: #222831;
+  font-size: 20px;
+  color: #eeeeee;
   padding: 30px 3%;
 }
 
 .admin-panel-container .admin-header .admin-header-title {
-  font-size: 1.5em;
+  font-size: 1.8em;
   margin: .5em 0 .75em;
+  text-shadow: 0px 3px 3px #000000;
 }
 
 .admin-panel-container .admin-footer {
@@ -1082,7 +1084,7 @@ input[type="number"]::-webkit-inner-spin-button {
   align-items: center;
   justify-content: space-between;
   height: 8vh;
-  background: rgb(238, 238, 238);
+  background: #222831cb;
   width: 100%;
   color: #222831;
   padding: 30px 3%;
@@ -1096,6 +1098,7 @@ input[type="number"]::-webkit-inner-spin-button {
   width: 15%;
   height: 100%;
   float: left;
+  background-color: #222831;
 }
 
 .admin-panel-container .admin-right-sidebar {
@@ -1105,19 +1108,19 @@ input[type="number"]::-webkit-inner-spin-button {
   width: 85%;
   height: 100%;
   float: right;
-  background-color: #fff;
+  background-color: rgb(219, 219, 219);
+  
 }
 
 .admin-panel-container .admin-right-sidebar .admin-right-sidebar-course {
   width: 100%;
   height: 100%;
-  background-color: white;
 }
 
 .admin-panel-container .admin-left-sidebar .admin-left-sidebar-buttons {
   height: 100%;
   width: 100%;
-  background-color: white ;
+  background-color: #222831;
   padding: 10px;
 }
 
@@ -1127,10 +1130,11 @@ input[type="number"]::-webkit-inner-spin-button {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  background-color: #222831;
 }
 
 .admin-panel-container .admin-left-sidebar .admin-left-sidebar-utility .admin-left-sidebar-utility-buttons {
-  background-color: rgb(255, 255, 255) ;
+  background-color: #222831;
   padding: 0 10px 10px 10px;
 }
 .admin-panel-container .admin-left-sidebar .admin-left-sidebar-utility .admin-left-sidebar-utility-buttons .logout {
@@ -1138,19 +1142,20 @@ input[type="number"]::-webkit-inner-spin-button {
   width: 100%;
   border: none;
   outline: none;
-  background-color: #fff;
   font-size: 1rem;
-  font-weight: bold;
   color: rgba(0, 0, 0, 0.74);
   transition: 0.3s;
   text-align: justify;
   margin-top: 10px;
-  border: 2px solid #eeeeee;
+  border: none;
+  color: rgb(161, 161, 161);
+  background-color: #222831;
 }
 
 .admin-panel-container .admin-left-sidebar .admin-left-sidebar-utility .admin-left-sidebar-utility-buttons .logout:hover {
-  background-color: #00b7ff34;
   cursor: pointer;
+  color: white;
+  font-size: 1.1rem;
 }
 
 .admin-panel-container .admin-left-sidebar .admin-left-sidebar-buttons .course {
@@ -1158,26 +1163,27 @@ input[type="number"]::-webkit-inner-spin-button {
   width: 100%;
   border: none;
   outline: none;
-  background-color: #fff;
   font-size: 1rem;
-  font-weight: bold;
   color: rgba(0, 0, 0, 0.74);
   transition: 0.3s;
   text-align: justify;
   margin-top: 10px;
-  border: 2px solid #eeeeee;
+  border: none;
+  color: rgb(161, 161, 161);
+  background-color: #222831;
 }
 .admin-panel-container .admin-left-sidebar .admin-left-sidebar-buttons .course:hover {
-  background-color: #00b7ff34;
   cursor: pointer;
+  color: white;
+  font-size: 1.1rem;
 }
 
 .admin-icons {
-  padding: 0 20px 0 10px;
+  padding: 0 12px 0 10px;
 }
 
 .table-component {
-  padding: 50px;
+  padding: 80px;
 }
 
 .table-component .table-body {
@@ -1187,21 +1193,30 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .table-body caption {
-  font-size: 1.2em;
+  font-size: 1.6em;
   margin: .5em 0 .75em;
+  font-weight: bold;
 }
 
 .table-body tr {
-  background-color: #eeeeee;
-  border: 1px solid #ddd;
+  background-color: #fff;
+  border: 2px solid rgba(0, 0, 0, 0.432);
   padding: .35em;
+  
 }
 
 .table-body thead {
   background-color: #4f8a8b7c;
 }
 
-.table-body th,
+.table-body th {
+  padding: .625em;
+  text-align: center;
+  background-color: #222831cc;
+  color: white;
+  font-weight: 500;
+}
+
 .table-body td {
   padding: .625em;
   text-align: center;
@@ -1232,13 +1247,13 @@ input[type="number"]::-webkit-inner-spin-button {
   z-index: 3;
   height:100%;
   width:100%;
-  background-color: #eeeeee;
+  background-color: rgb(219, 219, 219);
 }
 
 .admin-panel-container .admin-body .admin-right-sidebar .admin-right-sidebar-upload .upload-container .header, .admin-right-sidebar-add-edit .upload-container .header  {
-  font-size: 1.5rem;
-  color: #222831;
-  padding: 30px 0;
+  font-size: 1.6em;
+  margin: .5em 0 .75em;
+  font-weight: bold;
 }
 
 .container {
@@ -1246,6 +1261,7 @@ input[type="number"]::-webkit-inner-spin-button {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  width: 20%;;
 }
 
 .container .form-body {
@@ -1317,6 +1333,31 @@ input[type="number"]::-webkit-inner-spin-button {
   cursor: pointer;
 }
 
+.container .form-body .form-body-component .selector {
+  font-family: 'Roboto Slab', serif;
+  width: 100%;
+  padding: 0 35px 0 35px;
+  background: #fff;
+  border-radius: 31px;
+  border: none;
+  font-size: 18px;
+  color: #222831;
+  line-height: 1.2;
+  background-color: #fff;
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+}
+
+.container .form-body .form-body-component .selector:focus {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  border: 1px solid rgba(81, 203, 238, 1);
+}
+
+.container .form-body .form-body-component .selector:hover {
+  cursor: pointer;
+}
 
 .container .form-body .form-body-component .selected-file-notes , .selected-file-video {
   padding: 10px 10px;
@@ -1379,7 +1420,31 @@ input[type="number"]::-webkit-inner-spin-button {
   border : 1px solid black;
   cursor: pointer;
 }
+.alert{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.alert .alert-text {
+  color: #222831;
+  font-size: 2.9rem;
+}
 
+.alert .alert-view-course {
+  color: #222831;
+  font-size: 1.9rem;
+  text-decoration: none;
+  color: #002677;
+  font-weight: 600;
+  margin-top: 15px;
+}
+
+.alert .alert-view-course:hover {
+  margin-top: 0.7rem;
+  font-size: 2.1rem;
+  color: #3072ff;
+}
 /* UPLOAD FORM END */
 
 /* ADD / EDIT FORM */

@@ -139,6 +139,31 @@ const FormAddEdit = (props) => {
     }
   };
 
+  // const customStyle = {
+  //   control: provided => ({
+  //   ...provided,
+  //   height: 10,
+  //   margin: 0,
+  //   marginLeft: 0,
+  //   border: "0px solid black",
+  //   fontSize: 13,
+  //   outline: 'none'
+  //   })
+  //   }
+
+    const customStyles2 = {
+      control: (base, state) => ({
+        ...base,
+        borderColor: '#fff',
+        height: '61px',
+        '&:hover': {
+          border: "0px solid black",
+          borderColor: '#fff',
+          cursor: 'pointer',
+        },
+      })
+    };
+
   const onYearSelect = (selectedValue) => {
     if (selectedValue) {
       setCourseYear(selectedValue.value);
@@ -200,6 +225,7 @@ const FormAddEdit = (props) => {
               onChange={(e) => onStreamSelect(e)}
               defaultOptions={false}
               className="selector"
+              styles={ customStyles2}
             />
           </FormGroup>
           <FormGroup className="form-body-component">
@@ -209,6 +235,7 @@ const FormAddEdit = (props) => {
               onChange={(e) => onBranchSelect(e)}
               defaultOptions={false}
               className="selector"
+              styles={ customStyles2}
             />
           </FormGroup>
           <FormGroup className="form-body-component">
@@ -218,6 +245,7 @@ const FormAddEdit = (props) => {
               onChange={(e) => onYearSelect(e)}
               defaultOptions={false}
               className="selector"
+              styles={ customStyles2}
             />
             <div>{courseYear}</div>
           </FormGroup>

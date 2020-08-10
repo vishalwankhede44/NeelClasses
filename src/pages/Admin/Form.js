@@ -4,6 +4,8 @@ import firebase from "../../firebase";
 import "firebase/storage";
 import { withRouter, Link } from "react-router-dom";
 import { Alert, Button, Form as UploadForm, FormGroup, Label, Input, FormText  } from "reactstrap";
+import { faHandPointRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const storage = firebase.storage();
 
@@ -147,7 +149,7 @@ const FormUpload = (props) => {
               </select>
             </FormGroup>
             {videosNotes !== "Notes" ? (
-              <div>
+              <div className="form-body-component">
                 <FormGroup  className="form-body-component">
                   <Input
                     type="text"
@@ -235,12 +237,14 @@ const FormUpload = (props) => {
     );
   else {
     return (
-      <Alert color="primary">
+      <Alert className="alert">
       <p className="alert-text">
-        Upload Success
+        your file uploaded successfully...
       </p>
-      <Link to={`/course/${courseName}`}>
-        View Course
+      <Link className="alert-view-course" to={`/course/${courseName}`}>
+      <p >
+        View Course <span><FontAwesomeIcon icon={faHandPointRight} /></span>
+      </p>
       </Link>
       </Alert>
     );
