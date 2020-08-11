@@ -1050,7 +1050,7 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .admin-body {
   width: 100%;
-  height: 84vh;
+  height: 92vh;
 
 }
 
@@ -1064,7 +1064,7 @@ input[type="number"]::-webkit-inner-spin-button {
 .admin-panel-container .admin-header {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   height: 8vh;
   background: #222831cb;
   width: 100%;
@@ -1074,20 +1074,13 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .admin-panel-container .admin-header .admin-header-title {
-  font-size: 1.8em;
-  margin: .5em 0 .75em;
+  font-size: 1.1em;
   text-shadow: 0px 3px 3px #000000;
 }
 
-.admin-panel-container .admin-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 8vh;
-  background: #222831cb;
-  width: 100%;
-  color: #222831;
-  padding: 30px 3%;
+.admin-panel-container .admin-header .admin-header-brand {
+  font-size: 2.5em;
+  text-shadow: 0px 3px 3px #000000;
 }
 
 .admin-panel-container .admin-left-sidebar {
@@ -1183,13 +1176,15 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .table-component {
-  padding: 80px;
+  padding: 40px 80px 0 80px;
+  
 }
 
 .table-component .table-body {
   width: 100%;
   border: 1px solid #ccc;
   border-collapse: collapse;
+  
 }
 
 .table-body caption {
@@ -1228,6 +1223,59 @@ input[type="number"]::-webkit-inner-spin-button {
   text-transform: uppercase;
 }
 
+.link-view-contents {
+  outline: none;
+  border: none;
+  text-decoration: none;
+  background-color: #4fa1ff;
+  font-size: 0.8rem;
+  padding: 5px 13px 5px 13px;
+  border-radius: 15px;
+  color: white;
+  transition: 0.07s ease-in;
+}
+
+.link-view-contents:hover {
+  cursor: pointer;
+  font-size:0.9rem ;
+  padding: 4.5px 7.8px 4.5px 7.8px;
+}
+
+.btn-edit-course {
+  outline: none;
+  border: none;
+  font-size: 0.8rem;
+  padding: 5px 11px 5px 11px;
+  background-color: green;
+  border-radius: 15px;
+  color: white;
+  transition: 0.07s ease-in;
+}
+
+.btn-edit-course:hover {
+  cursor: pointer;
+  font-size:0.9rem ;
+  padding: 4.5px 9px 4.5px 9px;
+  
+}
+
+.btn-delete-course {
+  outline: none;
+  border: none;
+  font-size: 0.8rem;
+  padding: 5px 12px 5px 12px;
+  background-color: red;
+  border-radius: 15px;
+  color: white;
+  transition: 0.07s ease-in;
+}
+
+.btn-delete-course:hover {
+  cursor: pointer;
+  font-size:0.9rem ;
+  padding: 4.5px 8px 4.5px 8px;
+}
+
 
 /* ADMIN PANEL END */
 
@@ -1261,7 +1309,7 @@ input[type="number"]::-webkit-inner-spin-button {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  width: 20%;;
+  width: 40%;;
 }
 
 .container .form-body {
@@ -1277,6 +1325,14 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .container .form-body .form-body-component {
   margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.container .form-body .form-body-component .form-body-componentx {
   display: flex;
   flex-direction: column;
   justify-content: center;
