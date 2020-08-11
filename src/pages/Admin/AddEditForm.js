@@ -9,7 +9,7 @@ class AddEditForm extends PureComponent {
   render() {
     return (
       <div className="upload-container">
-        <div className="header">Add Course</div>
+        
               <FormAddEdit course={this.props.course}/>
       </div>
     );

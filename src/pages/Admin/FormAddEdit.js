@@ -242,6 +242,7 @@ const FormAddEdit = (props) => {
   if (status === "NotDone") 
     return (
       <div className="container">
+        <div className="header">Add Course</div>
         <UploadForm className="form-body">
           <FormGroup className="form-body-component">
             <Input
