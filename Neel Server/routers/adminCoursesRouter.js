@@ -27,6 +27,7 @@ adminCoursesRouter.get("/", async function (request, response) {
           courseId: doc.id,
           coursePrice: doc.data().coursePrice,
           courseRating: doc.data().courseRating,
+          courseField : doc.data().courseField,
         };
         console.log(CourseInfo);
         CourseInfoList.push(CourseInfo);

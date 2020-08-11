@@ -17,6 +17,7 @@ adminUploadRouter.get('/',async function(req,res){
     var db = firebase.firestore();
     await db.collection("Courses").get().then(function(querySnapshot) {
       querySnapshot.forEach(function(doc) {
+        if(doc.data().courseStatus == "SHOW" || doc.data().courseStatus == undefined){
           const CourseInfo = {
             courseName :doc.data().courseName,
             courseStream:doc.data().courseStream,
@@ -26,6 +27,7 @@ adminUploadRouter.get('/',async function(req,res){
             courseId :doc.id,
           };
           CourseList.push(CourseInfo);
+        }
         });
         setTimeout(
             ()=> res.status(200).json( {CourseList : CourseList}),
