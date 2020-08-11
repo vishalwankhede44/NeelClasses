@@ -134,6 +134,7 @@ const FormUpload = (props) => {
   if (status === "NotDone")
     return (
         <div className="container">
+          <div className="header">Upload Video / Notes</div>
           <UploadForm className="form-body">
             <FormGroup className="form-body-component">
               <select
@@ -150,7 +151,7 @@ const FormUpload = (props) => {
             </FormGroup>
             {videosNotes !== "Notes" ? (
               <div className="form-body-component">
-                <FormGroup  className="form-body-component">
+                <FormGroup  className="form-body-componentx">
                   <Input
                     type="text"
                     className="video-title-field"
@@ -239,7 +240,7 @@ const FormUpload = (props) => {
     return (
       <Alert className="alert">
       <p className="alert-text">
-        your file uploaded successfully...
+        your file was uploaded successfully...
       </p>
       <Link className="alert-view-course" to={`/course/${courseName}`}>
       <p >

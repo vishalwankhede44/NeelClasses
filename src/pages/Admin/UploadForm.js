@@ -5,7 +5,7 @@ class Upload extends PureComponent {
   render() {
     return (
       <div className="upload-container">
-        <div className="header">Upload Video / Notes</div>
+        
               <FormUpload/>
       </div>
     );
