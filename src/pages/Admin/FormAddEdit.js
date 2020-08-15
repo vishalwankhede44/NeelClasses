@@ -25,6 +25,7 @@ const FormAddEdit = (props) => {
   const [courseYear, setCourseYear] = useState("");
   const [courseRating, setCourseRating] = useState("");
   const [coursePrice, setCoursePrice] = useState("");
+  const [courseField, setCourseField] = useState("");
   const [addForm, setAddForm] = useState(true);
 
   useEffect(() => {
@@ -36,6 +37,7 @@ const FormAddEdit = (props) => {
       setCourseRating(props.course.courseRating);
       setCoursePrice(props.course.coursePrice);
       setCourseId(props.course.courseId);
+      setCourseField(props.course.courseField);
       setAddForm(false);
     } else {
       console.log(props.course);
@@ -46,6 +48,7 @@ const FormAddEdit = (props) => {
       setCourseRating("");
       setCoursePrice("");
       setCourseId("");
+      setCourseField("");
       setAddForm(true);
     }
   }, []);
@@ -79,7 +82,8 @@ const FormAddEdit = (props) => {
     }
   };
 
-  const getCourseBranchList = (inputValue, callback) => {
+  
+  const getCourseFieldList = (inputValue, callback) => {
     if (!inputValue) {
       callback([]);
     } else {
@@ -87,6 +91,38 @@ const FormAddEdit = (props) => {
         try {
           axios
             .get(`http://localhost:5000/admin/course/${courseStream}`)
+            .then((res) => {
+              console.log(res.data.CourseFieldList);
+              const courseFieldList = [];
+              res.data.CourseFieldList.forEach((field) => {
+                courseFieldList.push({
+                  label: `${field.courseField}`,
+                  value: field.courseField,
+                });
+              });
+              callback(courseFieldList);
+            });
+        } catch (error) {
+          console.log(`Get Error ${error}`);
+        }
+      });
+    }
+  };
+
+  const onFieldSelect = (selectedValue) => {
+    if (selectedValue) {
+      setCourseField(selectedValue.value);
+    }
+  };
+
+  const getCourseBranchList = (inputValue, callback) => {
+    if (!inputValue) {
+      callback([]);
+    } else {
+      setTimeout(() => {
+        try {
+          axios
+            .get(`http://localhost:5000/admin/course/${courseStream}/${courseField}`)
             .then((res) => {
               console.log(res.data.CourseBranchList);
               const courseBranchList = [];
@@ -119,7 +155,7 @@ const FormAddEdit = (props) => {
         try {
           axios
             .get(
-              `http://localhost:5000/admin/course/${courseStream}/${courseBranch}`
+              `http://localhost:5000/admin/course/${courseStream}/${courseField}/${courseBranch}`
             )
             .then((res) => {
               console.log(res.data.CourseYearList);
@@ -139,6 +175,31 @@ const FormAddEdit = (props) => {
     }
   };
 
+  // const customStyle = {
+  //   control: provided => ({
+  //   ...provided,
+  //   height: 10,
+  //   margin: 0,
+  //   marginLeft: 0,
+  //   border: "0px solid black",
+  //   fontSize: 13,
+  //   outline: 'none'
+  //   })
+  //   }
+
+    const customStyles2 = {
+      control: (base, state) => ({
+        ...base,
+        borderColor: '#fff',
+        height: '61px',
+        '&:hover': {
+          border: "0px solid black",
+          borderColor: '#fff',
+          cursor: 'pointer',
+        },
+      })
+    };
+
   const onYearSelect = (selectedValue) => {
     if (selectedValue) {
       setCourseYear(selectedValue.value);
@@ -149,12 +210,12 @@ const FormAddEdit = (props) => {
     const CourseInfo = {
       courseName: courseName,
       courseStream: courseStream,
+      courseField :courseField,
       courseBranch: courseBranch,
       courseYear: courseYear,
       courseRating: courseRating,
       coursePrice: coursePrice,
     };
-    console.log(JSON.stringify(CourseInfo));
     if (addForm) {
       try {
         await axios
@@ -178,9 +239,10 @@ const FormAddEdit = (props) => {
       }
     }
   };
-  if (status === "NotDone")
+  if (status === "NotDone") 
     return (
       <div className="container">
+        <div className="header">Add Course</div>
         <UploadForm className="form-body">
           <FormGroup className="form-body-component">
             <Input
@@ -200,6 +262,17 @@ const FormAddEdit = (props) => {
               onChange={(e) => onStreamSelect(e)}
               defaultOptions={false}
               className="selector"
+              styles={ customStyles2}
+            />
+          </FormGroup>
+          <FormGroup className="form-body-component">
+            <AsyncSelect
+              loadOptions={getCourseFieldList}
+              placeholder="Select Field"
+              onChange={(e) => onFieldSelect(e)}
+              defaultOptions={false}
+              className="selector"
+              styles={ customStyles2}
             />
           </FormGroup>
           <FormGroup className="form-body-component">
@@ -209,6 +282,7 @@ const FormAddEdit = (props) => {
               onChange={(e) => onBranchSelect(e)}
               defaultOptions={false}
               className="selector"
+              styles={ customStyles2}
             />
           </FormGroup>
           <FormGroup className="form-body-component">
@@ -218,8 +292,8 @@ const FormAddEdit = (props) => {
               onChange={(e) => onYearSelect(e)}
               defaultOptions={false}
               className="selector"
+              styles={ customStyles2}
             />
-            <div>{courseYear}</div>
           </FormGroup>
           <FormGroup className="form-body-component">
             <Input

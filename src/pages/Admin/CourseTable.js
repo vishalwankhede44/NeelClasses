@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { withRouter, Link } from "react-router-dom";
 import axios from "axios";
+import { faEdit, faTrash, faHandPointRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const TableComponent = (props) => {
   const [selCourse, setSelCourse] = useState({});
@@ -9,7 +11,7 @@ const TableComponent = (props) => {
 
   const deleteCourse = async (course) => {
     var s = window.confirm("Are you really want to delete this course");
-    if (!s) return;
+    if (!s) return; 
     course.courseStatus = "DELETE";
     try {
       await axios
@@ -31,6 +33,7 @@ const TableComponent = (props) => {
             <th scope="col">Sr. no</th>
             <th scope="col">Course Name</th>
             <th scope="col">Stream</th>
+            <th scope="col">Field</th>
             <th scope="col">Branch</th>
             <th scope="col">Year</th>
             <th scope="col">Rating</th>
@@ -47,17 +50,18 @@ const TableComponent = (props) => {
                 <td>{index + 1}</td>
                 <td>{course.courseName}</td>
                 <td>{course.courseStream}</td>
+                <td>{course.courseField}</td>
                 <td>{course.courseBranch}</td>
                 <td>{course.courseYear}</td>
                 <td>{course.courseRating}</td>
                 <td>
-                  <Link to={`/course/${course.courseName}`}>
-                    Course Videos / Notes
-                  </Link>
+                  <button className="link-view-contents" to={`/course/${course.courseName}`}>
+                    <span><FontAwesomeIcon icon={faHandPointRight} /></span> View Contents
+                  </button>
                 </td>
                 <td>{course.coursePrice}</td>
                 <td>
-                  <Link
+                  <button className="btn-edit-course"
                     onClick={() => {
                       props.setAddEditMethod(true);
                       props.setShowCoursesMethod(false);
@@ -65,11 +69,11 @@ const TableComponent = (props) => {
                       props.setCourseMethod(course);
                     }}
                   >
-                    Edit Course
-                  </Link>
+                    <span><FontAwesomeIcon icon={faEdit} /></span> Edit
+                  </button>
                 </td>
                 <td>
-                  <button onClick={() => deleteCourse(course)}>Delete</button>
+                  <button className="btn-delete-course" onClick={() => deleteCourse(course)}><span><FontAwesomeIcon icon={faTrash} /></span> Delete</button>
                 </td>
               </tr>
             );
