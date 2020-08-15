@@ -20,11 +20,12 @@ const Login = (props) => {
     "uid",
     "name",
     "mobile",
+    "role",
   ]);
 
   useEffect(() => {
     checkLogin();
-  });
+  }, []);
 
   function checkLogin() {
     if ({ cookie }.cookie.name == undefined) {
@@ -33,6 +34,7 @@ const Login = (props) => {
       return false;
     } else {
       console.log("Already logged in");
+      console.log({ cookie }.cookie.role);
       // props.history.push("/");
       setLogin(true);
       return true;
@@ -46,6 +48,7 @@ const Login = (props) => {
         removeCookie("name");
         removeCookie("mobile");
         removeCookie("uid");
+        removeCookie("role");
         console.log("Signout successfully");
 
         setLogin(false);
@@ -81,7 +84,10 @@ const Login = (props) => {
             setCookie("name", res.data[0].name, { path: "/" });
             setCookie("mobile", res.data[0].mobile, { path: "/" });
             setCookie("uid", res.data[0].id, { path: "/" });
-            console.log({ cookie });
+            setCookie("role", res.data[0].role, { path: "/" });
+            if (res.data[0].role == "Admin") {
+              props.history.push("/admin");
+            }
           })
           .catch((err) => {
             console.error(err);

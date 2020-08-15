@@ -26,6 +26,7 @@ import Login from './pages/Auth/Login';
 import SignUp from './pages/Auth/SignUp';
 import Upload from './pages/Upload/Upload';
 import AdminPanel from './pages/Admin/AdminPanel'
+import AddEditForm from "./pages/Admin/AddEditForm";
 
 function App() {
   return (
@@ -41,6 +42,8 @@ function App() {
         <Route path="/signup" component={SignUp} />
         <Route path="/upload" component={Upload}/>
         <Route path="/admin" component={AdminPanel}/>
+        <Route path="/admin/edit/:courseId" component={AddEditForm} />
+        <Route path="/admin/add" component={AddEditForm} />
         {/* <Route path="/courses/:courseId" component={Course} /> */}
         {/* <Route path="/viewcourses" component={ViewCourse} />
         <Route path="/aboutus" component={AboutUs} />

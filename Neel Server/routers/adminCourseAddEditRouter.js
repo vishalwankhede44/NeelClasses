@@ -32,7 +32,6 @@ adminCourseAddEditRouter.get("/", async function (request, response) {
 
 adminCourseAddEditRouter.get("/:courseStream", async function (request, response) {
     const courseStream = request.params.courseStream;
-    console.log(courseStream)
     let CourseBranchList = [];
     var db = firebase.firestore();
     await db
@@ -46,7 +45,6 @@ adminCourseAddEditRouter.get("/:courseStream", async function (request, response
             courseBranch: doc.data().Branch,
           };
           CourseBranchList.push(CourseBranch);
-          console.log(CourseBranchList);
         });
         setTimeout(
           () => response.status(200).json({ CourseBranchList: CourseBranchList }),
@@ -55,4 +53,81 @@ adminCourseAddEditRouter.get("/:courseStream", async function (request, response
       });
   });
 
+  adminCourseAddEditRouter.get("/:courseStream/:courseBranch", async function (request, response) {
+    const courseStream = request.params.courseStream;
+    const courseBranch = request.params.courseBranch;
+    let CourseYearList = [];
+    var db = firebase.firestore();
+    await db
+      .collection("Stream")
+      .doc(courseStream)
+      .collection("Year")
+      .get()
+      .then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc) {
+          const CourseYear = {
+            courseYear: doc.data().Year,
+          };
+          CourseYearList.push(CourseYear);
+        });
+        setTimeout(
+          () => response.status(200).json({ CourseYearList: CourseYearList }),
+          1000
+        );
+      });
+  });
+
+
+adminCourseAddEditRouter.post("/",function(req,res){
+  var db = firebase.firestore();
+  console.log(req.body);
+  db.collection("Courses")
+    .doc()
+    .set({
+      courseName :req.body.courseName,
+      courseStream :req.body.courseStream,
+      courseBranch :req.body.courseBranch,
+      courseYear : req.body.courseYear,
+      courseRating :req.body.courseRating,
+      coursePrice :req.body.coursePrice
+    })
+    .then(function (docRef) {
+      console.log("Course Document successfully written!");
+      setTimeout(()=>
+      res.send("Done"),1000
+    );
+    })
+    .catch(function (error) {
+      console.error("Error adding Course: ", error);
+    });
+
+});
+adminCourseAddEditRouter.put("/",function(req,res){
+  var db = firebase.firestore();
+  var status="SHOW";
+  if(req.body.courseStatus != undefined)
+    status = req.body.courseStatus;
+  console.log(req.body);
+  db.collection("Courses")
+    .doc(req.body.courseId)
+    .set({
+      courseName :req.body.courseName,
+      courseStream :req.body.courseStream,
+      courseBranch :req.body.courseBranch,
+      courseYear : req.body.courseYear,
+      courseRating :req.body.courseRating,
+      coursePrice :req.body.coursePrice,
+      courseStatus:status
+    })
+    .then(function (docRef) {
+      console.log("Course Document successfully written!");
+      setTimeout(()=>
+      res.send("Done"),1000
+    );
+    })
+    .catch(function (error) {
+      console.error("Error adding Course: ", error);
+    });
+
+});
 module.exports = adminCourseAddEditRouter;

@@ -1,110 +1,194 @@
-import React, { useEffect, useState } from 'react';
-import { faBook, faSignOutAlt ,faVideo, faFolderPlus } from "@fortawesome/free-solid-svg-icons";
+import React, { useEffect, useState } from "react";
+import {
+  faBook,
+  faSignOutAlt,
+  faVideo,
+  faFolderPlus,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import TableComponent from './CourseTable';
-import 'axios-progress-bar/dist/nprogress.css';
-import axios from 'axios';
-import { withRouter } from 'react-router-dom';
-import { loadProgressBar } from 'axios-progress-bar';
-import UploadForm from './UploadForm';
+import TableComponent from "./CourseTable";
+import "axios-progress-bar/dist/nprogress.css";
+import axios from "axios";
+import { withRouter } from "react-router-dom";
+import { loadProgressBar } from "axios-progress-bar";
+import UploadForm from "./UploadForm";
 import AddEditForm from "./AddEditForm";
-
+import firebase from "../../firebase";
+import { useCookies } from "react-cookie";
 
 const AdminPanel = (props) => {
+  const [loadingForCourses, setLoadingForCourses] = useState(0);
+  const [loadingForUpload, setLoadingForUpload] = useState(0);
+  const [courseInfo, setCourseInfo] = useState([]);
+  const [showCourses, setShowCourses] = useState(false);
+  const [uploadVideosNotes, setUploadVideosNotes] = useState(false);
+  const [addEditCourse, setAddEditCourse] = useState(false);
+  const [course, setCourse] = useState({});
+  const [mode, setMode] = useState();
+  const [cookie, setCookie, removeCookie] = useCookies([
+    "uid",
+    "name",
+    "mobile",
+    "role",
+  ]);
 
-    const [loadingForCourses, setLoadingForCourses] = useState(0);
-    const [loadingForUpload, setLoadingForUpload] = useState(0);
-    const [courseInfo, setCourseInfo] = useState([]);
-    const [showCourses, setShowCourses] = useState(false);
-    const [uploadVideosNotes, setUploadVideosNotes] = useState(false);
-    const [addEditCourse, setAddEditCourse] = useState(false);
+  useEffect(() => {
+    checkLogin();
+  }, []);
 
-
-    const onCourseClick = () => {
-        props.history.push('/admin/courses');
-        getDataForCourses();
-        setShowCourses(true);
-        setUploadVideosNotes(false);
-        setAddEditCourse(false)
+  function logOut() {
+    firebase
+      .auth()
+      .signOut()
+      .then(function () {
+        removeCookie("name");
+        removeCookie("mobile");
+        removeCookie("uid");
+        removeCookie("role");
+        console.log("Signout successfully");
+        props.history.push("/");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+  function checkLogin() {
+    if ({ cookie }.cookie.name == undefined) {
+      console.log("Log in first");
+      props.history.push("/");
+      return false;
+    } else {
+      console.log("Already logged in");
+      if ({ cookie }.cookie.role == "Admin") {
+        console.log("Logged in as an admin");
+      } else {
+        props.history.push("/");
+      }
+      // props.history.push("/");
+      return true;
     }
-    const onUploadVideosNotesClick =()=> {
-        props.history.push('/admin/upload')
-        setUploadVideosNotes(true);
-        setShowCourses(false);
-        setAddEditCourse(false);
-    }
-     const onAddEditClick =()=> {
-        props.history.push('/admin/course')
-        setUploadVideosNotes(false);
-        setShowCourses(false);
-        setAddEditCourse(true);
-    }
+  }
 
-    const getDataForCourses = async () => {
-        try {
-        await axios.get(`http://localhost:5000/admin/courses`,{
-            onDownloadProgress: (progressEvent) => {
-                var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-                setLoadingForCourses(percentCompleted);
-            }
+  const onCourseClick = () => {
+    props.history.push("/admin/courses");
+    getDataForCourses();
+    setShowCourses(true);
+    setUploadVideosNotes(false);
+    setAddEditCourse(false);
+  };
+  const onUploadVideosNotesClick = () => {
+    props.history.push("/admin/upload");
+    setUploadVideosNotes(true);
+    setShowCourses(false);
+    setAddEditCourse(false);
+  };
+  const onAddEditClick = () => {
+    setCourse("");
+    props.history.push("/admin/add");
+    setUploadVideosNotes(false);
+    setShowCourses(false);
+    setAddEditCourse(true);
+  };
+
+  const getDataForCourses = async () => {
+    try {
+      await axios
+        .get(`http://localhost:5000/admin/courses`, {
+          onDownloadProgress: (progressEvent) => {
+            var percentCompleted = Math.round(
+              (progressEvent.loaded * 100) / progressEvent.total
+            );
+            setLoadingForCourses(percentCompleted);
+          },
         })
-        .then(res => { 
-            console.log(res.data.CourseInfoList);   
-            setCourseInfo(res.data.CourseInfoList);
-        })
-        } catch (error) {
-            console.log(`Get Error ${error}`)
-        }
-    } 
- 
-    return(
-        
-        <div>
-            <div className="admin-panel-container">
-                <div className="admin-header">
-                    <div className="admin-header-title">Admin Panel</div>
-                </div>
-                <div className="admin-body">
-                    <div className="admin-left-sidebar">
-                        <div className="admin-left-sidebar-buttons">
-                            <button className="course" onClick={() => onCourseClick()}><span className="admin-icons"><FontAwesomeIcon icon={faBook}  /></span>Course</button>
-                            <button className="course" onClick={()=> onAddEditClick()}><span className="admin-icons"><FontAwesomeIcon icon={faFolderPlus} /></span>Add / Edit Course</button>
-                            <button className="course" onClick={()=> onUploadVideosNotesClick()}><span className="admin-icons"><FontAwesomeIcon icon={faVideo} /></span>Upload Video / Notes</button>
-                            {/* <button className="course"><span className="admin-icons"><FontAwesomeIcon icon={faFilePdf} /></span>Notes</button> */}
-                            
-                        </div>
-                        <div className="separator"></div>
-                        <div className="admin-left-sidebar-utility">
-                            <div className="admin-left-sidebar-utility-buttons">
-                                <button className="logout"><span className="admin-icons"><FontAwesomeIcon icon={faSignOutAlt}  /></span>Logout</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="admin-right-sidebar">
-                        {showCourses &&  loadingForCourses===100
-                         ?<div className="admin-right-sidebar-course">
-                            <TableComponent courses={courseInfo}/>
-                        </div> : loadProgressBar()}
-                        {uploadVideosNotes
-                         ?<div className="admin-right-sidebar-upload">
-                        <UploadForm/>
-                        </div> : null}
-                        {addEditCourse ?
-                        <div className="admin-right-sidebar-add-edit">
-                            <AddEditForm />
-                        </div>
-                        :null
-                        }
-                    </div>
-                </div>
-                <div className="admin-footer">
-                
-                </div>
-                
-            </div>
+        .then((res) => {
+          console.log(res.data.CourseInfoList);
+          setCourseInfo(res.data.CourseInfoList);
+        });
+    } catch (error) {
+      console.log(`Get Error ${error}`);
+    }
+  };
+
+  const fromEditForm = (courseInfo) => {
+    console.log(courseInfo);
+    setCourse(courseInfo);
+  };
+
+  return (
+    <div>
+      <div className="admin-panel-container">
+        <div className="admin-header">
+          <div className="admin-header-title">Admin Panel</div>
         </div>
-
-    );
-}
+        <div className="admin-body">
+          <div className="admin-left-sidebar">
+            <div className="admin-left-sidebar-buttons">
+              <button className="course" onClick={() => onCourseClick()}>
+                <span className="admin-icons">
+                  <FontAwesomeIcon icon={faBook} />
+                </span>
+                Course
+              </button>
+              <button className="course" onClick={() => onAddEditClick()}>
+                <span className="admin-icons">
+                  <FontAwesomeIcon icon={faFolderPlus} />
+                </span>
+                Add Course
+              </button>
+              <button
+                className="course"
+                onClick={() => onUploadVideosNotesClick()}
+              >
+                <span className="admin-icons">
+                  <FontAwesomeIcon icon={faVideo} />
+                </span>
+                Upload Video / Notes
+              </button>
+              {/* <button className="course"><span className="admin-icons"><FontAwesomeIcon icon={faFilePdf} /></span>Notes</button> */}
+            </div>
+            <div className="separator"></div>
+            <div className="admin-left-sidebar-utility">
+              <div className="admin-left-sidebar-utility-buttons">
+                <button className="logout" onClick={() => logOut()}>
+                  <span className="admin-icons">
+                    <FontAwesomeIcon icon={faSignOutAlt} />
+                  </span>
+                  Logout
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="admin-right-sidebar">
+            {showCourses && loadingForCourses === 100 ? (
+              <div className="admin-right-sidebar-course">
+                <TableComponent
+                  courses={courseInfo}
+                  setAddEditMethod={setAddEditCourse}
+                  setShowCoursesMethod={setShowCourses}
+                  setUploadVideosNotesMethod={setUploadVideosNotes}
+                  setCourseMethod={fromEditForm}
+                />
+              </div>
+            ) : (
+              loadProgressBar()
+            )}
+            {addEditCourse ? (
+              <div className="admin-right-sidebar-add-edit">
+                <AddEditForm course={course} />
+              </div>
+            ) : null}
+            {uploadVideosNotes ? (
+              <div className="admin-right-sidebar-upload">
+                <UploadForm />
+              </div>
+            ) : null}
+          </div>
+        </div>
+        <div className="admin-footer"></div>
+      </div>
+    </div>
+  );
+};
 
 export default withRouter(AdminPanel);

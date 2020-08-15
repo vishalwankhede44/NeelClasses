@@ -58,9 +58,8 @@ courseRouter.get("/:courseId", async function (request, response) {
           CourseInfo = {
             courseName: doc.data().courseName,
             courseStream: doc.data().courseStream,
-            branch: doc.data().branch,
+            courseBranch: doc.data().courseBranch,
             courseYear: doc.data().courseYear,
-            courseFees: doc.data().courseFees,
             courseId: doc.id,
             coursePrice: doc.data().coursePrice,
             courseRating: doc.data().courseRating,

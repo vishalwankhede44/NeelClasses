@@ -58,7 +58,6 @@ allCoursesRouter.get('/',async function(request,response){
                 courseStream:doc.data().courseStream,
                 branch:doc.data().branch,
                 courseYear:doc.data().courseYear,
-                courseFees:doc.data().courseFees,
                 courseId:doc.id,
                 coursePrice:doc.data().coursePrice,
                 courseRating:doc.data().courseRating,
