@@ -20,7 +20,7 @@ const adminUploadRouter = require("./routers/adminUploadRouter");
 const adminUploadNotesRouter = require("./routers/adminUploadNotesRouter");
 const adminUploadVideoRouter = require("./routers/adminUploadVideoRouter");
 const adminCourseAddEditRouter = require("./routers/adminCourseAddEditRouter");
-
+const payment = require("./routers/payment");
 app.set("views", path.join(__dirname, "views"));
 app.engine("html", require("ejs").renderFile);
 app.set("view engine", "html");
@@ -64,9 +64,11 @@ app.use("/admin/courses", adminCoursesRouter);
 app.use("/admin/upload", adminUploadRouter);
 app.use("/admin/upload/notes", adminUploadNotesRouter);
 app.use("/admin/upload/video", adminUploadVideoRouter);
-app.use("/admin/course",adminCourseAddEditRouter);
+app.use("/admin/course", adminCourseAddEditRouter);
 app.use("/admin/addcourse", adminCourseAddEditRouter);
 app.use("/admin/editcourse", adminCourseAddEditRouter);
+app.use("/payment", payment);
+
 // app.use('/getCourse',getCourse);
 
 app.listen(5000, () => {
