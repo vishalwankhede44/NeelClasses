@@ -27,6 +27,8 @@ allCoursesRouter.get('/',async function(request,response){
        
         querySnapshot.forEach(async function(doc) {
 
+          if(doc.data().courseStatus == "SHOW" || doc.data().courseStatus == undefined) {
+
           await doc.ref.collection("Videos").get().then(function(querySnapshot) {
             let VideoList = [];
            querySnapshot.forEach(function(doc){
@@ -66,6 +68,7 @@ allCoursesRouter.get('/',async function(request,response){
             };
             CourseInfoList.push(CourseInfo);
             console.log(CourseInfoList.length);
+          }
         });
    
         

@@ -1,15 +1,16 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 
 import HomeSearchPanel from './HomePanel'
-// import UserTestimonial from './user_testimonial'
-// import CourseIndexContainer from '../course_index/course_index_container'
+import Navbar from "../../components/Navbar";
+import AccessNavbar from "../../components/AccessNavbar";
+import { useCookies } from "react-cookie";
+
 
 const Home = () => {
     return(
         <div>
-            < HomeSearchPanel />
-            {/* <CourseIndexContainer />
-            < UserTestimonial /> */}
+           <Navbar/>
+            <HomeSearchPanel />
         </div>
     )
 }

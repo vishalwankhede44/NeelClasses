@@ -12,7 +12,7 @@ addUserRouter.post('/',(req,res) => {
         mobile: req.body.mobile,
       };
 
-      console.log(signUpDetails);
+    console.log(signUpDetails);
     var db = firebase.firestore();
     var docRef = db.collection("Users");
     var queryRef = docRef.where("mobile","==",signUpDetails.mobile).get().then(function(doc){
