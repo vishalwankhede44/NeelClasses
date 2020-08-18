@@ -1,52 +1,114 @@
-import React  from "react";
-import Menu from './Menu';
-import MenuItem  from './MenuItem';
-import MenuButton from './MenuButton';
+import React, { useState, useEffect } from "react";
+import Menu from "./Menu";
+import MenuItem from "./MenuItem";
+import MenuButton from "./MenuButton";
+import firebase from "../firebase";
 import "../App.css";
+import { useCookies } from "react-cookie";
+import { withRouter } from "react-router-dom";
 
-class Navbar extends React.Component {
-    constructor(props){
-      super(props);
-      this.state={
-        menuOpen:false,
-      }
-    }
-    
-    handleMenuClick() {
-      this.setState({menuOpen:!this.state.menuOpen});
-    }
-    
-    handleLinkClick() {
-      this.setState({menuOpen: false});
-    }
+const Navbar = (props) => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [cookie, setCookie, removeCookie] = useCookies([
+    "uid",
+    "name",
+    "mobile",
+    "role",
+  ]);
+  const [loggedIn, setLogin] = useState(false);
 
-    render(){
-      const menu = ['About','Our Products','Services','FAQ','Contact Us']
-      const menuItems = menu.map((val,index)=>{
-        return (
-          <MenuItem 
-            key={index} 
-            delay={`${index * 0.2}s`}
-            onClick={()=>{this.handleLinkClick();}}>{val}</MenuItem>)
-      });
+  useEffect(() => {
+    checkLogin();
+  }, []);
 
-
-    
-      return(
-        <div>
-            <div className="nav-container">
-                <div className="nav-brand">
-                  <h1>Neels</h1>
-                </div>
-                <div className="menu">
-                    <MenuButton open={this.state.menuOpen} onClick={()=>this.handleMenuClick()} color='#222831'/>
-                </div>
-            </div>
-            <Menu open={this.state.menuOpen}>
-                {menuItems}
-            </Menu>
-        </div>
-      )
+  function checkLogin() {
+    if ({ cookie }.cookie.name == undefined) {
+      console.log("Log in first");
+      setLogin(false);
+      return false;
+    } else {
+      console.log("Already logged in");
+      console.log({ cookie }.cookie.role);
+      // props.history.push("/");
+      setLogin(true);
+      return true;
     }
   }
-  export default Navbar;
+  function logOut() {
+    firebase
+      .auth()
+      .signOut()
+      .then(function () {
+        removeCookie("name");
+        removeCookie("mobile");
+        removeCookie("uid");
+        removeCookie("role");
+        console.log("Logout successfully");
+        props.history.push("/login");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+  const handleMenuClick = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const handleLinkClick = (key) => {
+    setMenuOpen(false);
+    console.log(key)
+    if (key === "Logout" && loggedIn) {
+      logOut();
+    }
+  };
+  const menu = [
+    {
+      name: "About",
+      url: "/about",
+    },
+    {
+      name: "Contact",
+      url: "/contact",
+    },
+    {
+      name: "Courses",
+      url: "/courses",
+    },
+    {
+      name: `${loggedIn ? "Logout" : "Login"}`,
+      url: `${loggedIn ? "" : "/login"}`,
+    },
+  ];
+  const menuItems = menu.map((Links, index) => {
+    return (
+      <MenuItem
+        key={index}
+        delay={`${index * 0.2}s`}
+        onClick={handleLinkClick}
+        url={Links.url}
+        index={index}
+      >
+        {Links.name}
+      </MenuItem>
+    );
+  });
+
+  return (
+    <div>
+      <div className="nav-container">
+        <div className="nav-brand">
+          <p>Neels</p>
+        </div>
+        <div className="menu">
+          <MenuButton
+            open={menuOpen}
+            onClick={() => handleMenuClick()}
+            color="#222831"
+          />
+        </div>
+      </div>
+      <Menu open={menuOpen}>{menuItems}</Menu>
+    </div>
+  );
+};
+export default withRouter(Navbar);

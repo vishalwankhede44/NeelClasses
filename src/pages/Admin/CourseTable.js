@@ -55,8 +55,9 @@ const TableComponent = (props) => {
                 <td>{course.courseYear}</td>
                 <td>{course.courseRating}</td>
                 <td>
-                  <button className="link-view-contents" to={`/course/${course.courseName}`}>
-                    <span><FontAwesomeIcon icon={faHandPointRight} /></span> View Contents
+                  <button className="link-view-contents" >
+                    <span><FontAwesomeIcon icon={faHandPointRight} /></span>
+                    <Link to={`/course/${course.courseName}`}>View Contents</Link>
                   </button>
                 </td>
                 <td>{course.coursePrice}</td>
@@ -67,6 +68,7 @@ const TableComponent = (props) => {
                       props.setShowCoursesMethod(false);
                       props.setUploadVideosNotesMethod(false);
                       props.setCourseMethod(course);
+                      props.setButtonClick();
                     }}
                   >
                     <span><FontAwesomeIcon icon={faEdit} /></span> Edit

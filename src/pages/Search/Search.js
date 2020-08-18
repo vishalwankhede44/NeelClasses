@@ -5,9 +5,7 @@ import { loadProgressBar } from 'axios-progress-bar';
 import 'axios-progress-bar/dist/nprogress.css'
 
 import SearchCourse from "./SearchCourse"
-// import { faSearch } from "@fortawesome/free-solid-svg-icons";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import Navbar from "../../components/Navbar";
 
 class SearchIndex extends React.Component {
     constructor(props) {
@@ -134,6 +132,7 @@ class SearchIndex extends React.Component {
         if (this.state.filterCourses.length !== 0 && this.state.loading === 100) {
             return (
                 <div className="search-container">
+                 <Navbar/>
                     <div className="search-header" >
                         <div className="search-header-inner">
                             <div className="search-header-title">{this.state.filterCourses.length} results for <b>{this.props.match.params.searchString}</b></div>

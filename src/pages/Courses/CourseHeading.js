@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import { browserHistory } from "react-router";
-// import CourseInfo from "./course_info"
+import React, { useState, useEffect, useLayoutEffect } from "react";
+import { withRouter } from "react-router-dom";
 import axios from "axios";
-
+import ReactDOM from "react-dom";
 import {
   faStar,
   faStarHalfAlt,
@@ -12,36 +11,87 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCookies } from "react-cookie";
 
-// import CourseFeed from "./course_feed";
-
 const CourseHeading = (props) => {
   const [cookie, setCookie, removeCookie] = useCookies([
     "uid",
     "name",
     "mobile",
   ]);
+  const [loggedIn, setLogin] = useState(false);
 
-  function enroll() {
-    console.log("I got clicked");
+  useLayoutEffect(() => {
+    if (props.course.courseId != undefined) {
+      checkAccess();
+    }
+    checkLogin();
+  });
 
+  function checkLogin() {
+    if ({ cookie }.cookie.name == undefined) {
+      console.log("Log in first");
+      setLogin(false);
+      return false;
+    } else {
+      console.log("Already logged in");
+      if ({ cookie }.cookie.role == "Admin") {
+        props.accessMethod(true);
+      }
+      // props.history.push("/");
+      setLogin(true);
+      return true;
+    }
+  }
+  function checkAccess() {
+    console.log(props.course.courseId);
     const uid = { cookie }.cookie.uid;
+
     const courseId = props.course.courseId;
+    if (courseId == undefined) return null;
     const Info = {
       uid: uid,
       courseId: courseId,
     };
-
-    console.log(Info);
     axios
-      .post("http://localhost:5000/enrollCourse", Info)
+      .post("http://localhost:5000/checkAccess", Info)
       .then((res) => {
         console.log(res.data);
-        if (res.data == "Already") alert("Course already purchased");
-        else alert("Course purchased successfully");
+        if (res.data == "Yes") props.accessMethod(true);
+        else props.accessMethod(false);
       })
       .catch((err) => {
         console.error(err);
       });
+  }
+
+  function enroll() {
+    axios.get("http://localhost:5000/payment").then((res) => {
+      {
+        document.getElementById("cd").innerHTML = res.data;
+      }
+    
+    });
+    // const uid = { cookie }.cookie.uid;
+    // if (uid == undefined) props.history.push("/login");
+    // else {
+    //   const courseId = props.course.courseId;
+    //   const Info = {
+    //     uid: uid,
+    //     courseId: courseId,
+    //   };
+
+    //   console.log(Info);
+    //   axios
+    //     .post("http://localhost:5000/enrollCourse", Info)
+    //     .then((res) => {
+    //       console.log(res.data);
+    //       if (res.data == "Already") alert("Course already purchased");
+    //       else alert("Course purchased successfully");
+    //       checkAccess();
+    //     })
+    //     .catch((err) => {
+    //       console.error(err);
+    //     });
+    // }
   }
 
   function renderRating() {
@@ -308,15 +358,17 @@ const CourseHeading = (props) => {
               </div>
 
               <div className="course-description">
-                <div>
-                  <button
-                    type="submit"
-                    className="btn-enroll"
-                    onClick={() => enroll()}
-                  >
-                    Enroll for<br></br>$2499/-
-                  </button>
-                </div>
+                {props.access ? null : (
+                  <div>
+                    <button
+                      type="submit"
+                      className="btn-enroll"
+                      onClick={() => enroll()}
+                    >
+                      Enroll for<br></br>${props.course.coursePrice} /-
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -326,4 +378,4 @@ const CourseHeading = (props) => {
   );
 };
 
-export default CourseHeading;
+export default withRouter(CourseHeading);

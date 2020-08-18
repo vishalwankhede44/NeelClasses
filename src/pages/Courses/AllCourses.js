@@ -3,7 +3,7 @@ import axios from 'axios';
 import "firebase/firestore";
 import { loadProgressBar } from 'axios-progress-bar';
 import 'axios-progress-bar/dist/nprogress.css'
-
+import Navbar from "../../components/Navbar";
 import AllCoursesContainer from "./AllCourseContainer"
 // import { faSearch } from "@fortawesome/free-solid-svg-icons";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -51,14 +51,6 @@ class AllCourses extends React.Component {
                 console.log(`Get Error ${error}`)
             }
     }      
-    // componentDidUpdate(prevProps) {
-    //     if (this.props.match.params.searchString !== prevProps.match.params.searchString) {
-    //         this.props.fetchAllCourses()
-    //             .then(() => {
-    //                 this.filterArr()
-    //             })
-    //     }
-    // }
 
     handleClickPage(e) {
         this.setState({
@@ -130,7 +122,10 @@ class AllCourses extends React.Component {
     render() {
         if (this.state.filterCourses.length !== 0 && this.state.loading === 100) {
             return (
+                <div>
+                     <Navbar/>
                 <div className="search-container">
+                   
                     <div className="search-header" >
                         <div className="search-header-inner">
                             <div className="search-header-title">{this.state.filterCourses.length} Courses Available </div>
@@ -154,6 +149,7 @@ class AllCourses extends React.Component {
                         {this.renderPageNumbers()}
                         </div>
                     </div>
+                </div>
                 </div>
             )
         } else if ( this.state.filterCourses.length === 0  && this.state.loading ===100) {

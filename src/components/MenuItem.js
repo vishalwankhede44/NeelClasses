@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 class MenuItem extends React.Component{
     constructor(props){
       super(props);
@@ -26,6 +27,7 @@ class MenuItem extends React.Component{
           fontFamily:`'Open Sans', sans-serif`,
           fontSize: '1.5rem',
           padding: '0.5rem 0 0 0',
+          textDecoration:'none',
           margin: '0 5%',
           cursor: 'pointer',
           color: this.state.hover? '#4f8a8b':'#222831',
@@ -34,17 +36,19 @@ class MenuItem extends React.Component{
           animationDelay:this.props.delay,
         },
       }
+    
       return(
         <div>
           <div style={styles.container}>
-            <div 
+            <Link 
             style={styles.menuItem} 
             onMouseEnter={()=>{this.handleHover();}} 
             onMouseLeave={()=>{this.handleHover();}}
-            onClick={this.props.onClick}
+            onClick={() => this.props.onClick(this.props.children)}
+            to={this.props.url}
             >
             {this.props.children}  
-            </div>
+            </Link>
           </div> 
         </div>
         

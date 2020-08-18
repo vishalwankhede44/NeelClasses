@@ -23,11 +23,13 @@ searchRouter.get('/:searchString',async function(request,response) {
       let CourseList = [];
       querySnapshot.forEach(function(doc) {
         var compareString = doc.data().courseName;
-          if(compareString.toUpperCase() === searchCourseString.toUpperCase()){
+          if(compareString.toUpperCase().includes(searchCourseString.toUpperCase())){
+            if(doc.data().courseStatus == "SHOW" || doc.data().courseStatus == undefined){
             const CourseInfo = {
                 courseName :doc.data().courseName,
                 courseStream:doc.data().courseStream,
-                branch:doc.data().branch,
+                courseField :doc.data().courseField,
+                courseBranch:doc.data().courseBranch,
                 courseYear:doc.data().courseYear,
                 courseFees:doc.data().courseFees,
                 courseId:doc.id,
@@ -35,6 +37,7 @@ searchRouter.get('/:searchString',async function(request,response) {
                 courseRating:doc.data().courseRating,
             };
             CourseList.push(CourseInfo);
+          }
           }
 
         });

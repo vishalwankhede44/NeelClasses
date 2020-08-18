@@ -40,22 +40,7 @@ const AdminPanel = (props) => {
     checkLogin();
   }, []);
 
-  function logOut() {
-    firebase
-      .auth()
-      .signOut()
-      .then(function () {
-        removeCookie("name");
-        removeCookie("mobile");
-        removeCookie("uid");
-        removeCookie("role");
-        console.log("Signout successfully");
-        props.history.push("/");
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
+
   function checkLogin() {
     if ({ cookie }.cookie.name == undefined) {
       console.log("Log in first");
@@ -72,7 +57,22 @@ const AdminPanel = (props) => {
       return true;
     }
   }
-
+  function logOut() {
+    firebase
+      .auth()
+      .signOut()
+      .then(function () {
+        removeCookie("name");
+        removeCookie("mobile");
+        removeCookie("uid");
+        removeCookie("role");
+        console.log("Signout successfully");
+        props.history.push("/");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
   const onCourseClick = () => {
     props.history.push("/admin/courses");
     getDataForCourses();
@@ -138,6 +138,12 @@ const AdminPanel = (props) => {
     console.log(courseInfo);
     setCourse(courseInfo);
   };
+  const editClick = () => {
+    setOnCourseClick(false);
+    setOnAddEditClick(true);
+    setOnUploadClick(false);
+    setOnLogoutClick(false);
+  }
 
   return (
     <div>
@@ -206,6 +212,7 @@ const AdminPanel = (props) => {
                   setShowCoursesMethod={setShowCourses}
                   setUploadVideosNotesMethod={setUploadVideosNotes}
                   setCourseMethod={fromEditForm}
+                  setButtonClick={editClick}
                 />
               </div>
             ) : (

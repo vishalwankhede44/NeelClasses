@@ -1,93 +1,79 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { withRouter } from "react-router-dom";
-import axios from "axios";
+import { withRouter, Link } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
-class HomeSearchPanel extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchString: "",
-      iconClassName: "search-icon",
-    };
-    this.inputFocus = this.inputFocus.bind(this);
-    this.inputUnFocus = this.inputUnFocus.bind(this);
-    this.getSearchInput = this.getSearchInput.bind(this);
-  }
-  getSearchInput(e) {
-    if (e.key === "Enter") {
-      this.searchClickHandle();
+const HomeSearchPanel = (props) => {
+  const [searchString, setSearchString] = useState("");
+  const [cookie, setCookie] = useCookies(["uid", "name", "mobile", "role"]);
+  const [loggedIn, setLogin] = useState(false);
+
+  useEffect(() => {
+    checkLogin();
+  }, []);
+
+  function checkLogin() {
+    if ({ cookie }.cookie.name == undefined) {
+      console.log("Log in first");
+      setLogin(false);
+      return false;
     } else {
-      this.setState({
-        searchString: e.target.value,
-      });
+      console.log("Already logged in");
+      console.log({ cookie }.cookie.role);
+      // props.history.push("/");
+      setLogin(true);
+      return true;
     }
   }
-  searchClickHandle() {
-    this.props.history.push(`/courses/search/${this.state.searchString}`);
-  }
+  const getSearchInput = (e) => {
+    if (e.key === "Enter") {
+      searchClickHandle();
+    } else {
+      setSearchString(e.target.value);
+    }
+  };
+  const searchClickHandle = () => {
+    props.history.push(`/courses/search/${searchString}`);
+  };
 
-  inputFocus() {
-    this.setState({
-      iconClassName: "search-icon-open",
-    });
-  }
-
-  inputUnFocus() {
-    this.setState({
-      iconClassName: "search-icon",
-    });
-  }
-
-  checkP() {
-    console.log("CHECK P");
-    axios.get("http://localhost:5000/payment").then((res) => {
-      console.log(res.data);
-    })
-    .catch((err) => {
-        console.error(err);
-      });;
-  }
-
-  render() {
-    return (
-      <div>
-        <div className="home-box">
-          <div className="home-content">
-            <p className="home-headline">The Premium System Education</p>
-            <p className="home-subline">Future of Education Technology</p>
-            <div class="wrap">
-              <div class="search">
-                <input
-                  type="text"
-                  class="searchTerm"
-                  placeholder="Search for anything"
-                  onFocus={this.inputFocus}
-                  onBlur={this.inputUnFocus}
-                  onKeyUp={this.getSearchInput}
-                ></input>
-                <button type="submit" class="searchButton">
-                  <FontAwesomeIcon
-                    icon={faSearch}
-                    className={this.state.iconClassName}
-                  />
-                </button>
-              </div>
-            </div>
-
-            <div className="home-button-new">
-              <button onClick={this.checkP} class="btn-in">
-                Payment
+  return (
+    <div>
+      <div className="home-box">
+        <div className="home-content">
+          <p className="home-headline">The Premium System Education</p>
+          <p className="home-subline">Future of Education Technology</p>
+          <div class="wrap">
+            <div class="search">
+              <input
+                type="text"
+                class="searchTerm"
+                placeholder="Search for anything"
+                onKeyUp={getSearchInput}
+              ></input>
+              <button
+                type="submit"
+                class="searchButton"
+                onClick={getSearchInput}
+              >
+                <FontAwesomeIcon icon={faSearch} />
               </button>
-              <button class="btn-up">Sign Up</button>
             </div>
           </div>
+          {loggedIn ? null : (
+            <div className="home-button-new">
+              <Link to="/login" class="btn-in">
+                Log In
+              </Link>
+              <Link to="/signup" class="btn-up">
+                Sign Up
+              </Link>
+            </div>
+          )}
         </div>
       </div>
-    );
-  }
-}
-
+    </div>
+  );
+};
 export default withRouter(HomeSearchPanel);

@@ -68,6 +68,7 @@ app.use("/admin/course", adminCourseAddEditRouter);
 app.use("/admin/addcourse", adminCourseAddEditRouter);
 app.use("/admin/editcourse", adminCourseAddEditRouter);
 app.use("/payment", payment);
+app.use("/callback", payment);
 
 // app.use('/getCourse',getCourse);
 

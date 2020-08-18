@@ -29,13 +29,11 @@ const Login = (props) => {
 
   function checkLogin() {
     if ({ cookie }.cookie.name == undefined) {
-      console.log("Log in first");
       setLogin(false);
       return false;
     } else {
-      console.log("Already logged in");
       console.log({ cookie }.cookie.role);
-      // props.history.push("/");
+      props.history.push("/");
       setLogin(true);
       return true;
     }
@@ -87,6 +85,8 @@ const Login = (props) => {
             setCookie("role", res.data[0].role, { path: "/" });
             if (res.data[0].role == "Admin") {
               props.history.push("/admin");
+            }else{
+              props.history.push("/");
             }
           })
           .catch((err) => {
@@ -189,14 +189,6 @@ const Login = (props) => {
               hidden={!otpVisibilty}
             >
               Log In
-            </Button>
-            <Button
-              className="logbtn"
-              type="button"
-              onClick={logOut}
-              hidden={!loggedIn}
-            >
-              Log Out
             </Button>
           </div>
         </Form>
