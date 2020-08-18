@@ -16,7 +16,7 @@ class AllCourses extends React.Component {
             filterCourses: [],
             order: "Lowest Ratting",
             currentPage: 1,
-            coursePerPage: 5,
+            coursePerPage: 3,
             loading : 0,
             courseList:[],
         }
@@ -125,7 +125,6 @@ class AllCourses extends React.Component {
                 <div>
                      <Navbar/>
                 <div className="search-container">
-                   
                     <div className="search-header" >
                         <div className="search-header-inner">
                             <div className="search-header-title">{this.state.filterCourses.length} Courses Available </div>

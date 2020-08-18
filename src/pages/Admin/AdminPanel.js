@@ -150,7 +150,7 @@ const AdminPanel = (props) => {
       <div className="admin-panel-container">
         <div className="admin-header">
           <div className="heading-main">
-            <div className="admin-header-brand">NEEL'S </div>
+            <div className="admin-header-brand">NEEL'S Classes </div>
             <div className="sub"> Maths Classes</div>
           </div>
           <div className="admin-header-title">Admin Panel</div>

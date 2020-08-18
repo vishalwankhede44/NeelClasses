@@ -21,8 +21,8 @@ class MenuButton extends React.Component {
     render(){
       const styles = {
         container: {
-          height: '36px',
-          width: '36px',
+          height: '35px',
+          width: '35px',
           display:'flex',
           flexDirection: 'column',
           justifyContent: 'center',
@@ -31,7 +31,7 @@ class MenuButton extends React.Component {
           padding: '4px',
         },
         line: {
-          height: '3px',
+          height: '2.5px',
           width: '20px',
           background: this.state.color,
           transition: 'all 0.2s ease',

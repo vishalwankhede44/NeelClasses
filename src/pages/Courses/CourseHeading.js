@@ -322,10 +322,6 @@ const CourseHeading = (props) => {
     }
   }
 
-  // renderPrice() {
-  //     let str = props.course.coursePrice.toString();
-  //     return str.slice(0, str.length - 2) + "." + str.slice(str.length - 2)
-  // }
 
   function videoOpenHandle() {
     let courseId = Object.values(props.videos)[0][0].course_content_id;
@@ -365,7 +361,7 @@ const CourseHeading = (props) => {
                       className="btn-enroll"
                       onClick={() => enroll()}
                     >
-                      Enroll for<br></br>${props.course.coursePrice} /-
+                      Enroll for<br></br>{props.course.coursePrice} <span>&#8377;</span>/-
                     </button>
                   </div>
                 )}

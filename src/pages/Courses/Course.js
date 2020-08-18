@@ -118,7 +118,6 @@ const Course = (props) => {
           accessMethod={setAccess}
           access={access}
         />
-        <div className="title-course">Course Contents</div>
         <CourseContent
           course={courseInfo}
           showVideoMethod={showVideoContainer}

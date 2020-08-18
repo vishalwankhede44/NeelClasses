@@ -144,13 +144,13 @@ class AllCoursesContainer extends React.Component {
 
     renderPrice() {
         let str = this.props.course.coursePrice.toString();
-        return str.slice(0, str.length - 2) + "." + str.slice(str.length - 2)
+        return str
     }
 
     render() {
         return(
 
-            <div className="search-container3">
+            <div className="search-container2">
                 <Link to={`/course/${this.props.course.courseName}`} className="search-feed">
                     <div className="card">
                         <div className="img">
@@ -175,7 +175,7 @@ class AllCoursesContainer extends React.Component {
                                 {this.renderRating()}
                             </span>
                             </div>
-                            <div className="search-rating-span">${this.renderPrice()}</div>
+                            <div className="search-rating-span">{this.renderPrice()} <span>&#8377;</span></div>
                         </div>
                         </div>
                     </div>
