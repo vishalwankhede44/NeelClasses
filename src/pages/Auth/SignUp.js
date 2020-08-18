@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
-// import "../componentscss/logincontainerCss.css";
+
 import signUpImage from "../../images/loginimg.svg";
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup,Input} from 'reactstrap';
 import axios from 'axios';
 import firebase from '../../firebase';
+import Navbar from "../../components/Navbar"
 
 const SignUp = () => {
     const [name,setName] = useState('');
@@ -94,6 +95,8 @@ const SignUp = () => {
 
     }
     return(
+        <div>
+            <Navbar/>
             <div className="logincontainer">
                 <div className="row ">
                     <label className="success-msg" hidden={verify}><strong>Success ! &nbsp;</strong></label>
@@ -123,6 +126,7 @@ const SignUp = () => {
                             </div>
                         </Form>
                     </div>
+                </div>
                 </div>
     );
 }

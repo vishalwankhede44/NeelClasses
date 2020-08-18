@@ -16,11 +16,11 @@ class NotesContainer extends React.Component {
                     <div className="modal-back-notes">
                         
                         <div id="notes-container" style={{boxShadow:"none"}}>
-                        <iframe
-                        className="notes-viewer"
-                        title="file"
-                        src={`${this.props.notes.docUrl}#toolbar=0`}
-                        />
+                            <iframe
+                            className="notes-viewer"
+                            title="file"
+                            src={`${this.props.notes.docUrl}#toolbar=0`}
+                            />
                         </div>
                         <div className="video-close">
                                 <span className="close-button" onClick={() => this.closeNotesContainer()}><FontAwesomeIcon icon={faTimes} /></span>{/*<button className="close-button" onClick={() => this.closeVideoContainer()}>close</button> */}

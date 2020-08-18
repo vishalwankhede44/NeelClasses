@@ -17,20 +17,24 @@ checkAccess.post("/", async (req, res) => {
     userId: userDetails.id,
   };
 
-  var docRef = db
-    .collection("Courses")
-    .doc(userDetails.courseId)
-    .collection("Users");
-  var queryRef = docRef
-    .where("userId", "==", data.userId)
-    .get()
-    .then(function (doc) {
-      if (doc.empty) {
-        res.send("No");
-      } else {
-        res.send("Yes");
-      }
-    });
+  if (data.userId == undefined) {
+    res.send("No");
+  } else {
+    var docRef = db
+      .collection("Courses")
+      .doc(userDetails.courseId)
+      .collection("Users");
+    var queryRef = docRef
+      .where("userId", "==", data.userId)
+      .get()
+      .then(function (doc) {
+        if (doc.empty) {
+          res.send("No");
+        } else {
+          res.send("Yes");
+        }
+      });
+  }
 });
 
 module.exports = checkAccess;

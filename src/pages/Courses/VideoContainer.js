@@ -24,6 +24,8 @@ class VideoContainer extends React.Component {
                             controls={true} 
                             url={this.props.video.videoUrl}
                             className="video-player"
+                            width='640px'
+                            height='360px'
                             />
                             
                         </div>

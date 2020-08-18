@@ -15,7 +15,7 @@ class MenuItem extends React.Component{
     render(){
       const styles={
         container: {
-          padding:'3rem 0',
+          padding:'2rem 0',
           display:'flex',
           justifyContent:'center',
           alignItems:'center',
@@ -26,7 +26,7 @@ class MenuItem extends React.Component{
         menuItem:{
           fontFamily:`'Open Sans', sans-serif`,
           fontSize: '1.5rem',
-          padding: '0.5rem 0 0 0',
+          padding: '0.3rem 0 0 0',
           textDecoration:'none',
           margin: '0 5%',
           cursor: 'pointer',
