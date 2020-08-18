@@ -118,7 +118,7 @@ class SearchIndex extends React.Component {
         let currentCourse = this.state.filterCourses.slice(indexOfFirstCourse, indexOfLastCourse)
         console.log(JSON.stringify(currentCourse));
         return (
-           <div className="search-box" >
+           <div className="search-box2" >
                 {
                     currentCourse.map((course, i) => (
                          <SearchCourse course={course} key={i} />
@@ -160,9 +160,12 @@ class SearchIndex extends React.Component {
             )
         } else if ( this.state.filterCourses.length === 0  && this.state.loading ===100) {
             return (
-                <div className="search-error">
-                    <div className="search-error-text">Sorry, we couldn't find any results for {this.props.match.params.searchString}</div>
-                    {/* <FontAwesomeIcon icon={faSearch} className="search-error-icon" /> */}
+                <div>
+                    <Navbar/>
+                    <div className="search-error">
+                        <div className="search-error-text">Sorry, we couldn't find any results for {this.props.match.params.searchString}</div>
+                        {/* <FontAwesomeIcon icon={faSearch} className="search-error-icon" /> */}
+                    </div>
                 </div>
             )
         }
