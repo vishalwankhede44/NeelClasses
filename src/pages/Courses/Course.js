@@ -47,7 +47,7 @@ const Course = (props) => {
     const uid = { cookie }.cookie.uid;
 
     const courseId = courseInfo.courseId;
-    if (courseId == undefined) return null;
+    if (courseId == undefined || uid == undefined) return null;
     const Info = {
       uid: uid,
       courseId: courseId,
@@ -124,7 +124,7 @@ const Course = (props) => {
           showNotesMethod={showNotesContainer}
         />
         {showVideo && access ? (
-          <VideoContainer video={videoInfo} closeVideo={hideVideoContainer} />
+            <VideoContainer video={videoInfo} closeVideo={hideVideoContainer} />
         ) : null}
         {showNotes && access ? (
           <NotesContainer notes={notesInfo} closeNotes={hideNotesContainer} />

@@ -21,15 +21,14 @@ const adminUploadNotesRouter = require("./routers/adminUploadNotesRouter");
 const adminUploadVideoRouter = require("./routers/adminUploadVideoRouter");
 const adminCourseAddEditRouter = require("./routers/adminCourseAddEditRouter");
 const payment = require("./routers/payment");
+
+const PORT = process.env.PORT || 5000;
+
 app.set("views", path.join(__dirname, "views"));
 app.engine("html", require("ejs").renderFile);
 app.set("view engine", "html");
 
-// cors = require("cors");
-// app.use(cors());
 
-// app.use('/',indexRouter);
-// app.use('/',router);
 
 const logger = require("morgan");
 const cors = require("cors");
@@ -70,8 +69,6 @@ app.use("/admin/editcourse", adminCourseAddEditRouter);
 app.use("/payment", payment);
 app.use("/callback", payment);
 
-// app.use('/getCourse',getCourse);
-
-app.listen(5000, () => {
-  console.log("Server Started");
+app.listen(PORT, () => {
+  console.log(`Server Started on PORT ${PORT}`);
 });

@@ -62,6 +62,10 @@ const Navbar = (props) => {
   };
   const menu = [
     {
+      name: "Home",
+      url: "/",
+    },
+    {
       name: "About",
       url: "/about",
     },
@@ -72,6 +76,10 @@ const Navbar = (props) => {
     {
       name: "Courses",
       url: "/courses",
+    },
+    {
+      name: "SignUp",
+      url: "/signup",
     },
     {
       name: `${loggedIn ? "Logout" : "Login"}`,

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-// import "../componentscss/logincontainerCss.css";
+
 import signUpImage from "../../images/loginimg.svg";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import { Button, Form, FormGroup, Input } from "reactstrap";
 import axios from "axios";
 import firebase from "../../firebase";
-import { withRouter } from "react-router-dom";
+import Navbar from "../../components/Navbar";
 
-const SignUp = (props) => {
+const SignUp = () => {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
   const [otp, setOtp] = useState("");
@@ -43,7 +43,6 @@ const SignUp = (props) => {
             console.log(res.data);
             if (res.data == "Done") {
               setVerify(false);
-              props.history.push("/login");
             } else {
               console.log("You're account already exist");
             }
@@ -96,78 +95,81 @@ const SignUp = (props) => {
       });
   }
   return (
-    <div className="logincontainer">
-      <div className="row ">
-        <label className="success-msg" hidden={verify}>
-          <strong>Success ! &nbsp;</strong>
-        </label>
-      </div>
-      <div className="login-card">
-        <div className="login-title">
-          <p className="login-title-text">Sign Up</p>
+    <div>
+      <Navbar />
+      <div className="logincontainer">
+        <div className="row ">
+          <label className="success-msg" hidden={verify}>
+            <strong>Success ! &nbsp;</strong>
+          </label>
         </div>
-        <Form className="form-body">
-          <FormGroup className="form-body-component">
-            <Input
-              className="mobile-field"
-              type="text"
-              name="funame"
-              id="exampleName"
-              placeholder="Full Name"
-              value={name}
-              onChange={(event) => setName(event.target.value)}
-            />
-          </FormGroup>
-          <FormGroup className="form-body-component">
-            <Input
-              className="mobile-field"
-              type="number"
-              name="mobile"
-              id="exampleMobile"
-              placeholder="Mobile Number"
-              value={number}
-              onChange={(event) => setNumber(event.target.value)}
-            />
-          </FormGroup>
-          <FormGroup className="form-body-component">
-            <Input
-              className="otp-field"
-              type="number"
-              maxLength="6"
-              name="otp"
-              id="exampleOtp"
-              placeholder="Enter OTP"
-              hidden={otpVisibilty}
-              onChange={(event) => setOtp(event.target.value)}
-              value={otp}
-            />
-          </FormGroup>
-          <div
-            id="recaptcha"
-            className="recaptcha"
-            hidden={!otpVisibilty}
-          ></div>
-
-          <div className="buttons">
-            <Button
-              className="logbtn"
-              onClick={VerifyOtp}
-              hidden={otpVisibilty}
-            >
-              Verify OTP
-            </Button>
-            <Button
-              className="logbtn"
-              onClick={onSubmit}
-              hidden={!otpVisibilty}
-            >
-              Sign Up
-            </Button>
+        <div className="login-card">
+          <div className="login-title">
+            <p className="login-title-text">Sign Up</p>
           </div>
-        </Form>
+          <Form className="form-body">
+            <FormGroup className="form-body-component">
+              <Input
+                className="mobile-field"
+                type="text"
+                name="funame"
+                id="exampleName"
+                placeholder="Full Name"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+              />
+            </FormGroup>
+            <FormGroup className="form-body-component">
+              <Input
+                className="mobile-field"
+                type="number"
+                name="mobile"
+                id="exampleMobile"
+                placeholder="Mobile Number"
+                value={number}
+                onChange={(event) => setNumber(event.target.value)}
+              />
+            </FormGroup>
+            <FormGroup className="form-body-component">
+              <Input
+                className="otp-field"
+                type="number"
+                maxLength="6"
+                name="otp"
+                id="exampleOtp"
+                placeholder="Enter OTP"
+                hidden={otpVisibilty}
+                onChange={(event) => setOtp(event.target.value)}
+                value={otp}
+              />
+            </FormGroup>
+            <div
+              id="recaptcha"
+              className="recaptcha"
+              hidden={!otpVisibilty}
+            ></div>
+
+            <div className="buttons">
+              <Button
+                className="logbtn"
+                onClick={VerifyOtp}
+                hidden={otpVisibilty}
+              >
+                Verify OTP
+              </Button>
+              <Button
+                className="logbtn"
+                onClick={onSubmit}
+                hidden={!otpVisibilty}
+              >
+                Sign Up
+              </Button>
+            </div>
+          </Form>
+        </div>
       </div>
     </div>
   );
 };
 
-export default withRouter(SignUp);
+export default SignUp;

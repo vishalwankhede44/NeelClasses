@@ -8,6 +8,7 @@ import firebase from "../../firebase";
 import { Redirect } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { withRouter } from "react-router-dom";
+import Navbar from "../../components/Navbar"
 
 const Login = (props) => {
   const [number, setNumber] = useState("");
@@ -136,6 +137,8 @@ const Login = (props) => {
       });
   }
   return (
+    <div>
+    <Navbar/>
     <div className="logincontainer">
       <div className="login-card">
         <div className="login-title">
@@ -193,6 +196,7 @@ const Login = (props) => {
           </div>
         </Form>
       </div>
+    </div>
     </div>
   );
 };
