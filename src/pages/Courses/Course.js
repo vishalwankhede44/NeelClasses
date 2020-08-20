@@ -91,18 +91,20 @@ const Course = (props) => {
   const getDataFromFirebase = async () => {
     try {
       await axios
-        .get(`http://localhost:5000/course/${props.match.params.courseId}`, {
-          onDownloadProgress: (progressEvent) => {
-            var percentCompleted = Math.round(
-              (progressEvent.loaded * 100) / progressEvent.total
-            );
-            setLoading(percentCompleted);
-          },
-        })
+        .get(
+          `https://neelclasses.herokuapp.com/course/${props.match.params.courseId}`,
+          {
+            onDownloadProgress: (progressEvent) => {
+              var percentCompleted = Math.round(
+                (progressEvent.loaded * 100) / progressEvent.total
+              );
+              setLoading(percentCompleted);
+            },
+          }
+        )
         .then((res) => {
           console.log(res.data.CourseInfo);
           setCourseInfo(res.data.CourseInfo);
-          checkAccess();
         });
     } catch (error) {
       console.log(`Get Error ${error}`);
@@ -124,7 +126,7 @@ const Course = (props) => {
           showNotesMethod={showNotesContainer}
         />
         {showVideo && access ? (
-            <VideoContainer video={videoInfo} closeVideo={hideVideoContainer} />
+          <VideoContainer video={videoInfo} closeVideo={hideVideoContainer} />
         ) : null}
         {showNotes && access ? (
           <NotesContainer notes={notesInfo} closeNotes={hideNotesContainer} />

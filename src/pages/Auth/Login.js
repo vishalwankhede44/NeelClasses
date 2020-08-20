@@ -76,7 +76,7 @@ const Login = (props) => {
         };
 
         axios
-          .post("http://localhost:5000/getUser", LogInfo)
+          .post("https://neelclasses.herokuapp.com/getUser", LogInfo)
           .then((res) => {
             // console.log(res.data[0].name);
             // console.log(res.data[0].mobile);
@@ -111,7 +111,7 @@ const Login = (props) => {
     };
 
     axios
-      .post("http://localhost:5000/signup", SignUpInfo)
+      .post("https://neelclasses.herokuapp.com/signup", SignUpInfo)
       .then((res) => {
         console.log(res.data);
         if (res.data != "Done") {

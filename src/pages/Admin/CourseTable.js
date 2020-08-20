@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { withRouter, Link } from "react-router-dom";
 import axios from "axios";
-import { faEdit, faTrash, faHandPointRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEdit,
+  faTrash,
+  faHandPointRight,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const TableComponent = (props) => {
@@ -11,11 +15,11 @@ const TableComponent = (props) => {
 
   const deleteCourse = async (course) => {
     var s = window.confirm("Are you really want to delete this course");
-    if (!s) return; 
+    if (!s) return;
     course.courseStatus = "DELETE";
     try {
       await axios
-        .put(`http://localhost:5000/admin/editcourse`, course)
+        .put(`https://neelclasses.herokuapp.com/admin/editcourse`, course)
         .then((res) => {
           setStatus(res.data);
         });
@@ -55,14 +59,19 @@ const TableComponent = (props) => {
                 <td>{course.courseYear}</td>
                 <td>{course.courseRating}</td>
                 <td>
-                  <button className="link-view-contents" >
-                    <span><FontAwesomeIcon icon={faHandPointRight} /></span>
-                    <Link to={`/course/${course.courseName}`}>View Contents</Link>
+                  <button className="link-view-contents">
+                    <span>
+                      <FontAwesomeIcon icon={faHandPointRight} />
+                    </span>
+                    <Link to={`/course/${course.courseName}`}>
+                      View Contents
+                    </Link>
                   </button>
                 </td>
                 <td>{course.coursePrice}</td>
                 <td>
-                  <button className="btn-edit-course"
+                  <button
+                    className="btn-edit-course"
                     onClick={() => {
                       props.setAddEditMethod(true);
                       props.setShowCoursesMethod(false);
@@ -71,11 +80,22 @@ const TableComponent = (props) => {
                       props.setButtonClick();
                     }}
                   >
-                    <span><FontAwesomeIcon icon={faEdit} /></span> Edit
+                    <span>
+                      <FontAwesomeIcon icon={faEdit} />
+                    </span>{" "}
+                    Edit
                   </button>
                 </td>
                 <td>
-                  <button className="btn-delete-course" onClick={() => deleteCourse(course)}><span><FontAwesomeIcon icon={faTrash} /></span> Delete</button>
+                  <button
+                    className="btn-delete-course"
+                    onClick={() => deleteCourse(course)}
+                  >
+                    <span>
+                      <FontAwesomeIcon icon={faTrash} />
+                    </span>{" "}
+                    Delete
+                  </button>
                 </td>
               </tr>
             );

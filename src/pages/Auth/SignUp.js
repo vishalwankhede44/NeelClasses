@@ -38,7 +38,7 @@ const SignUp = () => {
         };
         console.log(SignUpInfo);
         axios
-          .post("http://localhost:5000/adduser", SignUpInfo)
+          .post("https://neelclasses.herokuapp.com/adduser", SignUpInfo)
           .then((res) => {
             console.log(res.data);
             if (res.data == "Done") {
@@ -64,7 +64,7 @@ const SignUp = () => {
     };
 
     axios
-      .post("http://localhost:5000/signup", SignUpInfo)
+      .post("https://neelclasses.herokuapp.com/signup", SignUpInfo)
       .then((res) => {
         console.log(res.data);
         if (res.data == "Done") {

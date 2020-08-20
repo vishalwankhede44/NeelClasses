@@ -52,7 +52,7 @@ const CourseHeading = (props) => {
       courseId: courseId,
     };
     axios
-      .post("http://localhost:5000/checkAccess", Info)
+      .post("https://neelclasses.herokuapp.com/checkAccess", Info)
       .then((res) => {
         console.log(res.data);
         if (res.data == "Yes") props.accessMethod(true);
@@ -64,11 +64,10 @@ const CourseHeading = (props) => {
   }
 
   function enroll() {
-    axios.get("http://localhost:5000/payment").then((res) => {
+    axios.get("https://neelclasses.herokuapp.com/payment").then((res) => {
       {
         document.getElementById("cd").innerHTML = res.data;
       }
-    
     });
     // const uid = { cookie }.cookie.uid;
     // if (uid == undefined) props.history.push("/login");
@@ -81,7 +80,7 @@ const CourseHeading = (props) => {
 
     //   console.log(Info);
     //   axios
-    //     .post("http://localhost:5000/enrollCourse", Info)
+    //     .post("https://neelclasses.herokuapp.com/enrollCourse", Info)
     //     .then((res) => {
     //       console.log(res.data);
     //       if (res.data == "Already") alert("Course already purchased");
@@ -322,7 +321,6 @@ const CourseHeading = (props) => {
     }
   }
 
-
   function videoOpenHandle() {
     let courseId = Object.values(props.videos)[0][0].course_content_id;
     props.showPlayer(0, courseId);
@@ -361,7 +359,8 @@ const CourseHeading = (props) => {
                       className="btn-enroll"
                       onClick={() => enroll()}
                     >
-                      Enroll for<br></br>{props.course.coursePrice} <span>&#8377;</span>/-
+                      Enroll for<br></br>
+                      {props.course.coursePrice} <span>&#8377;</span>/-
                     </button>
                   </div>
                 )}

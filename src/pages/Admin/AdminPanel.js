@@ -40,7 +40,6 @@ const AdminPanel = (props) => {
     checkLogin();
   }, []);
 
-
   function checkLogin() {
     if ({ cookie }.cookie.name == undefined) {
       console.log("Log in first");
@@ -117,7 +116,7 @@ const AdminPanel = (props) => {
   const getDataForCourses = async () => {
     try {
       await axios
-        .get(`http://localhost:5000/admin/courses`, {
+        .get(`https://neelclasses.herokuapp.com/admin/courses`, {
           onDownloadProgress: (progressEvent) => {
             var percentCompleted = Math.round(
               (progressEvent.loaded * 100) / progressEvent.total
@@ -143,7 +142,7 @@ const AdminPanel = (props) => {
     setOnAddEditClick(true);
     setOnUploadClick(false);
     setOnLogoutClick(false);
-  }
+  };
 
   return (
     <div>

@@ -31,7 +31,7 @@ class SearchIndex extends React.Component {
     }
     getDataFromFirebase = async () => {
             try {
-            await axios.get(`http://localhost:5000/courses/search/${this.props.match.params.searchString}`,{
+            await axios.get(`https://neelclasses.herokuapp.com/courses/search/${this.props.match.params.searchString}`,{
                 onDownloadProgress: (progressEvent) => {
                     var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
                     this.setState({

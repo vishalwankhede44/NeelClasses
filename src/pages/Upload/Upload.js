@@ -1,8 +1,7 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 import Form from "./Form";
 class Upload extends PureComponent {
- 
   render() {
     return (
       <div className="upload-container">
@@ -12,7 +11,7 @@ class Upload extends PureComponent {
             <div className="content">
               <div className="header">Upload File</div>
               <div className="description">
-                  <Form/>
+                <Form />
               </div>
             </div>
           </div>

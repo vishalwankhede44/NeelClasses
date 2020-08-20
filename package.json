@@ -36,9 +36,6 @@
     "eject": "react-scripts eject",
     "dev": "concurrently \"npm start\" \"npm run server\""
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "browserslist": {
     "production": [
       ">0.2%",

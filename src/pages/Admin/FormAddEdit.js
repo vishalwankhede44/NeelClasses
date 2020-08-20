@@ -58,17 +58,19 @@ const FormAddEdit = (props) => {
     } else {
       setTimeout(() => {
         try {
-          axios.get("http://localhost:5000/admin/course").then((res) => {
-            console.log(res.data.CourseStreamList);
-            const courseStreamList = [];
-            res.data.CourseStreamList.forEach((stream) => {
-              courseStreamList.push({
-                label: `${stream.courseStream}`,
-                value: stream.courseStream,
+          axios
+            .get("https://neelclasses.herokuapp.com/admin/course")
+            .then((res) => {
+              console.log(res.data.CourseStreamList);
+              const courseStreamList = [];
+              res.data.CourseStreamList.forEach((stream) => {
+                courseStreamList.push({
+                  label: `${stream.courseStream}`,
+                  value: stream.courseStream,
+                });
               });
+              callback(courseStreamList);
             });
-            callback(courseStreamList);
-          });
         } catch (error) {
           console.log(`Get Error ${error}`);
         }
@@ -82,7 +84,6 @@ const FormAddEdit = (props) => {
     }
   };
 
-  
   const getCourseFieldList = (inputValue, callback) => {
     if (!inputValue) {
       callback([]);
@@ -90,7 +91,9 @@ const FormAddEdit = (props) => {
       setTimeout(() => {
         try {
           axios
-            .get(`http://localhost:5000/admin/course/${courseStream}`)
+            .get(
+              `https://neelclasses.herokuapp.com/admin/course/${courseStream}`
+            )
             .then((res) => {
               console.log(res.data.CourseFieldList);
               const courseFieldList = [];
@@ -122,7 +125,9 @@ const FormAddEdit = (props) => {
       setTimeout(() => {
         try {
           axios
-            .get(`http://localhost:5000/admin/course/${courseStream}/${courseField}`)
+            .get(
+              `https://neelclasses.herokuapp.com/admin/course/${courseStream}/${courseField}`
+            )
             .then((res) => {
               console.log(res.data.CourseBranchList);
               const courseBranchList = [];
@@ -155,7 +160,7 @@ const FormAddEdit = (props) => {
         try {
           axios
             .get(
-              `http://localhost:5000/admin/course/${courseStream}/${courseField}/${courseBranch}`
+              `https://neelclasses.herokuapp.com/admin/course/${courseStream}/${courseField}/${courseBranch}`
             )
             .then((res) => {
               console.log(res.data.CourseYearList);
@@ -187,18 +192,18 @@ const FormAddEdit = (props) => {
   //   })
   //   }
 
-    const customStyles2 = {
-      control: (base, state) => ({
-        ...base,
-        borderColor: '#fff',
-        height: '61px',
-        '&:hover': {
-          border: "0px solid black",
-          borderColor: '#fff',
-          cursor: 'pointer',
-        },
-      })
-    };
+  const customStyles2 = {
+    control: (base, state) => ({
+      ...base,
+      borderColor: "#fff",
+      height: "61px",
+      "&:hover": {
+        border: "0px solid black",
+        borderColor: "#fff",
+        cursor: "pointer",
+      },
+    }),
+  };
 
   const onYearSelect = (selectedValue) => {
     if (selectedValue) {
@@ -210,7 +215,7 @@ const FormAddEdit = (props) => {
     const CourseInfo = {
       courseName: courseName,
       courseStream: courseStream,
-      courseField :courseField,
+      courseField: courseField,
       courseBranch: courseBranch,
       courseYear: courseYear,
       courseRating: courseRating,
@@ -219,7 +224,7 @@ const FormAddEdit = (props) => {
     if (addForm) {
       try {
         await axios
-          .post(`http://localhost:5000/admin/addcourse`, CourseInfo)
+          .post(`https://neelclasses.herokuapp.com/admin/addcourse`, CourseInfo)
           .then((res) => {
             setStatus(res.data);
           });
@@ -230,7 +235,7 @@ const FormAddEdit = (props) => {
       CourseInfo.courseId = courseId;
       try {
         await axios
-          .put(`http://localhost:5000/admin/editcourse`, CourseInfo)
+          .put(`https://neelclasses.herokuapp.com/admin/editcourse`, CourseInfo)
           .then((res) => {
             setStatus(res.data);
           });
@@ -239,7 +244,7 @@ const FormAddEdit = (props) => {
       }
     }
   };
-  if (status === "NotDone") 
+  if (status === "NotDone")
     return (
       <div className="container">
         <div className="header">Add Course</div>
@@ -262,7 +267,7 @@ const FormAddEdit = (props) => {
               onChange={(e) => onStreamSelect(e)}
               defaultOptions={false}
               className="selector"
-              styles={ customStyles2}
+              styles={customStyles2}
             />
           </FormGroup>
           <FormGroup className="form-body-component">
@@ -272,7 +277,7 @@ const FormAddEdit = (props) => {
               onChange={(e) => onFieldSelect(e)}
               defaultOptions={false}
               className="selector"
-              styles={ customStyles2}
+              styles={customStyles2}
             />
           </FormGroup>
           <FormGroup className="form-body-component">
@@ -282,7 +287,7 @@ const FormAddEdit = (props) => {
               onChange={(e) => onBranchSelect(e)}
               defaultOptions={false}
               className="selector"
-              styles={ customStyles2}
+              styles={customStyles2}
             />
           </FormGroup>
           <FormGroup className="form-body-component">
@@ -292,7 +297,7 @@ const FormAddEdit = (props) => {
               onChange={(e) => onYearSelect(e)}
               defaultOptions={false}
               className="selector"
-              styles={ customStyles2}
+              styles={customStyles2}
             />
           </FormGroup>
           <FormGroup className="form-body-component">

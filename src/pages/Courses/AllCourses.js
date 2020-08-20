@@ -33,7 +33,7 @@ class AllCourses extends React.Component {
     }
     getDataFromFirebase = async () => {
             try {
-            await axios.get(`http://localhost:5000/courses`,{
+            await axios.get(`https://neelclasses.herokuapp.com/courses`,{
                 onDownloadProgress: (progressEvent) => {
                     var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
                     this.setState({
