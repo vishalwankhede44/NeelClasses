@@ -338,11 +338,13 @@ const CourseHeading = (props) => {
                     {props.course.courseName}
                   </div>
                   <div className="course-header-description">
-                    qwer wer erty tyu yui ghj fghjkl sdfghj.
+                   {props.course.courseDescription}
                   </div>
                 </div>
                 <div>
-                  <div className="course-header-instructor">Isaal Wankide</div>
+                  <div className="course-header-instructor">
+                    {props.course.courseInstructor}
+                  </div>
                   <div>
                     <span className="course-header-rating">
                       {renderRating()}

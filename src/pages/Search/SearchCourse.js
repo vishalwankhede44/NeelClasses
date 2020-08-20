@@ -167,7 +167,7 @@ class SearchCourse extends React.Component {
                                 {this.props.course.courseName}
                             </div>
                             <div className="course-description">
-                                <p className="course-description-text">qwert qwert qwer qwer wer wert qwert qwert wer wert wert.</p>
+        <p className="course-description-text">{this.props.course.courseDescription}</p>
                             </div>
                         </div>
                         <div className="rating">

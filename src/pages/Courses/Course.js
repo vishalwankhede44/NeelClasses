@@ -53,7 +53,7 @@ const Course = (props) => {
       courseId: courseId,
     };
     await axios
-      .post("http://localhost:5000/checkAccess", Info)
+      .post("https://neelclasses.herokuapp.com/checkAccess", Info)
       .then((res) => {
         const newAccess = { ...access };
         console.log(res.data);

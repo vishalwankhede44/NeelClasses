@@ -26,6 +26,8 @@ const FormAddEdit = (props) => {
   const [courseRating, setCourseRating] = useState("");
   const [coursePrice, setCoursePrice] = useState("");
   const [courseField, setCourseField] = useState("");
+  const [courseDescription, setCourseDescription] = useState("");
+  const [courseInstructor, setCourseInstructor] = useState("");
   const [addForm, setAddForm] = useState(true);
 
   useEffect(() => {
@@ -38,6 +40,8 @@ const FormAddEdit = (props) => {
       setCoursePrice(props.course.coursePrice);
       setCourseId(props.course.courseId);
       setCourseField(props.course.courseField);
+      setCourseDescription(props.course.courseDescription);
+      setCourseInstructor(props.course.courseInstructor);
       setAddForm(false);
     } else {
       console.log(props.course);
@@ -49,6 +53,8 @@ const FormAddEdit = (props) => {
       setCoursePrice("");
       setCourseId("");
       setCourseField("");
+      setCourseDescription("");
+      setCourseInstructor("");
       setAddForm(true);
     }
   }, []);
@@ -180,17 +186,6 @@ const FormAddEdit = (props) => {
     }
   };
 
-  // const customStyle = {
-  //   control: provided => ({
-  //   ...provided,
-  //   height: 10,
-  //   margin: 0,
-  //   marginLeft: 0,
-  //   border: "0px solid black",
-  //   fontSize: 13,
-  //   outline: 'none'
-  //   })
-  //   }
 
   const customStyles2 = {
     control: (base, state) => ({
@@ -220,6 +215,8 @@ const FormAddEdit = (props) => {
       courseYear: courseYear,
       courseRating: courseRating,
       coursePrice: coursePrice,
+      courseDescription:courseDescription,
+      courseInstructor:courseInstructor
     };
     if (addForm) {
       try {
@@ -298,6 +295,26 @@ const FormAddEdit = (props) => {
               defaultOptions={false}
               className="selector"
               styles={customStyles2}
+            />
+          </FormGroup>
+          <FormGroup className="form-body-component">
+            <Input
+              type="text"
+              className="course-rating-field"
+              name="courseDescription"
+              placeholder="Course Description"
+              value={courseDescription}
+              onChange={(event) => setCourseDescription(event.target.value)}
+            />
+          </FormGroup>
+          <FormGroup className="form-body-component">
+            <Input
+              type="text"
+              className="course-rating-field"
+              name="courseInstructor"
+              placeholder="Course Instructor"
+              value={courseInstructor}
+              onChange={(event) => setCourseInstructor(event.target.value)}
             />
           </FormGroup>
           <FormGroup className="form-body-component">

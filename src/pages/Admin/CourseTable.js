@@ -40,6 +40,7 @@ const TableComponent = (props) => {
             <th scope="col">Field</th>
             <th scope="col">Branch</th>
             <th scope="col">Year</th>
+            <th scope="col">Instructor</th>
             <th scope="col">Rating</th>
             <th scope="col">Course Content</th>
             <th scope="col">Price</th>
@@ -57,6 +58,7 @@ const TableComponent = (props) => {
                 <td>{course.courseField}</td>
                 <td>{course.courseBranch}</td>
                 <td>{course.courseYear}</td>
+                <td>{course.courseInstructor}</td>
                 <td>{course.courseRating}</td>
                 <td>
                   <button className="link-view-contents">

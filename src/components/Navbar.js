@@ -104,7 +104,7 @@ const Navbar = (props) => {
     <div>
       <div className="nav-container">
         <div className="nav-brand">
-          <p>NEEL's <span className="nav-brand2">Classes</span></p>
+          <p>NEEL <span className="nav-brand2">Classes</span></p>
         </div>
         <div className="menu">
           <MenuButton
